@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080">
+  <defs>
+    <style>
+      .title{font:700 30px Arial,sans-serif;fill:#14385b}.sub{font:18px Arial,sans-serif;fill:#45566a}
+      .block{fill:#f7fbff;stroke:#1f4e79;stroke-width:3;rx:10}.logic{fill:#eef8ed;stroke:#3f7f3f;stroke-width:2.5;rx:8}
+      .net{fill:#fff6d8;stroke:#9a7615;stroke-width:2;rx:6}.bad{fill:#fdecef;stroke:#a6384d;stroke-width:2.5;rx:6}
+      .blockTitle{font:700 22px Arial,sans-serif;fill:#153a5f}.txt{font:16px Arial,sans-serif;fill:#31455a}.pin{font:15px Consolas,monospace;fill:#1f2f3d}
+      .wire{fill:none;stroke:#2f64a3;stroke-width:3;marker-end:url(#arrow)}.wireRed{fill:none;stroke:#b33d3d;stroke-width:3;marker-end:url(#arrowRed)}.wireGreen{fill:none;stroke:#2f7d4a;stroke-width:3;marker-end:url(#arrowGreen)}
+      .label{font:15px Arial,sans-serif;fill:#17324d;paint-order:stroke;stroke:#fff;stroke-width:5;stroke-linejoin:round}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#2f64a3"/></marker>
+    <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#b33d3d"/></marker>
+    <marker id="arrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#2f7d4a"/></marker>
+  </defs>
+
+  <text x="40" y="48" class="title">FBD лист 3. Приоритет вводов и режим работы</text>
+  <text x="40" y="78" class="sub">Priority3 выбирает ввод, Mode3 разрешает автоматический режим или переводит АВР в ручной/аварийный.</text>
+
+  <rect x="70" y="120" width="315" height="560" class="net"/>
+  <text x="95" y="155" class="blockTitle">Входы в Priority3</text>
+  <text x="95" y="198" class="pin">xAutoReturn</text>
+  <text x="95" y="230" class="pin">xU1Ok</text>
+  <text x="95" y="262" class="pin">xU2Ok</text>
+  <text x="95" y="294" class="pin">xU3Ok</text>
+  <text x="95" y="340" class="pin">xQF1On</text>
+  <text x="95" y="372" class="pin">xQF2On</text>
+  <text x="95" y="404" class="pin">xQF3On</text>
+  <text x="95" y="450" class="pin">xQF1Fault</text>
+  <text x="95" y="482" class="pin">xQF2Fault</text>
+  <text x="95" y="514" class="pin">xQF3Fault</text>
+
+  <rect x="465" y="120" width="365" height="560" class="block"/>
+  <text x="495" y="158" class="blockTitle">Priority3</text>
+  <text x="495" y="190" class="txt">FB_AVR_PRIORITY_3</text>
+  <text x="495" y="235" class="pin">выходы:</text>
+  <text x="495" y="270" class="pin">xS1Ready</text>
+  <text x="495" y="302" class="pin">xS2Ready</text>
+  <text x="495" y="334" class="pin">xS3Ready</text>
+  <text x="495" y="390" class="pin">udiActive</text>
+  <text x="495" y="422" class="pin">udiTarget</text>
+  <text x="495" y="478" class="pin">xAlarmParallel</text>
+  <text x="495" y="510" class="pin">xNoSource</text>
+
+  <rect x="940" y="100" width="220" height="95" class="logic"/>
+  <text x="985" y="136" class="blockTitle">OR3</text>
+  <text x="980" y="166" class="pin">xAlarmFault</text>
+
+  <rect x="1240" y="120" width="300" height="270" class="block"/>
+  <text x="1270" y="158" class="blockTitle">Mode3</text>
+  <text x="1270" y="190" class="txt">FB_AVR_MODE_3</text>
+  <text x="1270" y="235" class="pin">xManualSelector</text>
+  <text x="1270" y="267" class="pin">xAlarmFault</text>
+  <text x="1270" y="299" class="pin">xAlarmParallel</text>
+  <text x="1270" y="331" class="pin">xAlarmUndefined</text>
+
+  <rect x="1240" y="475" width="300" height="185" class="net"/>
+  <text x="1270" y="510" class="blockTitle">Выходы Mode3</text>
+  <text x="1270" y="550" class="pin">xAutoMode  -> State3, Commands3</text>
+  <text x="1270" y="582" class="pin">xAlarm     -> Commands3</text>
+  <text x="1270" y="614" class="pin">xManualMode -> индикация</text>
+
+  <rect x="900" y="735" width="620" height="170" class="net"/>
+  <text x="930" y="770" class="blockTitle">Куда идут выходы Priority3</text>
+  <text x="930" y="808" class="pin">udiActive, udiTarget -> State3</text>
+  <text x="930" y="838" class="pin">xS1Ready/xS2Ready/xS3Ready -> State3 и Commands3</text>
+  <text x="930" y="868" class="pin">xAlarmParallel -> Mode3 и Commands3</text>
+
+  <path class="wire" d="M385 400 H465"/>
+  <text x="395" y="390" class="label">все входы из списка</text>
+
+  <path class="wire" d="M830 390 H900 V805 H900"/>
+  <path class="wire" d="M830 422 H910 V835 H900"/>
+  <path class="wire" d="M830 270 H890 V835 H900"/>
+  <path class="wireRed" d="M830 478 H1200 V299 H1240"/>
+  <path class="wireRed" d="M830 478 H900 V865 H900"/>
+
+  <path class="wireRed" d="M385 450 H920 V132 H940"/>
+  <path class="wireRed" d="M385 482 H920 V148 H940"/>
+  <path class="wireRed" d="M385 514 H920 V166 H940"/>
+  <path class="wireRed" d="M1160 148 H1240"/>
+
+  <rect x="940" y="250" width="220" height="62" class="bad"/>
+  <text x="965" y="287" class="pin">xAlarmUndefined</text>
+  <path class="wireRed" d="M1160 281 H1240"/>
+
+  <rect x="940" y="350" width="220" height="62" class="net"/>
+  <text x="970" y="387" class="pin">xManualSelector</text>
+  <path class="wire" d="M1160 381 H1240"/>
+
+  <path class="wireGreen" d="M1390 390 V475"/>
+  <path class="wireRed" d="M1420 390 V475"/>
+</svg>

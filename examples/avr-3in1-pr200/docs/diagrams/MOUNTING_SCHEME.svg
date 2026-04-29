@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="1120" viewBox="0 0 1700 1120">
+  <defs>
+    <style>
+      .title{font:700 34px Arial,sans-serif;fill:#12385b}
+      .sub{font:18px Arial,sans-serif;fill:#405164}
+      .block{fill:#f7fbff;stroke:#1f4e79;stroke-width:4;rx:12}
+      .blockTitle{font:700 30px Arial,sans-serif;fill:#12385b}
+      .blockSub{font:20px Arial,sans-serif;fill:#3c5064}
+      .headIn{fill:#e9f2fb;stroke:#7aa1c4;stroke-width:2;rx:8}
+      .headOut{fill:#fbecef;stroke:#bc6675;stroke-width:2;rx:8}
+      .headDiag{fill:#fff5d6;stroke:#a37a14;stroke-width:2;rx:8}
+      .row{fill:#ffffff;stroke:#c8d4df;stroke-width:1.5;rx:5}
+      .rowIn{fill:#f8fbff;stroke:#b9cede;stroke-width:1.5;rx:5}
+      .rowOut{fill:#fff7f8;stroke:#e0b1ba;stroke-width:1.5;rx:5}
+      .rowDiag{fill:#fffdf5;stroke:#dccb97;stroke-width:1.5;rx:5}
+      .txt{font:17px Arial,sans-serif;fill:#1d2a35}
+      .small{font:15px Arial,sans-serif;fill:#43566b}
+      .mono{font:17px Consolas,monospace;fill:#1b2935}
+      .num{font:700 18px Arial,sans-serif;fill:#12385b}
+      .wire{fill:none;stroke:#2e669d;stroke-width:2.2}
+      .wireOut{fill:none;stroke:#a93248;stroke-width:2.4}
+      .wireDiag{fill:none;stroke:#9a7615;stroke-width:2.1;stroke-dasharray:7 5}
+      .pin{fill:#1f4e79;stroke:#12385b;stroke-width:1.5}
+      .pinOut{fill:#a93248;stroke:#7c2636;stroke-width:1.5}
+      .pinDiag{fill:#c3982b;stroke:#8b6817;stroke-width:1.5}
+    </style>
+  </defs>
+
+  <text x="50" y="50" class="title">Монтажная схема АВР 3-в-1 ПР200</text>
+  <text x="50" y="82" class="sub">Упрощенно: один блок АВР, номера цепей, входы слева, выходы справа. Внутренняя логика не показана.</text>
+  <text x="50" y="110" class="small">Номера цепей 101...307 условные: если в проекте свои номера, меняются только номера, имена сигналов остаются как показано.</text>
+
+  <!-- AVR block -->
+  <rect x="610" y="190" width="480" height="880" class="block"/>
+  <text x="690" y="320" class="blockTitle">FB_AVR_3IN1_PR200</text>
+  <text x="725" y="360" class="blockSub">АВР ПЭСПЭЗ 3-в-1</text>
+  <text x="700" y="420" class="txt">Приоритет вводов:</text>
+  <text x="745" y="455" class="blockTitle">1 → 2 → 3</text>
+  <text x="690" y="520" class="txt">Без таймеров.</text>
+  <text x="690" y="555" class="txt">Переключение только по допконтактам.</text>
+  <text x="690" y="590" class="txt">При пересечении вводов:</text>
+  <text x="690" y="625" class="txt">только команды отключения.</text>
+
+  <!-- Left input header -->
+  <rect x="50" y="130" width="455" height="44" class="headIn"/>
+  <text x="70" y="159" class="blockSub">Входные цепи в блок АВР</text>
+
+  <!-- Input rows -->
+  <g id="inputs">
+    <rect x="50" y="190" width="455" height="42" class="rowIn"/><text x="70" y="217" class="num">101</text><text x="130" y="217" class="mono">xManualSelector</text><text x="315" y="217" class="txt">ручной = 1</text>
+    <rect x="50" y="240" width="455" height="42" class="rowIn"/><text x="70" y="267" class="num">102</text><text x="130" y="267" class="mono">xAutoReturn</text><text x="315" y="267" class="txt">автовозврат</text>
+    <rect x="50" y="300" width="455" height="42" class="rowIn"/><text x="70" y="327" class="num">111</text><text x="130" y="327" class="mono">xU1Ok</text><text x="315" y="327" class="txt">U ввода 1 OK</text>
+    <rect x="50" y="350" width="455" height="42" class="rowIn"/><text x="70" y="377" class="num">112</text><text x="130" y="377" class="mono">xU2Ok</text><text x="315" y="377" class="txt">U ввода 2 OK</text>
+    <rect x="50" y="400" width="455" height="42" class="rowIn"/><text x="70" y="427" class="num">113</text><text x="130" y="427" class="mono">xU3Ok</text><text x="315" y="427" class="txt">U ввода 3 OK</text>
+    <rect x="50" y="470" width="455" height="42" class="rowIn"/><text x="70" y="497" class="num">121</text><text x="130" y="497" class="mono">xQF1On</text><text x="315" y="497" class="txt">40F включен</text>
+    <rect x="50" y="520" width="455" height="42" class="rowIn"/><text x="70" y="547" class="num">122</text><text x="130" y="547" class="mono">xQF1Off</text><text x="315" y="547" class="txt">40F выключен</text>
+    <rect x="50" y="570" width="455" height="42" class="rowIn"/><text x="70" y="597" class="num">123</text><text x="130" y="597" class="mono">xQF1Fault</text><text x="315" y="597" class="txt">40F авария</text>
+    <rect x="50" y="640" width="455" height="42" class="rowIn"/><text x="70" y="667" class="num">131</text><text x="130" y="667" class="mono">xQF2On</text><text x="315" y="667" class="txt">50F включен</text>
+    <rect x="50" y="690" width="455" height="42" class="rowIn"/><text x="70" y="717" class="num">132</text><text x="130" y="717" class="mono">xQF2Off</text><text x="315" y="717" class="txt">50F выключен</text>
+    <rect x="50" y="740" width="455" height="42" class="rowIn"/><text x="70" y="767" class="num">133</text><text x="130" y="767" class="mono">xQF2Fault</text><text x="315" y="767" class="txt">50F авария</text>
+    <rect x="50" y="810" width="455" height="42" class="rowIn"/><text x="70" y="837" class="num">141</text><text x="130" y="837" class="mono">xQF3On</text><text x="315" y="837" class="txt">60F включен</text>
+    <rect x="50" y="860" width="455" height="42" class="rowIn"/><text x="70" y="887" class="num">142</text><text x="130" y="887" class="mono">xQF3Off</text><text x="315" y="887" class="txt">60F выключен</text>
+    <rect x="50" y="910" width="455" height="42" class="rowIn"/><text x="70" y="937" class="num">143</text><text x="130" y="937" class="mono">xQF3Fault</text><text x="315" y="937" class="txt">60F авария</text>
+  </g>
+
+  <!-- Right outputs header -->
+  <rect x="1185" y="130" width="465" height="44" class="headOut"/>
+  <text x="1205" y="159" class="blockSub">Выходные цепи с блока АВР</text>
+
+  <!-- Output rows -->
+  <rect x="1185" y="210" width="465" height="48" class="rowOut"/><text x="1205" y="241" class="num">201</text><text x="1265" y="241" class="mono">xQ1 / Q1</text><text x="1410" y="241" class="txt">включить 40F</text>
+  <rect x="1185" y="280" width="465" height="48" class="rowOut"/><text x="1205" y="311" class="num">202</text><text x="1265" y="311" class="mono">xQ2 / Q2</text><text x="1410" y="311" class="txt">выключить 40F</text>
+  <rect x="1185" y="350" width="465" height="48" class="rowOut"/><text x="1205" y="381" class="num">203</text><text x="1265" y="381" class="mono">xQ3 / Q3</text><text x="1410" y="381" class="txt">включить 50F</text>
+  <rect x="1185" y="420" width="465" height="48" class="rowOut"/><text x="1205" y="451" class="num">204</text><text x="1265" y="451" class="mono">xQ4 / Q4</text><text x="1410" y="451" class="txt">выключить 50F</text>
+  <rect x="1185" y="490" width="465" height="48" class="rowOut"/><text x="1205" y="521" class="num">205</text><text x="1265" y="521" class="mono">xQ5 / Q5</text><text x="1410" y="521" class="txt">включить 60F</text>
+  <rect x="1185" y="560" width="465" height="48" class="rowOut"/><text x="1205" y="591" class="num">206</text><text x="1265" y="591" class="mono">xQ6 / Q6</text><text x="1410" y="591" class="txt">выключить 60F</text>
+
+  <!-- Diagnostics -->
+  <rect x="1185" y="690" width="465" height="44" class="headDiag"/>
+  <text x="1205" y="719" class="blockSub">Диагностика, если нужна на индикацию</text>
+  <rect x="1185" y="750" width="465" height="36" class="rowDiag"/><text x="1205" y="774" class="num">301</text><text x="1265" y="774" class="mono">xAutoMode</text><text x="1410" y="774" class="txt">авто</text>
+  <rect x="1185" y="795" width="465" height="36" class="rowDiag"/><text x="1205" y="819" class="num">302</text><text x="1265" y="819" class="mono">xManualMode</text><text x="1410" y="819" class="txt">ручной/авария</text>
+  <rect x="1185" y="840" width="465" height="36" class="rowDiag"/><text x="1205" y="864" class="num">303</text><text x="1265" y="864" class="mono">xAlarm</text><text x="1410" y="864" class="txt">общая авария</text>
+  <rect x="1185" y="885" width="465" height="36" class="rowDiag"/><text x="1205" y="909" class="num">304</text><text x="1265" y="909" class="mono">xAlarmFault</text><text x="1410" y="909" class="txt">авария QF</text>
+  <rect x="1185" y="930" width="465" height="36" class="rowDiag"/><text x="1205" y="954" class="num">305</text><text x="1265" y="954" class="mono">xAlarmParallel</text><text x="1410" y="954" class="txt">пересечение</text>
+  <rect x="1185" y="975" width="465" height="36" class="rowDiag"/><text x="1205" y="999" class="num">306</text><text x="1265" y="999" class="mono">xAlarmUndefined</text><text x="1410" y="999" class="txt">неопр. допконт.</text>
+  <rect x="1185" y="1020" width="465" height="36" class="rowDiag"/><text x="1205" y="1044" class="num">307</text><text x="1265" y="1044" class="mono">xNoSource</text><text x="1410" y="1044" class="txt">нет ввода</text>
+
+  <!-- Pins on AVR block -->
+  <g>
+    <circle cx="610" cy="211" r="5" class="pin"/><circle cx="610" cy="261" r="5" class="pin"/>
+    <circle cx="610" cy="321" r="5" class="pin"/><circle cx="610" cy="371" r="5" class="pin"/><circle cx="610" cy="421" r="5" class="pin"/>
+    <circle cx="610" cy="491" r="5" class="pin"/><circle cx="610" cy="541" r="5" class="pin"/><circle cx="610" cy="591" r="5" class="pin"/>
+    <circle cx="610" cy="661" r="5" class="pin"/><circle cx="610" cy="711" r="5" class="pin"/><circle cx="610" cy="761" r="5" class="pin"/>
+    <circle cx="610" cy="831" r="5" class="pin"/><circle cx="610" cy="881" r="5" class="pin"/><circle cx="610" cy="931" r="5" class="pin"/>
+  </g>
+  <g>
+    <circle cx="1090" cy="234" r="5" class="pinOut"/><circle cx="1090" cy="304" r="5" class="pinOut"/>
+    <circle cx="1090" cy="374" r="5" class="pinOut"/><circle cx="1090" cy="444" r="5" class="pinOut"/>
+    <circle cx="1090" cy="514" r="5" class="pinOut"/><circle cx="1090" cy="584" r="5" class="pinOut"/>
+    <circle cx="1090" cy="768" r="5" class="pinDiag"/><circle cx="1090" cy="813" r="5" class="pinDiag"/>
+    <circle cx="1090" cy="858" r="5" class="pinDiag"/><circle cx="1090" cy="903" r="5" class="pinDiag"/>
+    <circle cx="1090" cy="948" r="5" class="pinDiag"/><circle cx="1090" cy="993" r="5" class="pinDiag"/>
+    <circle cx="1090" cy="1038" r="5" class="pinDiag"/>
+  </g>
+
+  <!-- Input wires -->
+  <path d="M505 211 H610" class="wire"/><path d="M505 261 H610" class="wire"/>
+  <path d="M505 321 H610" class="wire"/><path d="M505 371 H610" class="wire"/><path d="M505 421 H610" class="wire"/>
+  <path d="M505 491 H610" class="wire"/><path d="M505 541 H610" class="wire"/><path d="M505 591 H610" class="wire"/>
+  <path d="M505 661 H610" class="wire"/><path d="M505 711 H610" class="wire"/><path d="M505 761 H610" class="wire"/>
+  <path d="M505 831 H610" class="wire"/><path d="M505 881 H610" class="wire"/><path d="M505 931 H610" class="wire"/>
+
+  <!-- Output wires -->
+  <path d="M1090 234 H1185" class="wireOut"/><path d="M1090 304 H1185" class="wireOut"/>
+  <path d="M1090 374 H1185" class="wireOut"/><path d="M1090 444 H1185" class="wireOut"/>
+  <path d="M1090 514 H1185" class="wireOut"/><path d="M1090 584 H1185" class="wireOut"/>
+
+  <!-- Diag wires -->
+  <path d="M1090 768 H1185" class="wireDiag"/><path d="M1090 813 H1185" class="wireDiag"/>
+  <path d="M1090 858 H1185" class="wireDiag"/><path d="M1090 903 H1185" class="wireDiag"/>
+  <path d="M1090 948 H1185" class="wireDiag"/><path d="M1090 993 H1185" class="wireDiag"/>
+  <path d="M1090 1038 H1185" class="wireDiag"/>
+
+</svg>

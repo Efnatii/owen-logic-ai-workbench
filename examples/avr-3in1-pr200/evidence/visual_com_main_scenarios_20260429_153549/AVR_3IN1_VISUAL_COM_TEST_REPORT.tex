@@ -1,0 +1,271 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{fontspec}
+\setmainfont{Arial}
+\setsansfont{Arial}
+\setmonofont{Consolas}
+
+\usepackage[russian,english]{babel}
+\usepackage{geometry}
+\geometry{left=18mm,right=18mm,top=18mm,bottom=20mm}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{pdflscape}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{fancyhdr}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  pdftitle={Отчет по визуальному COM-тестированию АВР 3 в 1},
+  pdfauthor={Codex}
+}
+
+\pagestyle{fancy}
+\setlength{\headheight}{15pt}
+\fancyhf{}
+\lhead{АВР 3 в 1, ПР200}
+\rhead{Визуальное COM-тестирование}
+\cfoot{\thepage}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+\emergencystretch=3em
+\renewcommand{\arraystretch}{1.2}
+
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\ok}{\textcolor{green!45!black}{OK}}
+
+\newcommand{\scenariofigure}[4]{
+  \clearpage
+  \begin{landscape}
+  \thispagestyle{fancy}
+  \section*{Сценарий #1. #2}
+  \textbf{Проверяется:} #3
+
+  \vspace{4mm}
+  \begin{center}
+    \includegraphics[width=0.96\linewidth,height=0.74\textheight,keepaspectratio]{#4}
+    \captionof{figure}{#2. Снимок OWEN Logic после подтверждения ожидаемых значений через COM.}
+  \end{center}
+  \end{landscape}
+}
+
+\begin{document}
+
+\begin{titlepage}
+  \centering
+  \vspace*{22mm}
+  {\Large ОТЧЕТ\par}
+  \vspace{4mm}
+  {\LARGE\bfseries Визуальное COM-тестирование АВР 3 в 1 на OWEN Logic / ПР200\par}
+  \vspace{12mm}
+  {\large Проверка основных положений, аварийных и неопределенных состояний\par}
+  \vfill
+  \begin{tabular}{>{\bfseries}l l}
+    Объект проверки: & функциональный блок \code{FB_AVR_3IN1_PR200} \\
+    Проект OWEN Logic: & \code{АВР на 3 ввода feat. Егор Гороховицкий.owle} \\
+    Дата прогона: & 29.04.2026 \\
+    Метод: & визуальная отладка OWEN Logic через COM-эмулятор \\
+    Количество сценариев: & 11 \\
+    Результат: & \ok \\
+  \end{tabular}
+  \vfill
+  {\large C:\textbackslash\_\_SELF\_PC\_\_\textbackslash AVR\_3IN1\_PR200\par}
+\end{titlepage}
+
+\tableofcontents
+\clearpage
+
+\section{Назначение отчета}
+
+Настоящий отчет фиксирует короткий визуальный тестовый прогон схемы АВР 3 в 1 без полного перебора всех инвариантов. Цель проверки:
+
+\begin{itemize}[leftmargin=8mm]
+  \item подтвердить работу основных положений АВР по приоритету вводов 1, 2, 3;
+  \item проверить отсутствие пересечений команд включения мотор-приводов;
+  \item проверить переход в ручной/аварийный режим при авариях и неопределенных положениях допконтактов;
+  \item подтвердить, что значения на FBD-экране OWEN Logic соответствуют данным, полученным через COM-ответ \code{ReadData}.
+\end{itemize}
+
+Скриншоты в отчете сделаны с вкладки FBD схемы OWEN Logic после того, как скрипт получил от COM-эмулятора ожидаемые значения отладочных точек.
+
+\section{Состав стенда}
+
+\begin{longtable}{>{\bfseries}p{0.28\linewidth} p{0.66\linewidth}}
+\toprule
+Компонент & Значение \\
+\midrule
+Среда & Windows, OWEN Logic, Python, MiKTeX XeLaTeX \\
+Контроллер в проекте & ПР200 \\
+Порт OWEN Logic & \code{COM21} \\
+Порт эмулятора & \code{COM22} \\
+COM-эмулятор & \code{owen_logic_com_emulator.py} \\
+Входы сценариев & \code{pr200_reverse/avr3in1_live_inputs.json} \\
+Карта отладочных точек & \code{pr200_reverse/avr3in1_debug_symbol_map.json} \\
+Скрипт визуального теста & \code{visual_com_main_scenarios.py} \\
+Папка скриншотов & \code{visual_com_main_scenarios_20260429_153549} \\
+\bottomrule
+\end{longtable}
+
+\section{Ключевые отладочные точки}
+
+Карта отладочных точек была получена из реального online-debug command block OWEN Logic и файла проекта \code{.owle}. Для основных проверяемых сигналов использовались следующие read-index:
+
+\begin{longtable}{>{\bfseries}p{0.24\linewidth} p{0.18\linewidth} p{0.48\linewidth}}
+\toprule
+Сигнал & Read-index & Назначение \\
+\midrule
+\code{xQ1} & 27, 50 & команда включить 40F и дубль физического выхода \\
+\code{xQ2} & 28, 51 & команда выключить 40F и дубль физического выхода \\
+\code{xQ3} & 29, 52 & команда включить 50F и дубль физического выхода \\
+\code{xQ4} & 30, 53 & команда выключить 50F и дубль физического выхода \\
+\code{xQ5} & 31, 54 & команда включить 60F и дубль физического выхода \\
+\code{xQ6} & 32, 55 & команда выключить 60F и дубль физического выхода \\
+\code{udiActive} & 33 & активный ввод по допконтактам \\
+\code{udiTarget} & 35 & выбранная цель АВР после задержки \\
+\code{udiState} & 38 & состояние автомата управления \\
+\code{xAutoMode} & 40 & автоматический режим разрешен \\
+\code{xManualMode} & 41 & ручной/аварийный режим \\
+\code{xAlarm} & 42 & общая авария \\
+\code{xAlarmFault} & 43 & авария автоматов \\
+\code{xAlarmParallel} & 44 & параллельное включение вводов \\
+\code{xAlarmUndefined} & 45 & неопределенное положение допконтактов \\
+\code{xNoSource} & 49 & нет доступного ввода \\
+\bottomrule
+\end{longtable}
+
+\section{Инструкция по повторению теста}
+
+\subsection{Подготовка OWEN Logic}
+
+\begin{enumerate}[leftmargin=8mm]
+  \item Открыть проект \code{АВР на 3 ввода feat. Егор Гороховицкий.owle}.
+  \item В настройках связи выбрать порт \code{COM21}.
+  \item Убедиться, что открыт лист FBD с блоком \code{FB_AVR_3IN1_PR200}.
+  \item Включить режим отладки OWEN Logic.
+\end{enumerate}
+
+\subsection{Запуск COM-эмулятора}
+
+Эмулятор должен быть запущен на парном порту \code{COM22}. Использованная команда:
+
+\begin{verbatim}
+python owen_logic_com_emulator.py ^
+  --port COM22 ^
+  --baudrate 9600 ^
+  --address 16 ^
+  --program-hash 0xA1A91428 ^
+  --debug-default-block-number 1 ^
+  --debug-default-cells 59 ^
+  --debug-symbol-map pr200_reverse\avr3in1_debug_symbol_map.json ^
+  --avr3in1-runtime ^
+  --avr3in1-inputs-file pr200_reverse\avr3in1_live_inputs.json ^
+  --log owen_logic_com_emulator_COM22_live.log
+\end{verbatim}
+
+\subsection{Запуск короткого визуального теста}
+
+Команда запуска:
+
+\begin{verbatim}
+python visual_com_main_scenarios.py
+\end{verbatim}
+
+Скрипт для каждого сценария выполняет одинаковую последовательность:
+
+\begin{enumerate}[leftmargin=8mm]
+  \item записывает входы сценария в \code{avr3in1_live_inputs.json};
+  \item меняет служебный \code{_reset_id}, чтобы состояние модели начиналось заново;
+  \item ждет новый COM-ответ OWEN Logic \code{ReadData};
+  \item сравнивает значения read-index с ожидаемыми;
+  \item активирует FBD-вкладку OWEN Logic;
+  \item сохраняет скриншот с названием сценария.
+\end{enumerate}
+
+\section{Сводная таблица сценариев}
+
+\begin{longtable}{>{\bfseries}p{0.05\linewidth} p{0.34\linewidth} p{0.14\linewidth} p{0.37\linewidth}}
+\toprule
+\# & Сценарий & Результат & Основные ожидаемые значения \\
+\midrule
+01 & \code{AUTO_PRIORITY_1_CLOSE_40F_Q1_STATE31} & \ok & \code{xQ1=1}, \code{udiState=31}, \code{xAlarm=0} \\
+02 & \code{ACTIVE_40F_HEALTHY_NO_COMMANDS} & \ok & \code{udiActive=1}, команды \code{Q1..Q6=0} \\
+03 & \code{U1_LOST_ACTIVE_40F_OPEN_40F_Q2_STATE11} & \ok & \code{xQ2=1}, \code{udiTarget=2}, \code{udiState=11} \\
+04 & \code{U1_LOST_ALL_OFF_CLOSE_50F_Q3_STATE32} & \ok & \code{xQ3=1}, \code{udiTarget=2}, \code{udiState=32} \\
+05 & \code{U1_U2_LOST_ALL_OFF_CLOSE_60F_Q5_STATE33} & \ok & \code{xQ5=1}, \code{udiTarget=3}, \code{udiState=33} \\
+06 & \code{NO_SOURCES_ALL_OFF_NO_SOURCE} & \ok & \code{udiTarget=0}, \code{xNoSource=1}, \code{xAlarm=0} \\
+07 & \code{UNDEFINED_QF1_ON_AND_OFF_ALARM} & \ok & \code{xAlarm=1}, \code{xQF1Undefined=1}, \code{udiState=90} \\
+08 & \code{UNDEFINED_QF2_NO_POSITION_ALARM} & \ok & \code{xAlarm=1}, \code{xQF2Undefined=1}, \code{udiState=90} \\
+09 & \code{PARALLEL_40F_50F_ONLY_OFF_COMMANDS} & \ok & \code{xAlarmParallel=1}, только \code{xQ2=1}, \code{xQ4=1} \\
+10 & \code{BREAKER_FAULT_QF3_MANUAL_ALARM} & \ok & \code{xAlarmFault=1}, \code{xManualMode=1}, \code{udiState=90} \\
+11 & \code{MANUAL_SELECTOR_BLOCKS_AUTO} & \ok & \code{xManualMode=1}, \code{xAutoMode=0}, команды включения отсутствуют \\
+\bottomrule
+\end{longtable}
+
+\section{Результаты визуальной проверки}
+
+\scenariofigure{01}{AUTO\_PRIORITY\_1\_CLOSE\_40F\_Q1\_STATE31}
+{При всех исправных вводах выбран приоритетный ввод 1: команда \code{xQ1=1}, состояние \code{udiState=31}, аварии нет.}
+{01_AUTO_PRIORITY_1_CLOSE_40F_Q1_STATE31.png}
+
+\scenariofigure{02}{ACTIVE\_40F\_HEALTHY\_NO\_COMMANDS}
+{40F уже включен и ввод 1 исправен: активный ввод \code{udiActive=1}, дополнительных команд на мотор-приводы нет.}
+{02_ACTIVE_40F_HEALTHY_NO_COMMANDS.png}
+
+\scenariofigure{03}{U1\_LOST\_ACTIVE\_40F\_OPEN\_40F\_Q2\_STATE11}
+{При потере ввода 1 и включенном 40F схема сначала отключает 40F: команда \code{xQ2=1}, состояние \code{udiState=11}.}
+{03_U1_LOST_ACTIVE_40F_OPEN_40F_Q2_STATE11.png}
+
+\scenariofigure{04}{U1\_LOST\_ALL\_OFF\_CLOSE\_50F\_Q3\_STATE32}
+{После подтверждения всех отключенных автоматов при потере ввода 1 выбран ввод 2: команда \code{xQ3=1}, состояние \code{udiState=32}.}
+{04_U1_LOST_ALL_OFF_CLOSE_50F_Q3_STATE32.png}
+
+\scenariofigure{05}{U1\_U2\_LOST\_ALL\_OFF\_CLOSE\_60F\_Q5\_STATE33}
+{При отсутствии вводов 1 и 2 выбран ввод 3: команда \code{xQ5=1}, состояние \code{udiState=33}.}
+{05_U1_U2_LOST_ALL_OFF_CLOSE_60F_Q5_STATE33.png}
+
+\scenariofigure{06}{NO\_SOURCES\_ALL\_OFF\_NO\_SOURCE}
+{При отсутствии всех источников целевой ввод равен 0, активен признак \code{xNoSource=1}, команд включения нет.}
+{06_NO_SOURCES_ALL_OFF_NO_SOURCE.png}
+
+\scenariofigure{07}{UNDEFINED\_QF1\_ON\_AND\_OFF\_ALARM}
+{Одновременно активные допконтакты включено/выключено для 40F считаются неопределенным положением: авария, ручной режим, состояние 90.}
+{07_UNDEFINED_QF1_ON_AND_OFF_ALARM.png}
+
+\scenariofigure{08}{UNDEFINED\_QF2\_NO\_POSITION\_ALARM}
+{Отсутствие обоих положений 50F вне команды движения считается неопределенным положением: авария, ручной режим, состояние 90.}
+{08_UNDEFINED_QF2_NO_POSITION_ALARM.png}
+
+\scenariofigure{09}{PARALLEL\_40F\_50F\_ONLY\_OFF\_COMMANDS}
+{При параллельном включении 40F и 50F команды включения запрещены, разрешены только команды отключения включенных автоматов.}
+{09_PARALLEL_40F_50F_ONLY_OFF_COMMANDS.png}
+
+\scenariofigure{10}{BREAKER\_FAULT\_QF3\_MANUAL\_ALARM}
+{Авария автомата 60F переводит схему в ручной/аварийный режим: \code{xAlarmFault=1}, \code{xManualMode=1}, состояние 90.}
+{10_BREAKER_FAULT_QF3_MANUAL_ALARM.png}
+
+\scenariofigure{11}{MANUAL\_SELECTOR\_BLOCKS\_AUTO}
+{Ручной переключатель блокирует автоматические команды без формирования аварии: \code{xManualMode=1}, \code{xAutoMode=0}, команды включения отсутствуют.}
+{11_MANUAL_SELECTOR_BLOCKS_AUTO.png}
+
+\clearpage
+\section{Вывод}
+
+Короткий визуальный COM-прогон основных положений и неопределенных состояний завершен успешно. Все 11 сценариев получили ожидаемые значения в COM-ответе \code{ReadData} и затем были зафиксированы скриншотами OWEN Logic. Проверка подтверждает:
+
+\begin{itemize}[leftmargin=8mm]
+  \item соблюдение приоритета вводов 1, 2, 3;
+  \item отсутствие команд включения другого автомата до подтверждения отключенного положения остальных автоматов;
+  \item корректную реакцию на неопределенные положения допконтактов;
+  \item корректный переход в ручной/аварийный режим при авариях;
+  \item корректную привязку визуальных отладочных точек OWEN Logic к значениям, полученным через COM.
+\end{itemize}
+
+\end{document}

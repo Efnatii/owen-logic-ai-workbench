@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1080" viewBox="0 0 1600 1080">
+  <defs>
+    <style>
+      .title{font:700 30px Arial,sans-serif;fill:#14385b}.sub{font:18px Arial,sans-serif;fill:#45566a}
+      .block{fill:#f7fbff;stroke:#1f4e79;stroke-width:3;rx:10}.logic{fill:#eef8ed;stroke:#3f7f3f;stroke-width:2.5;rx:8}
+      .net{fill:#fff6d8;stroke:#9a7615;stroke-width:2;rx:6}.out{fill:#fdecef;stroke:#a6384d;stroke-width:2.5;rx:8}
+      .blockTitle{font:700 22px Arial,sans-serif;fill:#153a5f}.txt{font:16px Arial,sans-serif;fill:#31455a}.pin{font:15px Consolas,monospace;fill:#1f2f3d}
+      .wire{fill:none;stroke:#2f64a3;stroke-width:3;marker-end:url(#arrow)}.wireRed{fill:none;stroke:#b33d3d;stroke-width:3;marker-end:url(#arrowRed)}.wireGreen{fill:none;stroke:#2f7d4a;stroke-width:3;marker-end:url(#arrowGreen)}
+      .label{font:15px Arial,sans-serif;fill:#17324d;paint-order:stroke;stroke:#fff;stroke-width:5;stroke-linejoin:round}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#2f64a3"/></marker>
+    <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#b33d3d"/></marker>
+    <marker id="arrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#2f7d4a"/></marker>
+  </defs>
+
+  <text x="40" y="48" class="title">FBD лист 4. Автомат состояний и команды Q1...Q6</text>
+  <text x="40" y="78" class="sub">State3 решает, какой шаг выполняется. Commands3 превращает состояние в физические команды мотор-приводов.</text>
+
+  <rect x="65" y="120" width="330" height="170" class="logic"/>
+  <text x="95" y="158" class="blockTitle">AND4 + NOT</text>
+  <text x="95" y="198" class="pin">xAllOffConfirmed =</text>
+  <text x="95" y="228" class="pin">xQF1Off AND xQF2Off</text>
+  <text x="95" y="258" class="pin">AND xQF3Off AND NOT xAlarmUndefined</text>
+
+  <rect x="65" y="350" width="330" height="385" class="net"/>
+  <text x="95" y="388" class="blockTitle">Входы в State3</text>
+  <text x="95" y="430" class="pin">xAutoMode</text>
+  <text x="95" y="462" class="pin">udiTarget</text>
+  <text x="95" y="494" class="pin">udiActive</text>
+  <text x="95" y="526" class="pin">xAllOffConfirmed</text>
+  <text x="95" y="574" class="pin">xQF1On / xQF1Off</text>
+  <text x="95" y="606" class="pin">xQF2On / xQF2Off</text>
+  <text x="95" y="638" class="pin">xQF3On / xQF3Off</text>
+  <text x="95" y="686" class="pin">xS1Ready / xS2Ready / xS3Ready</text>
+
+  <rect x="485" y="315" width="360" height="465" class="block"/>
+  <text x="515" y="353" class="blockTitle">State3</text>
+  <text x="515" y="385" class="txt">FB_AVR_STATE_3</text>
+  <text x="515" y="430" class="pin">0  = ожидание</text>
+  <text x="515" y="462" class="pin">11 = выключаем 40F</text>
+  <text x="515" y="494" class="pin">12 = выключаем 50F</text>
+  <text x="515" y="526" class="pin">13 = выключаем 60F</text>
+  <text x="515" y="558" class="pin">20 = все выключены</text>
+  <text x="515" y="590" class="pin">31 = включаем 40F</text>
+  <text x="515" y="622" class="pin">32 = включаем 50F</text>
+  <text x="515" y="654" class="pin">33 = включаем 60F</text>
+  <text x="515" y="686" class="pin">90 = ручной/авария</text>
+  <text x="515" y="735" class="pin">выход: udiState</text>
+
+  <rect x="960" y="215" width="360" height="475" class="block"/>
+  <text x="990" y="253" class="blockTitle">Commands3</text>
+  <text x="990" y="285" class="txt">FB_AVR_COMMANDS_3</text>
+  <text x="990" y="330" class="pin">входы:</text>
+  <text x="990" y="362" class="pin">xAutoMode, xAlarm</text>
+  <text x="990" y="394" class="pin">xAlarmParallel</text>
+  <text x="990" y="426" class="pin">udiState</text>
+  <text x="990" y="458" class="pin">xS1Ready / xS2Ready / xS3Ready</text>
+  <text x="990" y="490" class="pin">xQF1On / xQF1Off</text>
+  <text x="990" y="522" class="pin">xQF2On / xQF2Off</text>
+  <text x="990" y="554" class="pin">xQF3On / xQF3Off</text>
+
+  <rect x="1360" y="190" width="210" height="42" class="out"/><text x="1380" y="217" class="pin">Q1 включить 40F</text>
+  <rect x="1360" y="250" width="210" height="42" class="out"/><text x="1380" y="277" class="pin">Q2 выключить 40F</text>
+  <rect x="1360" y="310" width="210" height="42" class="out"/><text x="1380" y="337" class="pin">Q3 включить 50F</text>
+  <rect x="1360" y="370" width="210" height="42" class="out"/><text x="1380" y="397" class="pin">Q4 выключить 50F</text>
+  <rect x="1360" y="430" width="210" height="42" class="out"/><text x="1380" y="457" class="pin">Q5 включить 60F</text>
+  <rect x="1360" y="490" width="210" height="42" class="out"/><text x="1380" y="517" class="pin">Q6 выключить 60F</text>
+
+  <rect x="960" y="760" width="550" height="145" class="net"/>
+  <text x="990" y="798" class="blockTitle">Защита в Commands3</text>
+  <text x="990" y="836" class="txt">Если xAlarmParallel = TRUE: команды включения запрещены.</text>
+  <text x="990" y="866" class="txt">Разрешены только команды выключения тех вводов, которые включены.</text>
+
+  <path class="wire" d="M395 205 H445 V526 H485"/>
+  <text x="410" y="195" class="label">xAllOffConfirmed</text>
+  <path class="wire" d="M395 542 H485"/>
+  <text x="405" y="532" class="label">все входы State3</text>
+  <path class="wire" d="M845 735 H930 V426 H960"/>
+  <text x="870" y="725" class="label">udiState</text>
+  <path class="wireGreen" d="M845 735 H900 V120 H250 V350"/>
+  <text x="870" y="110" class="label">udiState также нужен на листе диагностики</text>
+  <path class="wire" d="M845 735 H920 V760 H960"/>
+
+  <path class="wireGreen" d="M1320 210 H1360"/>
+  <path class="wireGreen" d="M1320 270 H1360"/>
+  <path class="wireGreen" d="M1320 330 H1360"/>
+  <path class="wireGreen" d="M1320 390 H1360"/>
+  <path class="wireGreen" d="M1320 450 H1360"/>
+  <path class="wireGreen" d="M1320 510 H1360"/>
+
+  <rect x="65" y="800" width="660" height="120" class="net"/>
+  <text x="95" y="836" class="blockTitle">Что подключить в Commands3 кроме udiState</text>
+  <text x="95" y="874" class="pin">xAutoMode, xAlarm, xAlarmParallel, xS1Ready/xS2Ready/xS3Ready, все xQF*On/xQF*Off</text>
+</svg>

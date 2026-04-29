@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1120" viewBox="0 0 1600 1120">
+  <defs>
+    <style>
+      .title{font:700 30px Arial,sans-serif;fill:#14385b}
+      .sub{font:18px Arial,sans-serif;fill:#45566a}
+      .block{fill:#f7fbff;stroke:#1f4e79;stroke-width:3;rx:10}
+      .blockTitle{font:700 22px Arial,sans-serif;fill:#153a5f}
+      .small{font:16px Arial,sans-serif;fill:#31455a}
+      .pin{font:15px Consolas,monospace;fill:#1f2f3d}
+      .net{fill:#fff6d8;stroke:#9a7615;stroke-width:2;rx:6}
+      .netText{font:15px Consolas,monospace;fill:#2b2b2b}
+      .out{fill:#fdecef;stroke:#a6384d;stroke-width:2.5;rx:8}
+      .wire{fill:none;stroke:#2f64a3;stroke-width:3;marker-end:url(#arrow)}
+      .wireRed{fill:none;stroke:#b33d3d;stroke-width:3;marker-end:url(#arrowRed)}
+      .wireGreen{fill:none;stroke:#2f7d4a;stroke-width:3;marker-end:url(#arrowGreen)}
+      .label{font:15px Arial,sans-serif;fill:#17324d;paint-order:stroke;stroke:#fff;stroke-width:5;stroke-linejoin:round}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#2f64a3"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#b33d3d"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2,2 L10,6 L2,10 Z" fill="#2f7d4a"/>
+    </marker>
+  </defs>
+
+  <text x="40" y="48" class="title">FBD лист 1. Общая структура АВР 3-в-1</text>
+  <text x="40" y="78" class="sub">Сначала проверяем допконтакты, затем выбираем ввод, определяем режим, ведём автомат состояний и формируем команды Q1...Q6.</text>
+
+  <rect x="45" y="150" width="250" height="190" class="block"/>
+  <text x="70" y="185" class="blockTitle">Входы ПР200</text>
+  <text x="70" y="220" class="pin">xU1Ok, xU2Ok, xU3Ok</text>
+  <text x="70" y="248" class="pin">xQF1On / xQF1Off</text>
+  <text x="70" y="276" class="pin">xQF2On / xQF2Off</text>
+  <text x="70" y="304" class="pin">xQF3On / xQF3Off</text>
+  <text x="70" y="332" class="pin">xQF*Fault, xManualSelector</text>
+
+  <rect x="380" y="105" width="290" height="170" class="block"/>
+  <text x="405" y="140" class="blockTitle">QF*_Diag x3</text>
+  <text x="405" y="172" class="small">диагностика допконтактов</text>
+  <text x="405" y="210" class="pin">40F / 50F / 60F</text>
+  <text x="405" y="238" class="pin">Undefined каждого автомата</text>
+
+  <rect x="380" y="385" width="290" height="180" class="block"/>
+  <text x="405" y="420" class="blockTitle">Priority3</text>
+  <text x="405" y="452" class="small">выбор ввода по приоритету</text>
+  <text x="405" y="490" class="pin">1 → 2 → 3</text>
+  <text x="405" y="518" class="pin">udiTarget, udiActive</text>
+  <text x="405" y="546" class="pin">xS1/2/3Ready</text>
+
+  <rect x="780" y="245" width="285" height="190" class="block"/>
+  <text x="805" y="280" class="blockTitle">Mode3</text>
+  <text x="805" y="312" class="small">режим работы</text>
+  <text x="805" y="350" class="pin">xAutoMode</text>
+  <text x="805" y="378" class="pin">xManualMode</text>
+  <text x="805" y="406" class="pin">xAlarm</text>
+
+  <rect x="1160" y="175" width="285" height="190" class="block"/>
+  <text x="1185" y="210" class="blockTitle">State3</text>
+  <text x="1185" y="242" class="small">автомат состояний</text>
+  <text x="1185" y="280" class="pin">11/12/13 = выключить</text>
+  <text x="1185" y="308" class="pin">31/32/33 = включить</text>
+  <text x="1185" y="336" class="pin">udiState</text>
+
+  <rect x="1160" y="490" width="285" height="210" class="block"/>
+  <text x="1185" y="525" class="blockTitle">Commands3</text>
+  <text x="1185" y="557" class="small">команды мотор-приводов</text>
+  <text x="1185" y="595" class="pin">xQ1...xQ6</text>
+  <text x="1185" y="623" class="pin">с защитой от пересечения</text>
+
+  <rect x="1260" y="745" width="255" height="34" class="out"/><text x="1280" y="768" class="pin">Q1 включить 40F</text>
+  <rect x="1260" y="786" width="255" height="34" class="out"/><text x="1280" y="809" class="pin">Q2 выключить 40F</text>
+  <rect x="1260" y="827" width="255" height="34" class="out"/><text x="1280" y="850" class="pin">Q3 включить 50F</text>
+  <rect x="1260" y="868" width="255" height="34" class="out"/><text x="1280" y="891" class="pin">Q4 выключить 50F</text>
+  <rect x="1260" y="909" width="255" height="34" class="out"/><text x="1280" y="932" class="pin">Q5 включить 60F</text>
+  <rect x="1260" y="950" width="255" height="34" class="out"/><text x="1280" y="973" class="pin">Q6 выключить 60F</text>
+
+  <path class="wire" d="M295 215 H380"/>
+  <text x="315" y="205" class="label">допконтакты</text>
+  <path class="wire" d="M295 285 H350 V475 H380"/>
+  <text x="310" y="475" class="label">напряжения, аварии, On</text>
+
+  <path class="wireRed" d="M670 190 H760 V310 H780"/>
+  <text x="682" y="180" class="label">xAlarmUndefined</text>
+  <path class="wireRed" d="M670 475 H740 V365 H780"/>
+  <text x="680" y="493" class="label">xAlarmParallel</text>
+
+  <path class="wire" d="M670 510 H1120 V270 H1160"/>
+  <text x="720" y="530" class="label">udiTarget, udiActive, Ready</text>
+  <path class="wireGreen" d="M1065 340 H1125 V245 H1160"/>
+  <text x="1075" y="325" class="label">xAutoMode</text>
+
+  <path class="wire" d="M1445 300 H1505 V110 H330 V140 H380"/>
+  <text x="1460" y="286" class="label">udiState обратно в Diag</text>
+  <path class="wire" d="M1445 300 H1510 V595 H1445"/>
+  <text x="1457" y="585" class="label">udiState</text>
+
+  <path class="wireGreen" d="M1065 350 H1110 V540 H1160"/>
+  <text x="1075" y="530" class="label">xAutoMode</text>
+  <path class="wireRed" d="M1065 405 H1100 V575 H1160"/>
+  <text x="1075" y="410" class="label">xAlarm</text>
+  <path class="wire" d="M670 520 H1115 V620 H1160"/>
+  <text x="725" y="608" class="label">Ready, xAlarmParallel</text>
+
+  <path class="wireGreen" d="M1445 595 H1515 V870 H1515"/>
+  <path class="wireGreen" d="M1445 595 H1540 V762 H1515"/>
+  <path class="wireGreen" d="M1445 595 H1545 V803 H1515"/>
+  <path class="wireGreen" d="M1445 595 H1550 V844 H1515"/>
+  <path class="wireGreen" d="M1445 595 H1555 V885 H1515"/>
+  <path class="wireGreen" d="M1445 595 H1560 V926 H1515"/>
+  <path class="wireGreen" d="M1445 595 H1565 V967 H1515"/>
+
+  <rect x="60" y="720" width="500" height="115" class="net"/>
+  <text x="85" y="750" class="blockTitle">Как читать дальше</text>
+  <text x="85" y="782" class="small">На следующих листах каждый участок показан отдельно.</text>
+  <text x="85" y="812" class="small">Одинаковые имена сигналов означают один и тот же провод.</text>
+</svg>

@@ -1,0 +1,46 @@
+AVR 3-in-1 for PR200
+Date: 2026-04-29
+
+Command:
+python -m unittest discover -v
+
+Result:
+Ran 59 tests in 23.365s
+OK
+
+Coverage summary:
+- 35 scenario tests check priority 1 -> 2 -> 3, no crossing, manual mode, breaker faults, undefined contacts, forbidden parallel, auto-return, no DGU-sent input, and the input-voltage delay behavior.
+- 24 invariant/static tests check safety rules.
+- 19 invariant tests perform exhaustive enumeration of runtime boolean inputs and prior states.
+- 1 additional invariant test performs exhaustive enumeration of runtime boolean inputs, prior states, and all stable delay targets.
+
+Exhaustive space:
+- Main invariant space: 14 boolean inputs = 16384 combinations.
+- Prior states: 0, 11, 12, 13, 20, 31, 32, 33, 90, 777.
+- Main exhaustive pass per invariant: 16384 * 10 = 163840 combinations.
+- 19 main exhaustive invariants = 3112960 model evaluations.
+- Delay-memory exhaustive invariant: 16384 inputs * 10 states * 4 stable targets = 655360 model evaluations.
+- Total exhaustive model evaluations = 3768320.
+
+Delay behavior proven:
+- udiInputDelaySec is the only external delay parameter.
+- The ST block has no TON/TIME calls; it uses only an internal UDINT scan counter.
+- A short voltage dip changes udiRawTarget but does not issue motor commands before the delay expires.
+- A sustained voltage loss switches only after the configured delay has elapsed.
+- Arbitrary internal delay states keep all command safety invariants.
+- udiInputDelaySec = 0 preserves the immediate switching behavior.
+
+Main proven invariants:
+- no breaker receives close and open commands at the same time;
+- at most one close command exists in one scan;
+- close commands exist only in auto mode and without alarm;
+- close commands require the target source ready and all other breakers confirmed off;
+- parallel inputs allow only off commands;
+- alarm is exactly fault OR parallel OR undefined;
+- undefined contacts match the contact rules;
+- undefined without parallel blocks all commands;
+- target and raw target match the priority rule when delay is zero;
+- manual and auto modes are mutually exclusive;
+- emergency mode clears automatically when contacts and faults return to normal;
+- ST monolithic and modular files expose udiInputDelaySec, udiRawTarget, and xTargetDelayActive;
+- ST monolithic and modular files do not expose xSecondPulse and do not contain TON/TIME syntax.

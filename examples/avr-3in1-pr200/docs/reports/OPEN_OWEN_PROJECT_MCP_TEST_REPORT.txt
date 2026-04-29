@@ -1,0 +1,69 @@
+Open OWEN Logic project invariant test report
+Date: 2026-04-29
+
+MCP / OWEN Logic evidence:
+- MCP server used manually: C:\Users\Alexandra\.codex\mcp\owen_logic_server.py
+- OWEN Logic executable: C:\Program Files\Owen\OWEN Logic\ProgramRelayFBD.exe
+- OWEN Logic version: 3.0.373.0
+- Project Json Converter version: 1.0.52.0
+- Open process PID: 9784
+- Open project:
+  C:\Users\Alexandra\YandexDisk-egory.forward\2 В РАБОТУ 2020\0091-0821 СТРОЙПРОМТОРГ ООО Восточный (0254)\2 РАБОЧАЯ\0091-0821 Щитовуха\0091-0821 ГРЩ корпус 17\АВР на 3 ввода feat. Егор Гороховицкий.owle
+- MCP screenshot:
+  C:\Users\Alexandra\.codex\tmp\owen_logic_screenshots\owen_logic_20260429_113321.png
+
+Open project extraction:
+- Extracted open .owle copy: C:\__SELF_PC__\open_owen_project.zip
+- Extracted files: C:\__SELF_PC__\open_owen_project_extract
+- The open project contains FB_AVR_3IN1_PR200 in StFunctionBlocks.
+- The FBD Project file contains an actual block instance:
+  Name = FB_AVR_3IN1_PR200
+  FunctionBlockUId = bf093d8e-1681-4411-9f1d-ef2f5a3fa78f
+- Therefore the tested monolithic block is present in the currently open OWEN Logic project and is used on the FBD diagram.
+
+Source proof:
+- Open-project FB_AVR_3IN1_PR200 semantic SHA256:
+  4fa076ddb0c657e1e478dcab5cc26e1a2d94c697b7e5cb11844de16b5a05c2f2
+- Local verified FB_AVR_3IN1_PR200 semantic SHA256:
+  4fa076ddb0c657e1e478dcab5cc26e1a2d94c697b7e5cb11844de16b5a05c2f2
+- The sources are semantically identical; OWEN Logic only added harmless blank lines.
+- Forbidden timer syntax is absent from the open project block:
+  TON, T#1s, DelayTimer, xSecondPulse.
+
+Test command:
+  python -m unittest test_avr_3in1 test_avr_3in1_invariants test_open_owen_project -v
+
+Result:
+- Ran 64 tests in 22.935s
+- OK
+
+Exhaustive AVR 3-in-1 coverage:
+- Main exhaustive pass per invariant: 16384 input combinations * 10 state values = 163840 combinations.
+- 19 main exhaustive invariants = 3112960 model evaluations.
+- Delay-memory exhaustive invariant: 16384 inputs * 10 states * 4 stable targets = 655360 model evaluations.
+- Total exhaustive AVR model evaluations = 3768320.
+
+Proven invariants:
+- no breaker receives close and open commands at the same time;
+- at most one close command exists in one scan;
+- close commands exist only in auto mode and without alarm;
+- close 40F requires input 1 ready and other breakers confirmed off;
+- close 50F requires input 2 ready and other breakers confirmed off;
+- close 60F requires input 3 ready and other breakers confirmed off;
+- parallel inputs allow only off commands;
+- alarm is exactly fault OR parallel OR undefined;
+- undefined contacts match the contact rules;
+- undefined without parallel blocks all commands;
+- active input matches on contacts;
+- raw target follows priority input 1, then 2, then 3;
+- delayed target keeps commands safe for arbitrary delay-memory states;
+- manual and auto modes are mutually exclusive;
+- manual selector blocks close commands;
+- emergency mode clears automatically after contacts and fault inputs are normal;
+- state output is always a known state;
+- no source flag matches target zero;
+- Q1/Q2/Q3/Q4/Q5/Q6 mapping is correct for 40F/50F/60F.
+
+Scope note:
+- The OWEN Logic MCP server available here can inspect windows, screenshot, launch/focus, and verify the open project file. It does not expose an online simulator API for millions of GUI/runtime state injections.
+- The proof above is therefore performed on the exact ST SourceCode stored inside the currently open OWEN Logic .owle project, plus a verified FBD binding to that block.

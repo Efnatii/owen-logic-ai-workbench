@@ -1,0 +1,294 @@
+[
+  {
+    "Name": "\u0413\u0440\u0443\u043F\u043F\u0430 1",
+    "Description": null,
+    "DocumentUId": "92292af1-3e8f-43c8-8d03-25df0ddfa8aa",
+    "Screens": [
+      {
+        "Version": 1,
+        "UniqueId": "2539232e-d505-4e8b-989d-29da8f5f2446",
+        "Property": {
+          "ScreenDevice": {
+            "UniqueId": "c13a3685-46da-4c9a-b825-eac515810729",
+            "Title": "\u042D\u043A\u0440\u0430\u043D 1",
+            "Description": null,
+            "ShouldHideEmptyRows": false,
+            "Document": {
+              "UniqueId": "9e71d755-3704-4a08-9a3a-4cc0b2813213",
+              "SymbolsPerLine": 16,
+              "CountLines": 2,
+              "Width": 650,
+              "Height": 135,
+              "Elements": [
+                {
+                  "Discriminator": 7,
+                  "ElementModel": {
+                    "UniqueId": "491e8b10-3009-4d13-9a5a-2e71ba7275c4",
+                    "GroupName": "\u042D\u043B\u0435\u043C\u0435\u043D\u0442\u044B \u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F",
+                    "Title": "\u041C\u0435\u0442\u043A\u0430",
+                    "DesireSize": {
+                      "IsEmpty": false,
+                      "Width": 640,
+                      "Height": 60
+                    },
+                    "Primitives": [
+                      {
+                        "Points": [
+                          {
+                            "IsEmpty": false,
+                            "X": 5,
+                            "Y": 5
+                          },
+                          {
+                            "IsEmpty": false,
+                            "X": 645,
+                            "Y": 5
+                          },
+                          {
+                            "IsEmpty": false,
+                            "X": 645,
+                            "Y": 65
+                          },
+                          {
+                            "IsEmpty": false,
+                            "X": 5,
+                            "Y": 65
+                          }
+                        ],
+                        "PointTypes": "AAEBgQ==",
+                        "Discriminator": 2
+                      },
+                      {
+                        "Text": "\u041E",
+                        "X": 5,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": "\u041E",
+                        "X": 45,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": "\u041E",
+                        "X": 85,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": " ",
+                        "X": 125,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": "\u00AB",
+                        "X": 165,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": "\u041F",
+                        "X": 205,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": "\u041A",
+                        "X": 245,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": "\u0424",
+                        "X": 285,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": " ",
+                        "X": 325,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": "\u00AB",
+                        "X": 365,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": "\u0424",
+                        "X": 405,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": "\u041E",
+                        "X": 445,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": "\u0420",
+                        "X": 485,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": "\u0412",
+                        "X": 525,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": "\u0410",
+                        "X": 565,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      },
+                      {
+                        "Text": "\u0420",
+                        "X": 605,
+                        "Y": 5,
+                        "Width": 40,
+                        "Height": 60,
+                        "Discriminator": 1
+                      }
+                    ]
+                  },
+                  "Properties": [
+                    {
+                      "ElementProperty": {
+                        "Name": "CoordinateX",
+                        "DisplayName": "X:",
+                        "Description": "\u041A\u043E\u043E\u0440\u0434\u0438\u043D\u0430\u0442\u0430 \u043F\u043E \u043E\u0441\u0438 \u0430\u0431\u0441\u0446\u0438\u0441\u0441",
+                        "Category": "\u041A\u043E\u043E\u0440\u0434\u0438\u043D\u0430\u0442\u044B",
+                        "IsReadOnly": false,
+                        "DataType": 3,
+                        "DefaultValue": "0",
+                        "Validator": {
+                          "Type": 5,
+                          "NextValidator": null
+                        }
+                      },
+                      "IntValue": 0,
+                      "VariableId": "00000000-0000-0000-0000-000000000000",
+                      "Discriminator": 1
+                    },
+                    {
+                      "ElementProperty": {
+                        "Name": "CoordinateY",
+                        "DisplayName": "Y:",
+                        "Description": "\u041A\u043E\u043E\u0440\u0434\u0438\u043D\u0430\u0442\u0430 \u043F\u043E \u043E\u0441\u0438 \u043E\u0440\u0434\u0438\u043D\u0430\u0442",
+                        "Category": "\u041A\u043E\u043E\u0440\u0434\u0438\u043D\u0430\u0442\u044B",
+                        "IsReadOnly": false,
+                        "DataType": 3,
+                        "DefaultValue": "0",
+                        "Validator": {
+                          "Type": 6,
+                          "NextValidator": null
+                        }
+                      },
+                      "IntValue": 0,
+                      "VariableId": "00000000-0000-0000-0000-000000000000",
+                      "Discriminator": 1
+                    },
+                    {
+                      "ElementProperty": {
+                        "Name": "ElementLength",
+                        "DisplayName": "\u0414\u043B\u0438\u043D\u0430",
+                        "Description": "\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u0430\u044F \u0434\u043B\u0438\u043D\u0430 \u044D\u043B\u0435\u043C\u0435\u043D\u0442\u0430",
+                        "Category": "\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B",
+                        "IsReadOnly": false,
+                        "DataType": 2,
+                        "DefaultValue": "5",
+                        "Validator": {
+                          "Type": 10,
+                          "NextValidator": null
+                        }
+                      },
+                      "Value": 16,
+                      "Discriminator": 4
+                    },
+                    {
+                      "ElementProperty": {
+                        "Name": "Text",
+                        "DisplayName": "\u0422\u0435\u043A\u0441\u0442",
+                        "Description": "\u0422\u0435\u043A\u0441\u0442 \u0434\u043B\u044F \u043E\u0442\u043E\u0431\u0440\u0430\u0436\u0435\u043D\u0438\u044F",
+                        "Category": "\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B",
+                        "IsReadOnly": false,
+                        "DataType": 5,
+                        "DefaultValue": "\u0422\u0435\u043A\u0441\u0442",
+                        "Validator": {
+                          "Type": 9,
+                          "NextValidator": null
+                        }
+                      },
+                      "Value": "\u041E\u041E\u041E \u00AB\u041F\u041A\u0424 \u00AB\u0424\u041E\u0420\u0412\u0410\u0420\u0414\u00BB",
+                      "Discriminator": 4
+                    },
+                    {
+                      "ElementProperty": {
+                        "Name": "IsVisible",
+                        "DisplayName": "\u0412\u0438\u0434\u0438\u043C\u043E\u0441\u0442\u044C",
+                        "Description": "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0430 \u0443\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0438\u044F \u0432\u0438\u0434\u0438\u043C\u043E\u0441\u0442\u044C\u044E",
+                        "Category": "\u041F\u0430\u0440\u0430\u043C\u0435\u0442\u0440\u044B",
+                        "IsReadOnly": false,
+                        "DataType": 0,
+                        "DefaultValue": "True",
+                        "Validator": null
+                      },
+                      "BoolValue": true,
+                      "VariableId": "00000000-0000-0000-0000-000000000000",
+                      "Discriminator": 3
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "ListTransition": {
+            "Transitions": []
+          }
+        },
+        "X": 0,
+        "Y": 0,
+        "Width": 110,
+        "Height": 60,
+        "Background": "iVBORw0KGgoAAAANSUhEUgAAAooAAACHCAYAAACRdXh7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAkASURBVHhe7du/jiTVGcbh1S7IspwQIGE5sogw0koWEaED9grIuAG0liW0SJYDG9uCAJFYXALZBkZEBJYcOnFii8SJEy6BwA4QDtrddJ\u002Banv4zXTX9fVV1Tj0/6dFq2WVqpqa76u0eeCBJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkpTbS49eePG/619XAEDdHj589N3619fWpJB\u002B\u002BqOXXv7Px//8bgUA1O0nP3vjm/W9/RfbW7x0fYYiADTCUFR0hiIANMJQVHS3huKHf/169fTpUwCgEr//4h\u002BGotK6NRT/8OW/Vs8\u002B\u002BlP3gAMA5uvXn362\u002Bu3zv3W/NxQVnaEIAJUyFJWdoQgAlTIUlZ2hCACVMhSVnaEIAJUyFJWdoQgAlTIUlZ2hCACVMhSVnaEIAJUyFJWdoQgAlTIUlZ2hCACVMhSVnaEIAJUyFJWdoQgAlTIUlZ2hCACVMhSV3ZVD8avVW68\u002BWK0/zm2vfrB6dvLvR1rqsZfj2buvH5/jOzz\u002B5PTHua9y/NMf9/nqcXfst1fvHP15oM8/WL2yOc6T56f/nHijn/Pxrym9nl9JX//lY7\u002B\u002Beuvz0/9utO5zGeF7nXHODUVld\u002B\u002Bh2OcB/8q7X538d6\u002B11GMvTa\u002BL6p7xhuL\u002BSNwwFJsz4jmf6prS\u002B/mVMFb7Hjv/Wrr/XM4fpxnn3FBUdvcaivsP9lNP5Et/fo2lHnuJyvm8NADfebI952MNxXK87BHRHeeE6K\u002BVrbHP\u002BZTXlMvPr5sRNfqxP3l793UnvwjbHefxk\u002B2v2dftjHNuKCq74UOxvNK\u002B9ATu/l7gq7SlHnuhLl9Ut8YdiuVCnncDK8e9LPkmuiCTnPOJrym9nl/l2MHvKvY5dtbz\u002Bkb5cf/mvOY/rzcyzrmhqOwGD8UhT97u4hv0zstSj71UvS6qa1k3lFPHL/8s652H7rGzf4xy4\u002BgeT/s/LjMWrzXVOZ/6mnLq8X1s93VPNhQTX3AffI\u002BzriP7Ms65oajsBg7Foa\u002B6hv79uyz12HOzexV\u002BeAMNvpFs9LuojjkUy/c16\u002BZ15uMfjZat8vll/7hsGmM9zqY65\u002BW4011Tej2/zpyHa108dvnRc8J1pTi6bpSvNfGYGefcUFR2w4bi4CfS/lv7p/58gKUee2a2F9ebm9X29zlfZ6\u002BL6tr2c7j894Y6PH45TtowKzfHwxvE2RtH1nia3miPs6nO\u002BQyuKRefX\u002BVzvOvv3FM59t0yX2ifGt751\u002B2Mc24oKrv7DcWer3Q2wi7wSz32nOxuqmUolYte1nC6eFHd2Z7rMW5mmTeutYPz2zn7\u002BIt/l2kWxnycTXXOZ3BNOX58n5HwQqTvsaOf08W5x1T3eQ34vgyRcc4NRWXnHcU\u002Bpjz2XByeg8HnZLhyUZ16KG4/bhkIa0k3kcne3ZqTsR9nU53zwV9X3juKd8keauc//s3zLf5zKOfyLjkvvjLOuaGo7Pw3ir1Meew5uLmw3h5NuUN4XkNxo3zdSe9unTuvZ0ZL\u002BfxyPpcpTPE4m\u002Bqcl\u002BNOd03p\u002B/zK0OvYZ8f6lcrHvSDjeZVxzg1FZTdwKA68KZ97tX5PSz32LBy\u002BA3L4\u002BwR9L6qDvjcDnDx\u002B\u002Bd4mjZdyzI3uRnV0wyyjYaOVFyM7Ez7Oxj7ngx63CdeUjNHSV79j78558Pe\u002BnPezQ7B87xOeWxnn3FBUdoOH4s2T6MKNsu/fG2Kpx56L3c2qXGDLRS/jlfdG34vqoBvuAOeOX46XNV7KcS9r8DG2MfLjbGOScz7xNaXv8ytDr2OXrzv0edbnndnDd7bjZJxzQ1HZDR\u002BKa/sX1VMX7\u002B5GeubPr7HUY8/F9mu8uchuf58zWPpeVMt5H\u002B\u002BifvPuUub3ef/xdCj6a52bMR9n\u002B8Y\u002B53O4nk3xWLp47G4cx37d3fm\u002B9M5seQc3\u002BMVgxjk3FJXdvYbixv4F7pysm\u002BhSjz0Pu5F0\u002BCO5hHfX\u002Bl5Uy800\u002BoZ35/G7H0HH/3jqSLlpBv7Ycf7Ge5ydNOI5n\u002Bqa0vf5laHP1/y90O/3kP8hqLwYnP\u002B7uIaisrv3UNw683\u002BPjXJDW\u002Bqxl6PvRXWSobj/GMj\u002Bvi9yKE5s9HM\u002B/jVl7kMx/PMa\u002BN95dp9j4Pcg45wbisruyqEIAEzFUFR2hiIAVMpQVHaGIgBUylBUdoYiAFTKUFR2hiIAVMpQVHaGIgBUylBUdoYiAFTKUFR2hiIAVMpQVHaGIgBUylBUdoYiAFTKUFR2hiIAVMpQVHaGIgBUylBUdoYiAFTKUFR2hiIAVMpQVHaGIgBUylBUdoYiAFTKUFR2hiIAVMpQVHa3huIf//Lv1S/fe//7sQgAzNuv3v/N6nd//ruhqLRuDcUyFjfvLAIA87d/DzcUFd3RUAQA6mQoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKjpDEQAaYSgqOkMRABphKCo6QxEAGmEoKrofP3z0wv82DywAoG4v/uCH367v7W9ub/FSTD9f27z6AADqZiRKkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJkiRJksJ68OD/HRjJgynh/agAAAAASUVORK5CYII="
+      }
+    ]
+  }
+]

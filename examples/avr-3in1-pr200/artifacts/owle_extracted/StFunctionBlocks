@@ -1,0 +1,2727 @@
+[
+  {
+    "Id": "bf093d8e-1681-4411-9f1d-ef2f5a3fa78f",
+    "Name": "FB_AVR_3IN1_PR200",
+    "Password": null,
+    "InputNames": [
+      "xManualSelector",
+      "xAutoReturn",
+      "udiInputDelaySec",
+      "xU1Ok",
+      "xU2Ok",
+      "xU3Ok",
+      "xQF1On",
+      "xQF1Off",
+      "xQF1Fault",
+      "xQF2On",
+      "xQF2Off",
+      "xQF2Fault",
+      "xQF3On",
+      "xQF3Off",
+      "xQF3Fault"
+    ],
+    "InputDataTypes": [
+      6,
+      6,
+      3,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "InputVariableIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "InputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "OutputNames": [
+      "xQ1",
+      "xQ2",
+      "xQ3",
+      "xQ4",
+      "xQ5",
+      "xQ6",
+      "udiActive",
+      "udiRawTarget",
+      "udiTarget",
+      "udiPendingTarget",
+      "udiDelayCounterSec",
+      "udiState",
+      "xTargetDelayActive",
+      "xAutoMode",
+      "xManualMode",
+      "xAlarm",
+      "xAlarmFault",
+      "xAlarmParallel",
+      "xAlarmUndefined",
+      "xQF1Undefined",
+      "xQF2Undefined",
+      "xQF3Undefined",
+      "xNoSource"
+    ],
+    "OutputDataTypes": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "OutputVariableIndexes": [
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57
+    ],
+    "OutputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "SourceCode": "FUNCTION_BLOCK FB_AVR_3IN1_PR200\r\nVAR_INPUT\r\n    ///\u003CDescription\u003EПереключатель авто/ручной. TRUE = ручной режим\u003C/Description\u003E\r\n    xManualSelector : BOOL := FALSE; // 1 = ручной, 0 = авто\r\n\r\n    ///\u003CDescription\u003EРазрешить автовозврат на более приоритетный ввод\u003C/Description\u003E\r\n    xAutoReturn : BOOL := TRUE;\r\n\r\n    ///\u003CDescription\u003EЗадержка подтверждения смены целевого ввода, секунд. 0 = без задержки\u003C/Description\u003E\r\n    udiInputDelaySec : UDINT := 0;\r\n\r\n    ///\u003CDescription\u003EВвод 1: напряжение в норме\u003C/Description\u003E\r\n    xU1Ok : BOOL;\r\n\r\n    ///\u003CDescription\u003EВвод 2: напряжение в норме\u003C/Description\u003E\r\n    xU2Ok : BOOL;\r\n\r\n    ///\u003CDescription\u003EВвод 3: напряжение в норме\u003C/Description\u003E\r\n    xU3Ok : BOOL;\r\n\r\n    ///\u003CDescription\u003E40F включен\u003C/Description\u003E\r\n    xQF1On : BOOL;\r\n\r\n    ///\u003CDescription\u003E40F выключен\u003C/Description\u003E\r\n    xQF1Off : BOOL;\r\n\r\n    ///\u003CDescription\u003E40F авария\u003C/Description\u003E\r\n    xQF1Fault : BOOL;\r\n\r\n    ///\u003CDescription\u003E50F включен\u003C/Description\u003E\r\n    xQF2On : BOOL;\r\n\r\n    ///\u003CDescription\u003E50F выключен\u003C/Description\u003E\r\n    xQF2Off : BOOL;\r\n\r\n    ///\u003CDescription\u003E50F авария\u003C/Description\u003E\r\n    xQF2Fault : BOOL;\r\n\r\n    ///\u003CDescription\u003E60F включен\u003C/Description\u003E\r\n    xQF3On : BOOL;\r\n\r\n    ///\u003CDescription\u003E60F выключен\u003C/Description\u003E\r\n    xQF3Off : BOOL;\r\n\r\n    ///\u003CDescription\u003E60F авария\u003C/Description\u003E\r\n    xQF3Fault : BOOL;\r\nEND_VAR\r\n\r\nVAR_OUTPUT\r\n    ///\u003CDescription\u003EQ1: включить 40F\u003C/Description\u003E\r\n    xQ1 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ2: выключить 40F\u003C/Description\u003E\r\n    xQ2 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ3: включить 50F\u003C/Description\u003E\r\n    xQ3 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ4: выключить 50F\u003C/Description\u003E\r\n    xQ4 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ5: включить 60F\u003C/Description\u003E\r\n    xQ5 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ6: выключить 60F\u003C/Description\u003E\r\n    xQ6 : BOOL;\r\n\r\n    ///\u003CDescription\u003EАктивный ввод: 0 нет, 1 ввод 1, 2 ввод 2, 3 ввод 3\u003C/Description\u003E\r\n    udiActive : UDINT;\r\n\r\n    ///\u003CDescription\u003EЦелевой ввод по мгновенному состоянию напряжений до задержки\u003C/Description\u003E\r\n    udiRawTarget : UDINT;\r\n\r\n    ///\u003CDescription\u003EВыбранный ввод по приоритету\u003C/Description\u003E\r\n    udiTarget : UDINT;\r\n\r\n    ///\u003CDescription\u003EКандидат целевого ввода, ожидающий окончания задержки\u003C/Description\u003E\r\n    udiPendingTarget : UDINT;\r\n\r\n    ///\u003CDescription\u003EСчетчик задержки подтверждения целевого ввода, секунд\u003C/Description\u003E\r\n    udiDelayCounterSec : UDINT;\r\n\r\n    ///\u003CDescription\u003EСостояние автомата АВР: 0 ожидание, 11..13 отключение, 20 все отключено, 31..33 включение, 90 ручной/авария\u003C/Description\u003E\r\n    udiState : UDINT;\r\n\r\n    ///\u003CDescription\u003ETRUE = идет задержка перед принятием нового целевого ввода\u003C/Description\u003E\r\n    xTargetDelayActive : BOOL;\r\n\r\n    ///\u003CDescription\u003EАВР находится в автоматическом режиме\u003C/Description\u003E\r\n    xAutoMode : BOOL;\r\n\r\n    ///\u003CDescription\u003EАВР находится в ручном режиме\u003C/Description\u003E\r\n    xManualMode : BOOL;\r\n\r\n    ///\u003CDescription\u003EОбщая авария АВР\u003C/Description\u003E\r\n    xAlarm : BOOL;\r\n\r\n    ///\u003CDescription\u003EАвария 40F, 50F или 60F\u003C/Description\u003E\r\n    xAlarmFault : BOOL;\r\n\r\n    ///\u003CDescription\u003EОдновременно включено больше одного ввода\u003C/Description\u003E\r\n    xAlarmParallel : BOOL;\r\n\r\n    ///\u003CDescription\u003EНеопределенное состояние допконтактов\u003C/Description\u003E\r\n    xAlarmUndefined : BOOL;\r\n\r\n    ///\u003CDescription\u003EНеопределенное состояние допконтактов 40F\u003C/Description\u003E\r\n    xQF1Undefined : BOOL;\r\n\r\n    ///\u003CDescription\u003EНеопределенное состояние допконтактов 50F\u003C/Description\u003E\r\n    xQF2Undefined : BOOL;\r\n\r\n    ///\u003CDescription\u003EНеопределенное состояние допконтактов 60F\u003C/Description\u003E\r\n    xQF3Undefined : BOOL;\r\n\r\n    ///\u003CDescription\u003EНет доступного ввода\u003C/Description\u003E\r\n    xNoSource : BOOL;\r\nEND_VAR\r\n\r\nVAR\r\n    xS1Ready : BOOL;\r\n    xS2Ready : BOOL;\r\n    xS3Ready : BOOL;\r\n\r\n    xAnyFault : BOOL;\r\n    xAnyOn : BOOL;\r\n    xActiveReady : BOOL;\r\n    xEmergencyMode : BOOL;\r\n    xAllOffConfirmed : BOOL;\r\n\r\n    xQF1Invalid : BOOL;\r\n    xQF2Invalid : BOOL;\r\n    xQF3Invalid : BOOL;\r\n    xQF1NoPosition : BOOL;\r\n    xQF2NoPosition : BOOL;\r\n    xQF3NoPosition : BOOL;\r\n    xQF1Commanded : BOOL;\r\n    xQF2Commanded : BOOL;\r\n    xQF3Commanded : BOOL;\r\n\r\n    xTargetInitialized : BOOL;\r\n    udiStableTarget : UDINT;\r\n\r\n    udiOnCount : UDINT;\r\n\r\nEND_VAR\r\n\r\nxAnyFault := xQF1Fault OR xQF2Fault OR xQF3Fault;\r\n\r\nxQF1Invalid := xQF1On AND xQF1Off;\r\nxQF2Invalid := xQF2On AND xQF2Off;\r\nxQF3Invalid := xQF3On AND xQF3Off;\r\n\r\nxQF1NoPosition := (NOT xQF1On) AND (NOT xQF1Off);\r\nxQF2NoPosition := (NOT xQF2On) AND (NOT xQF2Off);\r\nxQF3NoPosition := (NOT xQF3On) AND (NOT xQF3Off);\r\n\r\nxQF1Commanded := (udiState = 11) OR (udiState = 31);\r\nxQF2Commanded := (udiState = 12) OR (udiState = 32);\r\nxQF3Commanded := (udiState = 13) OR (udiState = 33);\r\n\r\n// Во время выполнения команды допускается промежуточное положение:\r\n// оба допконтакта могут быть FALSE, пока автомат идет.\r\n// Вне команды такое состояние считается неопределенным.\r\nxQF1Undefined := xQF1Invalid OR (xQF1NoPosition AND NOT xQF1Commanded);\r\nxQF2Undefined := xQF2Invalid OR (xQF2NoPosition AND NOT xQF2Commanded);\r\nxQF3Undefined := xQF3Invalid OR (xQF3NoPosition AND NOT xQF3Commanded);\r\nxAlarmUndefined := xQF1Undefined OR xQF2Undefined OR xQF3Undefined;\r\n\r\nxS1Ready := xU1Ok AND NOT xQF1Fault;\r\nxS2Ready := xU2Ok AND NOT xQF2Fault;\r\nxS3Ready := xU3Ok AND NOT xQF3Fault;\r\n\r\nudiOnCount := 0;\r\nIF xQF1On THEN udiOnCount := udiOnCount \u002B 1; END_IF;\r\nIF xQF2On THEN udiOnCount := udiOnCount \u002B 1; END_IF;\r\nIF xQF3On THEN udiOnCount := udiOnCount \u002B 1; END_IF;\r\n\r\nxAnyOn := udiOnCount \u003E 0;\r\nxAlarmParallel := udiOnCount \u003E 1;\r\nxAllOffConfirmed := xQF1Off AND xQF2Off AND xQF3Off AND NOT xAlarmUndefined;\r\n\r\nudiActive := 0;\r\nIF udiOnCount = 1 THEN\r\n    IF xQF1On THEN udiActive := 1; END_IF;\r\n    IF xQF2On THEN udiActive := 2; END_IF;\r\n    IF xQF3On THEN udiActive := 3; END_IF;\r\nEND_IF;\r\n\r\nudiRawTarget := 0;\r\nIF xS1Ready THEN\r\n    udiRawTarget := 1;\r\nELSIF xS2Ready THEN\r\n    udiRawTarget := 2;\r\nELSIF xS3Ready THEN\r\n    udiRawTarget := 3;\r\nEND_IF;\r\n\r\nxActiveReady := FALSE;\r\nIF (udiActive = 1) AND xS1Ready THEN xActiveReady := TRUE; END_IF;\r\nIF (udiActive = 2) AND xS2Ready THEN xActiveReady := TRUE; END_IF;\r\nIF (udiActive = 3) AND xS3Ready THEN xActiveReady := TRUE; END_IF;\r\n\r\nIF (NOT xAutoReturn) AND xActiveReady THEN\r\n    udiRawTarget := udiActive;\r\nEND_IF;\r\n\r\nIF NOT xTargetInitialized THEN\r\n    udiStableTarget := udiRawTarget;\r\n    udiPendingTarget := udiRawTarget;\r\n    udiDelayCounterSec := 0;\r\n    xTargetInitialized := TRUE;\r\nELSIF udiInputDelaySec = 0 THEN\r\n    udiStableTarget := udiRawTarget;\r\n    udiPendingTarget := udiRawTarget;\r\n    udiDelayCounterSec := 0;\r\nELSIF udiRawTarget = udiStableTarget THEN\r\n    udiPendingTarget := udiRawTarget;\r\n    udiDelayCounterSec := 0;\r\nELSE\r\n    IF udiRawTarget \u003C\u003E udiPendingTarget THEN\r\n        udiPendingTarget := udiRawTarget;\r\n        udiDelayCounterSec := 0;\r\n    ELSIF udiDelayCounterSec \u003C udiInputDelaySec THEN\r\n        udiDelayCounterSec := udiDelayCounterSec \u002B 1;\r\n    END_IF;\r\n\r\n    IF udiDelayCounterSec \u003E= udiInputDelaySec THEN\r\n        udiStableTarget := udiPendingTarget;\r\n        udiDelayCounterSec := 0;\r\n    END_IF;\r\nEND_IF;\r\n\r\nudiTarget := udiStableTarget;\r\nxTargetDelayActive := udiRawTarget \u003C\u003E udiTarget;\r\n\r\nxNoSource := udiTarget = 0;\r\n\r\nxEmergencyMode := xAnyFault OR xAlarmParallel OR xAlarmUndefined;\r\n\r\nxManualMode := xManualSelector OR xEmergencyMode;\r\nxAutoMode := (NOT xManualSelector) AND (NOT xEmergencyMode);\r\n\r\nIF xAutoMode THEN\r\n    CASE udiState OF\r\n        0:\r\n            IF udiTarget = 0 THEN\r\n                IF udiActive = 1 THEN\r\n                    udiState := 11;\r\n                ELSIF udiActive = 2 THEN\r\n                    udiState := 12;\r\n                ELSIF udiActive = 3 THEN\r\n                    udiState := 13;\r\n                END_IF;\r\n            ELSIF udiActive = udiTarget THEN\r\n                udiState := 0;\r\n            ELSIF udiActive = 1 THEN\r\n                udiState := 11;\r\n            ELSIF udiActive = 2 THEN\r\n                udiState := 12;\r\n            ELSIF udiActive = 3 THEN\r\n                udiState := 13;\r\n            ELSIF xAllOffConfirmed THEN\r\n                udiState := 20;\r\n            END_IF;\r\n\r\n        11:\r\n            IF xQF1Off THEN\r\n                udiState := 20;\r\n            END_IF;\r\n\r\n        12:\r\n            IF xQF2Off THEN\r\n                udiState := 20;\r\n            END_IF;\r\n\r\n        13:\r\n            IF xQF3Off THEN\r\n                udiState := 20;\r\n            END_IF;\r\n\r\n        20:\r\n            IF udiTarget = 0 THEN\r\n                udiState := 0;\r\n            ELSIF NOT xAllOffConfirmed THEN\r\n                udiState := 0;\r\n            ELSIF udiTarget = 1 THEN\r\n                udiState := 31;\r\n            ELSIF udiTarget = 2 THEN\r\n                udiState := 32;\r\n            ELSIF udiTarget = 3 THEN\r\n                udiState := 33;\r\n            ELSE\r\n                udiState := 0;\r\n            END_IF;\r\n\r\n        31:\r\n            IF xQF1On THEN\r\n                udiState := 0;\r\n            ELSIF NOT xS1Ready THEN\r\n                udiState := 0;\r\n            END_IF;\r\n\r\n        32:\r\n            IF xQF2On THEN\r\n                udiState := 0;\r\n            ELSIF NOT xS2Ready THEN\r\n                udiState := 0;\r\n            END_IF;\r\n\r\n        33:\r\n            IF xQF3On THEN\r\n                udiState := 0;\r\n            ELSIF NOT xS3Ready THEN\r\n                udiState := 0;\r\n            END_IF;\r\n    ELSE\r\n        udiState := 0;\r\n    END_CASE;\r\nELSE\r\n    udiState := 90;\r\nEND_IF;\r\n\r\nxManualMode := xManualSelector OR xEmergencyMode;\r\nxAutoMode := (NOT xManualSelector) AND (NOT xEmergencyMode);\r\n\r\nxAlarmFault := xAnyFault;\r\nxAlarm := xAlarmFault OR xAlarmParallel OR xAlarmUndefined;\r\n\r\nxQ1 := FALSE;\r\nxQ2 := FALSE;\r\nxQ3 := FALSE;\r\nxQ4 := FALSE;\r\nxQ5 := FALSE;\r\nxQ6 := FALSE;\r\n\r\nIF xAutoMode THEN\r\n    xQ1 := (udiState = 31) AND xS1Ready AND\r\n           xQF2Off AND xQF3Off AND (NOT xAlarm);\r\n    xQ2 := (udiState = 11) AND (NOT xQF1Off) AND (NOT xAlarm);\r\n\r\n    xQ3 := (udiState = 32) AND xS2Ready AND\r\n           xQF1Off AND xQF3Off AND (NOT xAlarm);\r\n    xQ4 := (udiState = 12) AND (NOT xQF2Off) AND (NOT xAlarm);\r\n\r\n    xQ5 := (udiState = 33) AND xS3Ready AND\r\n           xQF1Off AND xQF2Off AND (NOT xAlarm);\r\n    xQ6 := (udiState = 13) AND (NOT xQF3Off) AND (NOT xAlarm);\r\nEND_IF;\r\n\r\n// Для ПЭСПЭЗ пересечение вводов обрабатывается жестко:\r\n// команды включения запрещены, разрешены только команды отключения включенных вводов.\r\nIF xAlarmParallel THEN\r\n    xQ1 := FALSE;\r\n    xQ3 := FALSE;\r\n    xQ5 := FALSE;\r\n\r\n    xQ2 := xQF1On;\r\n    xQ4 := xQF2On;\r\n    xQ6 := xQF3On;\r\nEND_IF;\r\n\r\nEND_FUNCTION_BLOCK\r\n",
+    "LastModificationId": "3f920deb-336c-439f-a8a6-c7553e998dcc",
+    "VariableStorageTypes": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "VariableDataTypes": [
+      6,
+      6,
+      3,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      3,
+      3,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "VariableNames": [
+      "xManualSelector",
+      "xAutoReturn",
+      "udiInputDelaySec",
+      "xU1Ok",
+      "xU2Ok",
+      "xU3Ok",
+      "xQF1On",
+      "xQF1Off",
+      "xQF1Fault",
+      "xQF2On",
+      "xQF2Off",
+      "xQF2Fault",
+      "xQF3On",
+      "xQF3Off",
+      "xQF3Fault",
+      "xS1Ready",
+      "xS2Ready",
+      "xS3Ready",
+      "xAnyFault",
+      "xAnyOn",
+      "xActiveReady",
+      "xEmergencyMode",
+      "xAllOffConfirmed",
+      "xQF1Invalid",
+      "xQF2Invalid",
+      "xQF3Invalid",
+      "xQF1NoPosition",
+      "xQF2NoPosition",
+      "xQF3NoPosition",
+      "xQF1Commanded",
+      "xQF2Commanded",
+      "xQF3Commanded",
+      "xTargetInitialized",
+      "udiStableTarget",
+      "udiOnCount",
+      "xQ1",
+      "xQ2",
+      "xQ3",
+      "xQ4",
+      "xQ5",
+      "xQ6",
+      "udiActive",
+      "udiRawTarget",
+      "udiTarget",
+      "udiPendingTarget",
+      "udiDelayCounterSec",
+      "udiState",
+      "xTargetDelayActive",
+      "xAutoMode",
+      "xManualMode",
+      "xAlarm",
+      "xAlarmFault",
+      "xAlarmParallel",
+      "xAlarmUndefined",
+      "xQF1Undefined",
+      "xQF2Undefined",
+      "xQF3Undefined",
+      "xNoSource"
+    ],
+    "DefaultValues": [
+      "False",
+      "True",
+      "0",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "VariableIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57
+    ],
+    "FbInstances": [],
+    "FbInstanceIndexes": [],
+    "ArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "ModificationLabel": "d1377b99-2f2f-45a9-9a40-f977bd6711d3",
+    "CreationDateTime": "2026-04-27T16:34:00.303203+03:00",
+    "Discriminator": 2
+  },
+  {
+    "Id": "54c50d5a-9b6a-42fa-be62-81858d9d085e",
+    "Name": "FB_AVR_QF_DIAG",
+    "Password": null,
+    "InputNames": [
+      "xOn",
+      "xOff",
+      "xCommanded"
+    ],
+    "InputDataTypes": [
+      6,
+      6,
+      6
+    ],
+    "InputVariableIndexes": [
+      0,
+      1,
+      2
+    ],
+    "InputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "OutputNames": [
+      "xInvalid",
+      "xNoPosition",
+      "xUndefined"
+    ],
+    "OutputDataTypes": [
+      6,
+      6,
+      6
+    ],
+    "OutputVariableIndexes": [
+      3,
+      4,
+      5
+    ],
+    "OutputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "SourceCode": "FUNCTION_BLOCK FB_AVR_QF_DIAG\r\nVAR_INPUT\r\n    ///\u003CDescription\u003EДопконтакт включенного положения\u003C/Description\u003E\r\n    xOn : BOOL;\r\n\r\n    ///\u003CDescription\u003EДопконтакт выключенного положения\u003C/Description\u003E\r\n    xOff : BOOL;\r\n\r\n    ///\u003CDescription\u003EЭтому автомату сейчас дана команда включения или выключения\u003C/Description\u003E\r\n    xCommanded : BOOL;\r\nEND_VAR\r\n\r\nVAR_OUTPUT\r\n    ///\u003CDescription\u003EОба допконтакта одновременно активны\u003C/Description\u003E\r\n    xInvalid : BOOL;\r\n\r\n    ///\u003CDescription\u003EОба допконтакта одновременно неактивны\u003C/Description\u003E\r\n    xNoPosition : BOOL;\r\n\r\n    ///\u003CDescription\u003EНеопределенное состояние допконтактов\u003C/Description\u003E\r\n    xUndefined : BOOL;\r\nEND_VAR\r\n\r\nxInvalid := xOn AND xOff;\r\nxNoPosition := (NOT xOn) AND (NOT xOff);\r\nxUndefined := xInvalid OR (xNoPosition AND (NOT xCommanded));\r\n\r\nEND_FUNCTION_BLOCK",
+    "LastModificationId": "c233d51e-a91e-40d7-a87d-b48e0a33a14f",
+    "VariableStorageTypes": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "VariableDataTypes": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "VariableNames": [
+      "xOn",
+      "xOff",
+      "xCommanded",
+      "xInvalid",
+      "xNoPosition",
+      "xUndefined"
+    ],
+    "DefaultValues": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "VariableIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "FbInstances": [],
+    "FbInstanceIndexes": [],
+    "ArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "ModificationLabel": "825cbb20-4dfd-464c-bb34-10cc1138b6ce",
+    "CreationDateTime": "2026-04-27T17:40:15.798214+03:00",
+    "Discriminator": 2
+  },
+  {
+    "Id": "c36da567-9877-4e33-8f2b-3b3ed32414d2",
+    "Name": "FB_AVR_PRIORITY_3",
+    "Password": null,
+    "InputNames": [
+      "xAutoReturn",
+      "xU1Ok",
+      "xU2Ok",
+      "xU3Ok",
+      "xQF1On",
+      "xQF2On",
+      "xQF3On",
+      "xQF1Fault",
+      "xQF2Fault",
+      "xQF3Fault"
+    ],
+    "InputDataTypes": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "InputVariableIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "InputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "OutputNames": [
+      "xS1Ready",
+      "xS2Ready",
+      "xS3Ready",
+      "udiOnCount",
+      "udiActive",
+      "udiTarget",
+      "xAlarmParallel",
+      "xNoSource"
+    ],
+    "OutputDataTypes": [
+      6,
+      6,
+      6,
+      3,
+      3,
+      3,
+      6,
+      6
+    ],
+    "OutputVariableIndexes": [
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "OutputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "SourceCode": "FUNCTION_BLOCK FB_AVR_PRIORITY_3\r\nVAR_INPUT\r\n    ///\u003CDescription\u003EРазрешить автовозврат на более приоритетный ввод\u003C/Description\u003E\r\n    xAutoReturn : BOOL := TRUE;\r\n\r\n    ///\u003CDescription\u003EВвод 1: напряжение в норме\u003C/Description\u003E\r\n    xU1Ok : BOOL;\r\n\r\n    ///\u003CDescription\u003EВвод 2: напряжение в норме\u003C/Description\u003E\r\n    xU2Ok : BOOL;\r\n\r\n    ///\u003CDescription\u003EВвод 3: напряжение в норме\u003C/Description\u003E\r\n    xU3Ok : BOOL;\r\n\r\n    ///\u003CDescription\u003E40F включен\u003C/Description\u003E\r\n    xQF1On : BOOL;\r\n\r\n    ///\u003CDescription\u003E50F включен\u003C/Description\u003E\r\n    xQF2On : BOOL;\r\n\r\n    ///\u003CDescription\u003E60F включен\u003C/Description\u003E\r\n    xQF3On : BOOL;\r\n\r\n    ///\u003CDescription\u003E40F авария\u003C/Description\u003E\r\n    xQF1Fault : BOOL;\r\n\r\n    ///\u003CDescription\u003E50F авария\u003C/Description\u003E\r\n    xQF2Fault : BOOL;\r\n\r\n    ///\u003CDescription\u003E60F авария\u003C/Description\u003E\r\n    xQF3Fault : BOOL;\r\nEND_VAR\r\n\r\nVAR_OUTPUT\r\n    ///\u003CDescription\u003EВвод 1 готов к работе\u003C/Description\u003E\r\n    xS1Ready : BOOL;\r\n\r\n    ///\u003CDescription\u003EВвод 2 готов к работе\u003C/Description\u003E\r\n    xS2Ready : BOOL;\r\n\r\n    ///\u003CDescription\u003EВвод 3 готов к работе\u003C/Description\u003E\r\n    xS3Ready : BOOL;\r\n\r\n    ///\u003CDescription\u003EКоличество включенных вводов\u003C/Description\u003E\r\n    udiOnCount : UDINT;\r\n\r\n    ///\u003CDescription\u003EАктивный ввод: 0 нет, 1 ввод 1, 2 ввод 2, 3 ввод 3\u003C/Description\u003E\r\n    udiActive : UDINT;\r\n\r\n    ///\u003CDescription\u003EВыбранный ввод по приоритету\u003C/Description\u003E\r\n    udiTarget : UDINT;\r\n\r\n    ///\u003CDescription\u003EОдновременно включено больше одного ввода\u003C/Description\u003E\r\n    xAlarmParallel : BOOL;\r\n\r\n    ///\u003CDescription\u003EНет доступного ввода\u003C/Description\u003E\r\n    xNoSource : BOOL;\r\nEND_VAR\r\n\r\nVAR\r\n    xActiveReady : BOOL;\r\nEND_VAR\r\n\r\nxS1Ready := xU1Ok AND NOT xQF1Fault;\r\nxS2Ready := xU2Ok AND NOT xQF2Fault;\r\nxS3Ready := xU3Ok AND NOT xQF3Fault;\r\n\r\nudiOnCount := 0;\r\nIF xQF1On THEN udiOnCount := udiOnCount \u002B 1; END_IF;\r\nIF xQF2On THEN udiOnCount := udiOnCount \u002B 1; END_IF;\r\nIF xQF3On THEN udiOnCount := udiOnCount \u002B 1; END_IF;\r\n\r\nxAlarmParallel := udiOnCount \u003E 1;\r\n\r\nudiActive := 0;\r\nIF udiOnCount = 1 THEN\r\n    IF xQF1On THEN udiActive := 1; END_IF;\r\n    IF xQF2On THEN udiActive := 2; END_IF;\r\n    IF xQF3On THEN udiActive := 3; END_IF;\r\nEND_IF;\r\n\r\nudiTarget := 0;\r\nIF xS1Ready THEN\r\n    udiTarget := 1;\r\nELSIF xS2Ready THEN\r\n    udiTarget := 2;\r\nELSIF xS3Ready THEN\r\n    udiTarget := 3;\r\nEND_IF;\r\n\r\nxActiveReady := FALSE;\r\nIF (udiActive = 1) AND xS1Ready THEN xActiveReady := TRUE; END_IF;\r\nIF (udiActive = 2) AND xS2Ready THEN xActiveReady := TRUE; END_IF;\r\nIF (udiActive = 3) AND xS3Ready THEN xActiveReady := TRUE; END_IF;\r\n\r\nIF (NOT xAutoReturn) AND xActiveReady THEN\r\n    udiTarget := udiActive;\r\nEND_IF;\r\n\r\nxNoSource := udiTarget = 0;\r\n\r\nEND_FUNCTION_BLOCK",
+    "LastModificationId": "1b83e723-c1a6-466f-9235-b1f1ce907925",
+    "VariableStorageTypes": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "VariableDataTypes": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      3,
+      3,
+      3,
+      6,
+      6
+    ],
+    "VariableNames": [
+      "xAutoReturn",
+      "xU1Ok",
+      "xU2Ok",
+      "xU3Ok",
+      "xQF1On",
+      "xQF2On",
+      "xQF3On",
+      "xQF1Fault",
+      "xQF2Fault",
+      "xQF3Fault",
+      "xActiveReady",
+      "xS1Ready",
+      "xS2Ready",
+      "xS3Ready",
+      "udiOnCount",
+      "udiActive",
+      "udiTarget",
+      "xAlarmParallel",
+      "xNoSource"
+    ],
+    "DefaultValues": [
+      "True",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "VariableIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "FbInstances": [],
+    "FbInstanceIndexes": [],
+    "ArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "ModificationLabel": "24eb5c04-1c3e-45af-b7ac-92da498f4290",
+    "CreationDateTime": "2026-04-27T17:40:57.2601144+03:00",
+    "Discriminator": 2
+  },
+  {
+    "Id": "706f42d9-5a48-4af5-9e00-583e87f6a7a7",
+    "Name": "FB_AVR_MODE_3",
+    "Password": null,
+    "InputNames": [
+      "xManualSelector",
+      "xAlarmFault",
+      "xAlarmParallel",
+      "xAlarmUndefined"
+    ],
+    "InputDataTypes": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "InputVariableIndexes": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "InputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "OutputNames": [
+      "xAlarm",
+      "xEmergencyMode",
+      "xAutoMode",
+      "xManualMode"
+    ],
+    "OutputDataTypes": [
+      6,
+      6,
+      6,
+      6
+    ],
+    "OutputVariableIndexes": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "OutputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "SourceCode": "FUNCTION_BLOCK FB_AVR_MODE_3\r\nVAR_INPUT\r\n    ///\u003CDescription\u003EПереключатель авто/ручной. TRUE = ручной режим\u003C/Description\u003E\r\n    xManualSelector : BOOL;\r\n\r\n    ///\u003CDescription\u003EЕсть авария автомата 40F, 50F или 60F\u003C/Description\u003E\r\n    xAlarmFault : BOOL;\r\n\r\n    ///\u003CDescription\u003EОдновременно включено больше одного ввода\u003C/Description\u003E\r\n    xAlarmParallel : BOOL;\r\n\r\n    ///\u003CDescription\u003EНеопределенное состояние допконтактов\u003C/Description\u003E\r\n    xAlarmUndefined : BOOL;\r\nEND_VAR\r\n\r\nVAR_OUTPUT\r\n    ///\u003CDescription\u003EОбщая авария АВР\u003C/Description\u003E\r\n    xAlarm : BOOL;\r\n\r\n    ///\u003CDescription\u003EАварийный режим по текущим входам\u003C/Description\u003E\r\n    xEmergencyMode : BOOL;\r\n\r\n    ///\u003CDescription\u003EАВР находится в автоматическом режиме\u003C/Description\u003E\r\n    xAutoMode : BOOL;\r\n\r\n    ///\u003CDescription\u003EАВР находится в ручном режиме\u003C/Description\u003E\r\n    xManualMode : BOOL;\r\nEND_VAR\r\n\r\nxAlarm := xAlarmFault OR xAlarmParallel OR xAlarmUndefined;\r\nxEmergencyMode := xAlarm;\r\nxManualMode := xManualSelector OR xEmergencyMode;\r\nxAutoMode := (NOT xManualSelector) AND (NOT xEmergencyMode);\r\n\r\nEND_FUNCTION_BLOCK",
+    "LastModificationId": "31a2c7b4-222a-4094-adf4-bfc01ca5f705",
+    "VariableStorageTypes": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "VariableDataTypes": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "VariableNames": [
+      "xManualSelector",
+      "xAlarmFault",
+      "xAlarmParallel",
+      "xAlarmUndefined",
+      "xAlarm",
+      "xEmergencyMode",
+      "xAutoMode",
+      "xManualMode"
+    ],
+    "DefaultValues": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "VariableIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "FbInstances": [],
+    "FbInstanceIndexes": [],
+    "ArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "ModificationLabel": "de404064-1e69-47d7-bcc2-856a3938c75f",
+    "CreationDateTime": "2026-04-27T17:41:32.4366703+03:00",
+    "Discriminator": 2
+  },
+  {
+    "Id": "f50b7ed9-71f3-4875-8bb7-b3667e4710ff",
+    "Name": "FB_AVR_STATE_3",
+    "Password": null,
+    "InputNames": [
+      "xAutoMode",
+      "udiTarget",
+      "udiActive",
+      "xAllOffConfirmed",
+      "xQF1On",
+      "xQF1Off",
+      "xQF2On",
+      "xQF2Off",
+      "xQF3On",
+      "xQF3Off",
+      "xS1Ready",
+      "xS2Ready",
+      "xS3Ready"
+    ],
+    "InputDataTypes": [
+      6,
+      3,
+      3,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "InputVariableIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "InputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "OutputNames": [
+      "udiState"
+    ],
+    "OutputDataTypes": [
+      3
+    ],
+    "OutputVariableIndexes": [
+      13
+    ],
+    "OutputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "SourceCode": "FUNCTION_BLOCK FB_AVR_STATE_3\r\nVAR_INPUT\r\n    ///\u003CDescription\u003EАВР находится в автоматическом режиме\u003C/Description\u003E\r\n    xAutoMode : BOOL;\r\n\r\n    ///\u003CDescription\u003EВыбранный ввод по приоритету\u003C/Description\u003E\r\n    udiTarget : UDINT;\r\n\r\n    ///\u003CDescription\u003EАктивный ввод\u003C/Description\u003E\r\n    udiActive : UDINT;\r\n\r\n    ///\u003CDescription\u003EВсе три автомата подтверждены выключенными\u003C/Description\u003E\r\n    xAllOffConfirmed : BOOL;\r\n\r\n    ///\u003CDescription\u003E40F включен\u003C/Description\u003E\r\n    xQF1On : BOOL;\r\n\r\n    ///\u003CDescription\u003E40F выключен\u003C/Description\u003E\r\n    xQF1Off : BOOL;\r\n\r\n    ///\u003CDescription\u003E50F включен\u003C/Description\u003E\r\n    xQF2On : BOOL;\r\n\r\n    ///\u003CDescription\u003E50F выключен\u003C/Description\u003E\r\n    xQF2Off : BOOL;\r\n\r\n    ///\u003CDescription\u003E60F включен\u003C/Description\u003E\r\n    xQF3On : BOOL;\r\n\r\n    ///\u003CDescription\u003E60F выключен\u003C/Description\u003E\r\n    xQF3Off : BOOL;\r\n\r\n    ///\u003CDescription\u003EВвод 1 готов\u003C/Description\u003E\r\n    xS1Ready : BOOL;\r\n\r\n    ///\u003CDescription\u003EВвод 2 готов\u003C/Description\u003E\r\n    xS2Ready : BOOL;\r\n\r\n    ///\u003CDescription\u003EВвод 3 готов\u003C/Description\u003E\r\n    xS3Ready : BOOL;\r\nEND_VAR\r\n\r\nVAR_OUTPUT\r\n    ///\u003CDescription\u003EСостояние автомата АВР\u003C/Description\u003E\r\n    udiState : UDINT;\r\nEND_VAR\r\n\r\nIF xAutoMode THEN\r\n    CASE udiState OF\r\n        0:\r\n            IF udiTarget = 0 THEN\r\n                IF udiActive = 1 THEN\r\n                    udiState := 11;\r\n                ELSIF udiActive = 2 THEN\r\n                    udiState := 12;\r\n                ELSIF udiActive = 3 THEN\r\n                    udiState := 13;\r\n                END_IF;\r\n            ELSIF udiActive = udiTarget THEN\r\n                udiState := 0;\r\n            ELSIF udiActive = 1 THEN\r\n                udiState := 11;\r\n            ELSIF udiActive = 2 THEN\r\n                udiState := 12;\r\n            ELSIF udiActive = 3 THEN\r\n                udiState := 13;\r\n            ELSIF xAllOffConfirmed THEN\r\n                udiState := 20;\r\n            END_IF;\r\n\r\n        11:\r\n            IF xQF1Off THEN\r\n                udiState := 20;\r\n            END_IF;\r\n\r\n        12:\r\n            IF xQF2Off THEN\r\n                udiState := 20;\r\n            END_IF;\r\n\r\n        13:\r\n            IF xQF3Off THEN\r\n                udiState := 20;\r\n            END_IF;\r\n\r\n        20:\r\n            IF udiTarget = 0 THEN\r\n                udiState := 0;\r\n            ELSIF NOT xAllOffConfirmed THEN\r\n                udiState := 0;\r\n            ELSIF udiTarget = 1 THEN\r\n                udiState := 31;\r\n            ELSIF udiTarget = 2 THEN\r\n                udiState := 32;\r\n            ELSIF udiTarget = 3 THEN\r\n                udiState := 33;\r\n            ELSE\r\n                udiState := 0;\r\n            END_IF;\r\n\r\n        31:\r\n            IF xQF1On THEN\r\n                udiState := 0;\r\n            ELSIF NOT xS1Ready THEN\r\n                udiState := 0;\r\n            END_IF;\r\n\r\n        32:\r\n            IF xQF2On THEN\r\n                udiState := 0;\r\n            ELSIF NOT xS2Ready THEN\r\n                udiState := 0;\r\n            END_IF;\r\n\r\n        33:\r\n            IF xQF3On THEN\r\n                udiState := 0;\r\n            ELSIF NOT xS3Ready THEN\r\n                udiState := 0;\r\n            END_IF;\r\n    ELSE\r\n        udiState := 0;\r\n    END_CASE;\r\nELSE\r\n    udiState := 90;\r\nEND_IF;\r\n\r\nEND_FUNCTION_BLOCK",
+    "LastModificationId": "2af5ce90-aa16-4ddb-8ce7-6cad3bba6b32",
+    "VariableStorageTypes": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "VariableDataTypes": [
+      6,
+      3,
+      3,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      3
+    ],
+    "VariableNames": [
+      "xAutoMode",
+      "udiTarget",
+      "udiActive",
+      "xAllOffConfirmed",
+      "xQF1On",
+      "xQF1Off",
+      "xQF2On",
+      "xQF2Off",
+      "xQF3On",
+      "xQF3Off",
+      "xS1Ready",
+      "xS2Ready",
+      "xS3Ready",
+      "udiState"
+    ],
+    "DefaultValues": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "VariableIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "FbInstances": [],
+    "FbInstanceIndexes": [],
+    "ArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "ModificationLabel": "ad7c99fe-3c8e-4be2-be42-92cc1d5c7e20",
+    "CreationDateTime": "2026-04-27T17:41:49.6430239+03:00",
+    "Discriminator": 2
+  },
+  {
+    "Id": "05219989-71f7-46ea-8b51-dcc535a34e53",
+    "Name": "FB_AVR_COMMANDS_3",
+    "Password": null,
+    "InputNames": [
+      "xAutoMode",
+      "xAlarm",
+      "xAlarmParallel",
+      "udiState",
+      "xS1Ready",
+      "xS2Ready",
+      "xS3Ready",
+      "xQF1On",
+      "xQF1Off",
+      "xQF2On",
+      "xQF2Off",
+      "xQF3On",
+      "xQF3Off"
+    ],
+    "InputDataTypes": [
+      6,
+      6,
+      6,
+      3,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "InputVariableIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "InputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "OutputNames": [
+      "xQ1",
+      "xQ2",
+      "xQ3",
+      "xQ4",
+      "xQ5",
+      "xQ6"
+    ],
+    "OutputDataTypes": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "OutputVariableIndexes": [
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "OutputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "SourceCode": "FUNCTION_BLOCK FB_AVR_COMMANDS_3\r\nVAR_INPUT\r\n    ///\u003CDescription\u003EАВР находится в автоматическом режиме\u003C/Description\u003E\r\n    xAutoMode : BOOL;\r\n\r\n    ///\u003CDescription\u003EОбщая авария АВР\u003C/Description\u003E\r\n    xAlarm : BOOL;\r\n\r\n    ///\u003CDescription\u003EОдновременно включено больше одного ввода\u003C/Description\u003E\r\n    xAlarmParallel : BOOL;\r\n\r\n    ///\u003CDescription\u003EСостояние автомата АВР\u003C/Description\u003E\r\n    udiState : UDINT;\r\n\r\n    ///\u003CDescription\u003EВвод 1 готов\u003C/Description\u003E\r\n    xS1Ready : BOOL;\r\n\r\n    ///\u003CDescription\u003EВвод 2 готов\u003C/Description\u003E\r\n    xS2Ready : BOOL;\r\n\r\n    ///\u003CDescription\u003EВвод 3 готов\u003C/Description\u003E\r\n    xS3Ready : BOOL;\r\n\r\n    ///\u003CDescription\u003E40F включен\u003C/Description\u003E\r\n    xQF1On : BOOL;\r\n\r\n    ///\u003CDescription\u003E40F выключен\u003C/Description\u003E\r\n    xQF1Off : BOOL;\r\n\r\n    ///\u003CDescription\u003E50F включен\u003C/Description\u003E\r\n    xQF2On : BOOL;\r\n\r\n    ///\u003CDescription\u003E50F выключен\u003C/Description\u003E\r\n    xQF2Off : BOOL;\r\n\r\n    ///\u003CDescription\u003E60F включен\u003C/Description\u003E\r\n    xQF3On : BOOL;\r\n\r\n    ///\u003CDescription\u003E60F выключен\u003C/Description\u003E\r\n    xQF3Off : BOOL;\r\nEND_VAR\r\n\r\nVAR_OUTPUT\r\n    ///\u003CDescription\u003EQ1: включить 40F\u003C/Description\u003E\r\n    xQ1 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ2: выключить 40F\u003C/Description\u003E\r\n    xQ2 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ3: включить 50F\u003C/Description\u003E\r\n    xQ3 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ4: выключить 50F\u003C/Description\u003E\r\n    xQ4 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ5: включить 60F\u003C/Description\u003E\r\n    xQ5 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ6: выключить 60F\u003C/Description\u003E\r\n    xQ6 : BOOL;\r\nEND_VAR\r\n\r\nxQ1 := FALSE;\r\nxQ2 := FALSE;\r\nxQ3 := FALSE;\r\nxQ4 := FALSE;\r\nxQ5 := FALSE;\r\nxQ6 := FALSE;\r\n\r\nIF xAutoMode THEN\r\n    xQ1 := (udiState = 31) AND xS1Ready AND\r\n           xQF2Off AND xQF3Off AND (NOT xAlarm);\r\n    xQ2 := (udiState = 11) AND (NOT xQF1Off) AND (NOT xAlarm);\r\n\r\n    xQ3 := (udiState = 32) AND xS2Ready AND\r\n           xQF1Off AND xQF3Off AND (NOT xAlarm);\r\n    xQ4 := (udiState = 12) AND (NOT xQF2Off) AND (NOT xAlarm);\r\n\r\n    xQ5 := (udiState = 33) AND xS3Ready AND\r\n           xQF1Off AND xQF2Off AND (NOT xAlarm);\r\n    xQ6 := (udiState = 13) AND (NOT xQF3Off) AND (NOT xAlarm);\r\nEND_IF;\r\n\r\n// При пересечении вводов разрешены только команды отключения.\r\nIF xAlarmParallel THEN\r\n    xQ1 := FALSE;\r\n    xQ3 := FALSE;\r\n    xQ5 := FALSE;\r\n\r\n    xQ2 := xQF1On;\r\n    xQ4 := xQF2On;\r\n    xQ6 := xQF3On;\r\nEND_IF;\r\n\r\nEND_FUNCTION_BLOCK",
+    "LastModificationId": "b4f87f46-2f7d-41d0-8033-e9bbd2d0a425",
+    "VariableStorageTypes": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "VariableDataTypes": [
+      6,
+      6,
+      6,
+      3,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "VariableNames": [
+      "xAutoMode",
+      "xAlarm",
+      "xAlarmParallel",
+      "udiState",
+      "xS1Ready",
+      "xS2Ready",
+      "xS3Ready",
+      "xQF1On",
+      "xQF1Off",
+      "xQF2On",
+      "xQF2Off",
+      "xQF3On",
+      "xQF3Off",
+      "xQ1",
+      "xQ2",
+      "xQ3",
+      "xQ4",
+      "xQ5",
+      "xQ6"
+    ],
+    "DefaultValues": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "VariableIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "FbInstances": [],
+    "FbInstanceIndexes": [],
+    "ArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "ModificationLabel": "9b880507-46b3-43b3-aae1-d7a42fe893d5",
+    "CreationDateTime": "2026-04-27T17:42:11.8456055+03:00",
+    "Discriminator": 2
+  },
+  {
+    "Id": "1426d32e-a54b-42cd-bb4f-a4915f9f9c6a",
+    "Name": "FB_AVR_3IN1_PR200_MODULAR",
+    "Password": null,
+    "InputNames": [
+      "xManualSelector",
+      "xAutoReturn",
+      "xU1Ok",
+      "xU2Ok",
+      "xU3Ok",
+      "xQF1On",
+      "xQF1Off",
+      "xQF1Fault",
+      "xQF2On",
+      "xQF2Off",
+      "xQF2Fault",
+      "xQF3On",
+      "xQF3Off",
+      "xQF3Fault"
+    ],
+    "InputDataTypes": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "InputVariableIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "InputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "OutputNames": [
+      "xQ1",
+      "xQ2",
+      "xQ3",
+      "xQ4",
+      "xQ5",
+      "xQ6",
+      "udiActive",
+      "udiTarget",
+      "udiState",
+      "xAutoMode",
+      "xManualMode",
+      "xAlarm",
+      "xAlarmFault",
+      "xAlarmParallel",
+      "xAlarmUndefined",
+      "xQF1Undefined",
+      "xQF2Undefined",
+      "xQF3Undefined",
+      "xNoSource"
+    ],
+    "OutputDataTypes": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      3,
+      3,
+      3,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "OutputVariableIndexes": [
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "OutputArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "SourceCode": "FUNCTION_BLOCK FB_AVR_3IN1_PR200_MODULAR\r\nVAR_INPUT\r\n    ///\u003CDescription\u003EПереключатель авто/ручной. TRUE = ручной режим\u003C/Description\u003E\r\n    xManualSelector : BOOL := FALSE;\r\n\r\n    ///\u003CDescription\u003EРазрешить автовозврат на более приоритетный ввод\u003C/Description\u003E\r\n    xAutoReturn : BOOL := TRUE;\r\n\r\n    ///\u003CDescription\u003EВвод 1: напряжение в норме\u003C/Description\u003E\r\n    xU1Ok : BOOL;\r\n\r\n    ///\u003CDescription\u003EВвод 2: напряжение в норме\u003C/Description\u003E\r\n    xU2Ok : BOOL;\r\n\r\n    ///\u003CDescription\u003EВвод 3: напряжение в норме\u003C/Description\u003E\r\n    xU3Ok : BOOL;\r\n\r\n    ///\u003CDescription\u003E40F включен\u003C/Description\u003E\r\n    xQF1On : BOOL;\r\n\r\n    ///\u003CDescription\u003E40F выключен\u003C/Description\u003E\r\n    xQF1Off : BOOL;\r\n\r\n    ///\u003CDescription\u003E40F авария\u003C/Description\u003E\r\n    xQF1Fault : BOOL;\r\n\r\n    ///\u003CDescription\u003E50F включен\u003C/Description\u003E\r\n    xQF2On : BOOL;\r\n\r\n    ///\u003CDescription\u003E50F выключен\u003C/Description\u003E\r\n    xQF2Off : BOOL;\r\n\r\n    ///\u003CDescription\u003E50F авария\u003C/Description\u003E\r\n    xQF2Fault : BOOL;\r\n\r\n    ///\u003CDescription\u003E60F включен\u003C/Description\u003E\r\n    xQF3On : BOOL;\r\n\r\n    ///\u003CDescription\u003E60F выключен\u003C/Description\u003E\r\n    xQF3Off : BOOL;\r\n\r\n    ///\u003CDescription\u003E60F авария\u003C/Description\u003E\r\n    xQF3Fault : BOOL;\r\nEND_VAR\r\n\r\nVAR_OUTPUT\r\n    ///\u003CDescription\u003EQ1: включить 40F\u003C/Description\u003E\r\n    xQ1 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ2: выключить 40F\u003C/Description\u003E\r\n    xQ2 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ3: включить 50F\u003C/Description\u003E\r\n    xQ3 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ4: выключить 50F\u003C/Description\u003E\r\n    xQ4 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ5: включить 60F\u003C/Description\u003E\r\n    xQ5 : BOOL;\r\n\r\n    ///\u003CDescription\u003EQ6: выключить 60F\u003C/Description\u003E\r\n    xQ6 : BOOL;\r\n\r\n    ///\u003CDescription\u003EАктивный ввод: 0 нет, 1 ввод 1, 2 ввод 2, 3 ввод 3\u003C/Description\u003E\r\n    udiActive : UDINT;\r\n\r\n    ///\u003CDescription\u003EВыбранный ввод по приоритету\u003C/Description\u003E\r\n    udiTarget : UDINT;\r\n\r\n    ///\u003CDescription\u003EСостояние автомата АВР\u003C/Description\u003E\r\n    udiState : UDINT;\r\n\r\n    ///\u003CDescription\u003EАВР находится в автоматическом режиме\u003C/Description\u003E\r\n    xAutoMode : BOOL;\r\n\r\n    ///\u003CDescription\u003EАВР находится в ручном режиме\u003C/Description\u003E\r\n    xManualMode : BOOL;\r\n\r\n    ///\u003CDescription\u003EОбщая авария АВР\u003C/Description\u003E\r\n    xAlarm : BOOL;\r\n\r\n    ///\u003CDescription\u003EАвария 40F, 50F или 60F\u003C/Description\u003E\r\n    xAlarmFault : BOOL;\r\n\r\n    ///\u003CDescription\u003EОдновременно включено больше одного ввода\u003C/Description\u003E\r\n    xAlarmParallel : BOOL;\r\n\r\n    ///\u003CDescription\u003EНеопределенное состояние допконтактов\u003C/Description\u003E\r\n    xAlarmUndefined : BOOL;\r\n\r\n    ///\u003CDescription\u003EНеопределенное состояние допконтактов 40F\u003C/Description\u003E\r\n    xQF1Undefined : BOOL;\r\n\r\n    ///\u003CDescription\u003EНеопределенное состояние допконтактов 50F\u003C/Description\u003E\r\n    xQF2Undefined : BOOL;\r\n\r\n    ///\u003CDescription\u003EНеопределенное состояние допконтактов 60F\u003C/Description\u003E\r\n    xQF3Undefined : BOOL;\r\n\r\n    ///\u003CDescription\u003EНет доступного ввода\u003C/Description\u003E\r\n    xNoSource : BOOL;\r\nEND_VAR\r\n\r\nVAR\r\n    QF40FDiag : FB_AVR_QF_DIAG;\r\n    QF50FDiag : FB_AVR_QF_DIAG;\r\n    QF60FDiag : FB_AVR_QF_DIAG;\r\n\r\n    Priority3 : FB_AVR_PRIORITY_3;\r\n    Mode3 : FB_AVR_MODE_3;\r\n    State3 : FB_AVR_STATE_3;\r\n    Commands3 : FB_AVR_COMMANDS_3;\r\n\r\n    xQF1Commanded : BOOL;\r\n    xQF2Commanded : BOOL;\r\n    xQF3Commanded : BOOL;\r\n    xAllOffConfirmed : BOOL;\r\nEND_VAR\r\n\r\nxQF1Commanded := (State3.udiState = 11) OR (State3.udiState = 31);\r\nxQF2Commanded := (State3.udiState = 12) OR (State3.udiState = 32);\r\nxQF3Commanded := (State3.udiState = 13) OR (State3.udiState = 33);\r\n\r\nQF40FDiag(\r\n    xOn := xQF1On,\r\n    xOff := xQF1Off,\r\n    xCommanded := xQF1Commanded\r\n);\r\n\r\nQF50FDiag(\r\n    xOn := xQF2On,\r\n    xOff := xQF2Off,\r\n    xCommanded := xQF2Commanded\r\n);\r\n\r\nQF60FDiag(\r\n    xOn := xQF3On,\r\n    xOff := xQF3Off,\r\n    xCommanded := xQF3Commanded\r\n);\r\n\r\nxQF1Undefined := QF40FDiag.xUndefined;\r\nxQF2Undefined := QF50FDiag.xUndefined;\r\nxQF3Undefined := QF60FDiag.xUndefined;\r\nxAlarmUndefined := xQF1Undefined OR xQF2Undefined OR xQF3Undefined;\r\n\r\nPriority3(\r\n    xAutoReturn := xAutoReturn,\r\n    xU1Ok := xU1Ok,\r\n    xU2Ok := xU2Ok,\r\n    xU3Ok := xU3Ok,\r\n    xQF1On := xQF1On,\r\n    xQF2On := xQF2On,\r\n    xQF3On := xQF3On,\r\n    xQF1Fault := xQF1Fault,\r\n    xQF2Fault := xQF2Fault,\r\n    xQF3Fault := xQF3Fault\r\n);\r\n\r\nudiActive := Priority3.udiActive;\r\nudiTarget := Priority3.udiTarget;\r\nxAlarmParallel := Priority3.xAlarmParallel;\r\nxNoSource := Priority3.xNoSource;\r\nxAlarmFault := xQF1Fault OR xQF2Fault OR xQF3Fault;\r\nxAllOffConfirmed := xQF1Off AND xQF2Off AND xQF3Off AND NOT xAlarmUndefined;\r\n\r\nMode3(\r\n    xManualSelector := xManualSelector,\r\n    xAlarmFault := xAlarmFault,\r\n    xAlarmParallel := xAlarmParallel,\r\n    xAlarmUndefined := xAlarmUndefined\r\n);\r\n\r\nxAlarm := Mode3.xAlarm;\r\nxManualMode := Mode3.xManualMode;\r\nxAutoMode := Mode3.xAutoMode;\r\n\r\nState3(\r\n    xAutoMode := xAutoMode,\r\n    udiTarget := udiTarget,\r\n    udiActive := udiActive,\r\n    xAllOffConfirmed := xAllOffConfirmed,\r\n    xQF1On := xQF1On,\r\n    xQF1Off := xQF1Off,\r\n    xQF2On := xQF2On,\r\n    xQF2Off := xQF2Off,\r\n    xQF3On := xQF3On,\r\n    xQF3Off := xQF3Off,\r\n    xS1Ready := Priority3.xS1Ready,\r\n    xS2Ready := Priority3.xS2Ready,\r\n    xS3Ready := Priority3.xS3Ready\r\n);\r\n\r\nudiState := State3.udiState;\r\n\r\nCommands3(\r\n    xAutoMode := xAutoMode,\r\n    xAlarm := xAlarm,\r\n    xAlarmParallel := xAlarmParallel,\r\n    udiState := udiState,\r\n    xS1Ready := Priority3.xS1Ready,\r\n    xS2Ready := Priority3.xS2Ready,\r\n    xS3Ready := Priority3.xS3Ready,\r\n    xQF1On := xQF1On,\r\n    xQF1Off := xQF1Off,\r\n    xQF2On := xQF2On,\r\n    xQF2Off := xQF2Off,\r\n    xQF3On := xQF3On,\r\n    xQF3Off := xQF3Off\r\n);\r\n\r\nxQ1 := Commands3.xQ1;\r\nxQ2 := Commands3.xQ2;\r\nxQ3 := Commands3.xQ3;\r\nxQ4 := Commands3.xQ4;\r\nxQ5 := Commands3.xQ5;\r\nxQ6 := Commands3.xQ6;\r\n\r\nEND_FUNCTION_BLOCK",
+    "LastModificationId": "f4c06220-cbcd-449f-a63a-f9a75710ff73",
+    "VariableStorageTypes": [
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "VariableDataTypes": [
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      3,
+      3,
+      3,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6,
+      6
+    ],
+    "VariableNames": [
+      "xManualSelector",
+      "xAutoReturn",
+      "xU1Ok",
+      "xU2Ok",
+      "xU3Ok",
+      "xQF1On",
+      "xQF1Off",
+      "xQF1Fault",
+      "xQF2On",
+      "xQF2Off",
+      "xQF2Fault",
+      "xQF3On",
+      "xQF3Off",
+      "xQF3Fault",
+      "xQF1Commanded",
+      "xQF2Commanded",
+      "xQF3Commanded",
+      "xAllOffConfirmed",
+      "xQ1",
+      "xQ2",
+      "xQ3",
+      "xQ4",
+      "xQ5",
+      "xQ6",
+      "udiActive",
+      "udiTarget",
+      "udiState",
+      "xAutoMode",
+      "xManualMode",
+      "xAlarm",
+      "xAlarmFault",
+      "xAlarmParallel",
+      "xAlarmUndefined",
+      "xQF1Undefined",
+      "xQF2Undefined",
+      "xQF3Undefined",
+      "xNoSource"
+    ],
+    "DefaultValues": [
+      "False",
+      "True",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    "VariableIndexes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43
+    ],
+    "FbInstances": [
+      {
+        "Name": "QF40FDiag",
+        "TemplateName": "FB_AVR_QF_DIAG",
+        "VariableDataType": 3
+      },
+      {
+        "Name": "QF50FDiag",
+        "TemplateName": "FB_AVR_QF_DIAG",
+        "VariableDataType": 3
+      },
+      {
+        "Name": "QF60FDiag",
+        "TemplateName": "FB_AVR_QF_DIAG",
+        "VariableDataType": 3
+      },
+      {
+        "Name": "Priority3",
+        "TemplateName": "FB_AVR_PRIORITY_3",
+        "VariableDataType": 3
+      },
+      {
+        "Name": "Mode3",
+        "TemplateName": "FB_AVR_MODE_3",
+        "VariableDataType": 3
+      },
+      {
+        "Name": "State3",
+        "TemplateName": "FB_AVR_STATE_3",
+        "VariableDataType": 3
+      },
+      {
+        "Name": "Commands3",
+        "TemplateName": "FB_AVR_COMMANDS_3",
+        "VariableDataType": 3
+      }
+    ],
+    "FbInstanceIndexes": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "ArrayRanges": [
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      },
+      {
+        "Start": [],
+        "End": []
+      }
+    ],
+    "ModificationLabel": "421d92b9-7ebf-4647-96a2-06ed91b281c3",
+    "CreationDateTime": "2026-04-27T17:42:29.7088718+03:00",
+    "Discriminator": 2
+  }
+]

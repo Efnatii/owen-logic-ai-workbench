@@ -1,0 +1,12 @@
+interface:
+  display_name: "OWEN Logic Testing"
+  short_description: "Test OWEN Logic projects through Codex"
+  default_prompt: "Use $owen-logic-testing to smoke-test an OWEN Logic project."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "owen_logic"
+      description: "Local stdio MCP server for OWEN Logic GUI smoke tests"
+      transport: "stdio"
+policy:
+  allow_implicit_invocation: true

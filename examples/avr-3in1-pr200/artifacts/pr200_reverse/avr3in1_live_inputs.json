@@ -1,0 +1,18 @@
+{
+  "manual_selector": true,
+  "auto_return": true,
+  "input_delay_sec": 3,
+  "u1_ok": true,
+  "u2_ok": true,
+  "u3_ok": true,
+  "qf1_on": false,
+  "qf1_off": true,
+  "qf1_fault": false,
+  "qf2_on": false,
+  "qf2_off": true,
+  "qf2_fault": false,
+  "qf3_on": false,
+  "qf3_off": true,
+  "qf3_fault": false,
+  "_reset_id": "11_1777466162227123900"
+}

@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# Runtime logs and generated evidence
+*.log
+*.pid
+*.tmp
+*.tmp.*
+/debug_emulator_audit/
+/visual_com_main_scenarios_*/
+owen_logic_com_emulator_COM*_*.txt
+owen_logic_com_emulator_COM*_*.log
+
+# OWEN / local project artifacts
+*.bak
+*.backup
+*.zip
+*.owle~
+
+# LaTeX generated files
+*.aux
+*.toc
+*.out
+*.synctex.gz
+
+# OS/editor
+Thumbs.db
+.DS_Store
+.idea/
+.vscode/

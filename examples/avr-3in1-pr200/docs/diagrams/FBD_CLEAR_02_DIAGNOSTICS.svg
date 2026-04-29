@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1700" height="950" viewBox="0 0 1700 950">
+  <defs>
+    <style>
+      .title{font:700 30px Arial,sans-serif;fill:#14385b}
+      .sub{font:18px Arial,sans-serif;fill:#45566a}
+      .block{fill:#f7fbff;stroke:#1f4e79;stroke-width:3;rx:10}
+      .logic{fill:#eef8ed;stroke:#3f7f3f;stroke-width:2.5;rx:8}
+      .net{fill:#fff6d8;stroke:#9a7615;stroke-width:2;rx:6}
+      .bad{fill:#fdecef;stroke:#a6384d;stroke-width:2.5;rx:6}
+      .blockTitle{font:700 22px Arial,sans-serif;fill:#153a5f}
+      .txt{font:16px Arial,sans-serif;fill:#31455a}
+      .pin{font:15px Consolas,monospace;fill:#1f2f3d}
+      .wire{fill:none;stroke:#2f64a3;stroke-width:3;marker-end:url(#arrow)}
+      .wireRed{fill:none;stroke:#b33d3d;stroke-width:3;marker-end:url(#arrowRed)}
+      .wireGreen{fill:none;stroke:#2f7d4a;stroke-width:3;marker-end:url(#arrowGreen)}
+      .label{font:15px Arial,sans-serif;fill:#17324d;paint-order:stroke;stroke:#fff;stroke-width:5;stroke-linejoin:round}
+    </style>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#2f64a3"/></marker>
+    <marker id="arrowRed" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#b33d3d"/></marker>
+    <marker id="arrowGreen" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M2,2 L10,6 L2,10 Z" fill="#2f7d4a"/></marker>
+  </defs>
+
+  <text x="40" y="48" class="title">FBD лист 2. Диагностика допконтактов 40F / 50F / 60F</text>
+  <text x="40" y="78" class="sub">Оба допконтакта TRUE = ошибка. Оба FALSE допустимы только если автомату сейчас дана команда.</text>
+
+  <rect x="55" y="120" width="240" height="68" class="net"/><text x="80" y="162" class="pin">State3.udiState</text>
+  <rect x="360" y="105" width="250" height="90" class="logic"/><text x="385" y="140" class="blockTitle">EQ + OR</text><text x="385" y="170" class="pin">=11 OR =31</text>
+  <rect x="680" y="75" width="310" height="150" class="block"/><text x="705" y="110" class="blockTitle">QF40FDiag</text><text x="705" y="145" class="pin">xOn        xUndefined</text><text x="705" y="175" class="pin">xOff       xInvalid</text><text x="705" y="205" class="pin">xCommanded xNoPosition</text>
+  <rect x="1060" y="125" width="230" height="46" class="bad"/><text x="1080" y="154" class="pin">xQF1Undefined</text>
+
+  <rect x="55" y="285" width="240" height="68" class="net"/><text x="80" y="327" class="pin">State3.udiState</text>
+  <rect x="360" y="270" width="250" height="90" class="logic"/><text x="385" y="305" class="blockTitle">EQ + OR</text><text x="385" y="335" class="pin">=12 OR =32</text>
+  <rect x="680" y="240" width="310" height="150" class="block"/><text x="705" y="275" class="blockTitle">QF50FDiag</text><text x="705" y="310" class="pin">xOn        xUndefined</text><text x="705" y="340" class="pin">xOff       xInvalid</text><text x="705" y="370" class="pin">xCommanded xNoPosition</text>
+  <rect x="1060" y="290" width="230" height="46" class="bad"/><text x="1080" y="319" class="pin">xQF2Undefined</text>
+
+  <rect x="55" y="450" width="240" height="68" class="net"/><text x="80" y="492" class="pin">State3.udiState</text>
+  <rect x="360" y="435" width="250" height="90" class="logic"/><text x="385" y="470" class="blockTitle">EQ + OR</text><text x="385" y="500" class="pin">=13 OR =33</text>
+  <rect x="680" y="405" width="310" height="150" class="block"/><text x="705" y="440" class="blockTitle">QF60FDiag</text><text x="705" y="475" class="pin">xOn        xUndefined</text><text x="705" y="505" class="pin">xOff       xInvalid</text><text x="705" y="535" class="pin">xCommanded xNoPosition</text>
+  <rect x="1060" y="455" width="230" height="46" class="bad"/><text x="1080" y="484" class="pin">xQF3Undefined</text>
+
+  <rect x="1135" y="610" width="180" height="85" class="logic"/><text x="1180" y="645" class="blockTitle">OR3</text><text x="1168" y="675" class="pin">Undefined</text>
+  <rect x="1370" y="630" width="210" height="46" class="bad"/><text x="1390" y="659" class="pin">xAlarmUndefined</text>
+
+  <rect x="55" y="690" width="500" height="170" class="net"/>
+  <text x="80" y="725" class="blockTitle">Входы каждого QF_Diag</text>
+  <text x="80" y="760" class="pin">40F: xOn=xQF1On, xOff=xQF1Off, xCommanded=(state=11 OR 31)</text>
+  <text x="80" y="790" class="pin">50F: xOn=xQF2On, xOff=xQF2Off, xCommanded=(state=12 OR 32)</text>
+  <text x="80" y="820" class="pin">60F: xOn=xQF3On, xOff=xQF3Off, xCommanded=(state=13 OR 33)</text>
+
+  <rect x="705" y="690" width="640" height="170" class="net"/>
+  <text x="730" y="725" class="blockTitle">Важное правило</text>
+  <text x="730" y="760" class="txt">Если автомат движется, оба допконтакта могут быть FALSE.</text>
+  <text x="730" y="790" class="txt">Поэтому в xCommanded обязательно подать состояние State3.</text>
+  <text x="730" y="820" class="txt">Иначе движение автомата будет ошибочно считаться аварией.</text>
+
+  <path class="wire" d="M295 154 H360"/><path class="wireGreen" d="M610 150 H680"/>
+  <path class="wire" d="M295 319 H360"/><path class="wireGreen" d="M610 315 H680"/>
+  <path class="wire" d="M295 484 H360"/><path class="wireGreen" d="M610 480 H680"/>
+
+  <path class="wireRed" d="M990 150 H1060"/><path class="wireRed" d="M1290 148 H1325 V630 H1135"/>
+  <path class="wireRed" d="M990 315 H1060"/><path class="wireRed" d="M1290 313 H1335 V653 H1135"/>
+  <path class="wireRed" d="M990 480 H1060"/><path class="wireRed" d="M1290 478 H1345 V675 H1135"/>
+  <path class="wireRed" d="M1315 653 H1370"/>
+
+  <text x="650" y="70" class="label">xQF1On/xQF1Off также входят слева в блок</text>
+  <text x="650" y="235" class="label">xQF2On/xQF2Off</text>
+  <text x="650" y="400" class="label">xQF3On/xQF3Off</text>
+</svg>

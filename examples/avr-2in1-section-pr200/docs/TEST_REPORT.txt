@@ -1,0 +1,58 @@
+AVR 2-in-1 with section breaker for PR200
+Date: 2026-04-29
+
+Command:
+python -m unittest -v test_avr_2in1_section.py test_avr_2in1_section_invariants.py
+
+Result:
+Ran 72 tests in 25.762s
+OK
+
+Coverage summary:
+- 38 scenario tests check normal switching, loss of each input, return to normal, disabled auto-return, manual mode, faults, undefined contacts, forbidden parallel, dynamic plant convergence, input-voltage delay, delayed 30F section close, dark restart from a previously closed section breaker, and independence of input delay from section delay.
+- 34 invariant/static tests check safety rules.
+- 31 invariant tests perform exhaustive enumeration of runtime boolean inputs and prior states.
+- 1 additional invariant test performs exhaustive enumeration of runtime boolean inputs, prior states, and all stable target schemes for the input-voltage delay memory.
+- 1 additional invariant test performs exhaustive enumeration of runtime boolean inputs, prior states, stable target schemes, and internal 30F section close delay counter states.
+
+Exhaustive space:
+- Main invariant space: 13 boolean inputs = 8192 combinations.
+- Prior states: 0, 11, 12, 13, 21, 22, 23, 90, 777.
+- Main exhaustive pass per invariant: 8192 * 9 = 73728 combinations.
+- 31 main exhaustive invariants = 2285568 model evaluations.
+- Input-delay memory exhaustive invariant: 8192 inputs * 9 states * 4 stable target schemes = 294912 model evaluations.
+- Section-close delay memory exhaustive invariant: 8192 inputs * 9 states * 4 stable target schemes * 4 section counter states = 1179648 model evaluations.
+- Total exhaustive model evaluations = 3760128.
+
+Delay behavior proven:
+- udiInputDelaySec delays only target scheme changes caused by input voltage changes.
+- udiSectionCloseDelaySec is a separate external delay parameter for 30F section close.
+- The ST block has no TON/TIME calls; it uses only internal UDINT scan counters.
+- A short voltage dip changes udiRawTargetScheme but does not issue motor commands before the input delay expires.
+- A sustained voltage loss changes udiTargetScheme and switches only after the configured delay has elapsed.
+- 30F section close is delayed after the healthy incomer is confirmed on and the opposite incomer is confirmed off.
+- While xSectionCloseDelayActive is TRUE, Q5 is never issued.
+- A disappearing section close request resets udiSectionCloseDelayCounterSec and Q5 remains FALSE.
+- After dark restart with 30F still closed, an incomer close command is blocked until 30F is confirmed off.
+- udiInputDelaySec does not delay Q5 when udiSectionCloseDelaySec = 0.
+- Arbitrary internal delay states keep all command safety invariants.
+- udiInputDelaySec = 0 preserves immediate target-scheme selection.
+- udiSectionCloseDelaySec = 0 preserves immediate section close after safe prerequisites.
+
+Main proven invariants:
+- no breaker receives close and open commands at the same time;
+- at most one close command exists in one scan;
+- close commands exist only in auto mode and without alarm;
+- close 10F requires input 1 ready and safe topology;
+- close 20F requires input 2 ready and safe topology;
+- close 10F or 20F requires 30F confirmed off;
+- close 30F section requires one confirmed healthy incomer and the opposite incomer confirmed off;
+- section breaker never closes for normal-scheme or no-source target;
+- forbidden parallel 10F + 20F + 30F allows only open commands;
+- manual selector blocks automatic commands unless the forbidden-parallel emergency open override is active;
+- any breaker fault blocks commands unless the forbidden-parallel emergency open override is active;
+- undefined contacts block all commands unless the forbidden-parallel emergency open override is active;
+- target scheme and raw target scheme exactly follow priority and auto-return rules when delay is zero;
+- emergency state clears automatically when contacts and faults return to normal;
+- ST file contains one FUNCTION_BLOCK;
+- ST file does not expose xSecondPulse and does not contain TON/TIME syntax.

@@ -1,0 +1,799 @@
+{
+  "generated_at": "2026-04-29T15:13:27",
+  "program_hash": "0xA1A91428",
+  "program_size": 10856,
+  "debug_block_number": 1,
+  "debug_point_count": 59,
+  "fb_name": "FB_AVR_3IN1_PR200",
+  "fb_instance_unique_id": "f79a16e3-ded7-4b26-b104-65200de7a9a0",
+  "input_names": [
+    "xManualSelector",
+    "xAutoReturn",
+    "udiInputDelaySec",
+    "xU1Ok",
+    "xU2Ok",
+    "xU3Ok",
+    "xQF1On",
+    "xQF1Off",
+    "xQF1Fault",
+    "xQF2On",
+    "xQF2Off",
+    "xQF2Fault",
+    "xQF3On",
+    "xQF3Off",
+    "xQF3Fault"
+  ],
+  "output_names": [
+    "xQ1",
+    "xQ2",
+    "xQ3",
+    "xQ4",
+    "xQ5",
+    "xQ6",
+    "udiActive",
+    "udiRawTarget",
+    "udiTarget",
+    "udiPendingTarget",
+    "udiDelayCounterSec",
+    "udiState",
+    "xTargetDelayActive",
+    "xAutoMode",
+    "xManualMode",
+    "xAlarm",
+    "xAlarmFault",
+    "xAlarmParallel",
+    "xAlarmUndefined",
+    "xQF1Undefined",
+    "xQF2Undefined",
+    "xQF3Undefined",
+    "xNoSource"
+  ],
+  "debug_points": [
+    {
+      "read_index": 1,
+      "command_offset": 0,
+      "word": 3,
+      "stack_instruction_id": 1
+    },
+    {
+      "read_index": 2,
+      "command_offset": 2,
+      "word": 7,
+      "stack_instruction_id": 3
+    },
+    {
+      "read_index": 3,
+      "command_offset": 4,
+      "word": 11,
+      "stack_instruction_id": 5
+    },
+    {
+      "read_index": 4,
+      "command_offset": 6,
+      "word": 13,
+      "stack_instruction_id": 6
+    },
+    {
+      "read_index": 5,
+      "command_offset": 8,
+      "word": 15,
+      "stack_instruction_id": 7
+    },
+    {
+      "read_index": 6,
+      "command_offset": 10,
+      "word": 17,
+      "stack_instruction_id": 8
+    },
+    {
+      "read_index": 7,
+      "command_offset": 12,
+      "word": 21,
+      "stack_instruction_id": 10
+    },
+    {
+      "read_index": 8,
+      "command_offset": 14,
+      "word": 23,
+      "stack_instruction_id": 11
+    },
+    {
+      "read_index": 9,
+      "command_offset": 16,
+      "word": 27,
+      "stack_instruction_id": 13
+    },
+    {
+      "read_index": 10,
+      "command_offset": 18,
+      "word": 29,
+      "stack_instruction_id": 14
+    },
+    {
+      "read_index": 11,
+      "command_offset": 20,
+      "word": 33,
+      "stack_instruction_id": 16
+    },
+    {
+      "read_index": 12,
+      "command_offset": 22,
+      "word": 35,
+      "stack_instruction_id": 17
+    },
+    {
+      "read_index": 13,
+      "command_offset": 24,
+      "word": 39,
+      "stack_instruction_id": 19
+    },
+    {
+      "read_index": 14,
+      "command_offset": 26,
+      "word": 43,
+      "stack_instruction_id": 21
+    },
+    {
+      "read_index": 15,
+      "command_offset": 28,
+      "word": 45,
+      "stack_instruction_id": 22
+    },
+    {
+      "read_index": 16,
+      "command_offset": 30,
+      "word": 47,
+      "stack_instruction_id": 23
+    },
+    {
+      "read_index": 17,
+      "command_offset": 32,
+      "word": 49,
+      "stack_instruction_id": 24
+    },
+    {
+      "read_index": 18,
+      "command_offset": 34,
+      "word": 53,
+      "stack_instruction_id": 26
+    },
+    {
+      "read_index": 19,
+      "command_offset": 36,
+      "word": 57,
+      "stack_instruction_id": 28
+    },
+    {
+      "read_index": 20,
+      "command_offset": 38,
+      "word": 59,
+      "stack_instruction_id": 29
+    },
+    {
+      "read_index": 21,
+      "command_offset": 40,
+      "word": 61,
+      "stack_instruction_id": 30
+    },
+    {
+      "read_index": 22,
+      "command_offset": 42,
+      "word": 63,
+      "stack_instruction_id": 31
+    },
+    {
+      "read_index": 23,
+      "command_offset": 44,
+      "word": 67,
+      "stack_instruction_id": 33
+    },
+    {
+      "read_index": 24,
+      "command_offset": 46,
+      "word": 71,
+      "stack_instruction_id": 35
+    },
+    {
+      "read_index": 25,
+      "command_offset": 48,
+      "word": 73,
+      "stack_instruction_id": 36
+    },
+    {
+      "read_index": 26,
+      "command_offset": 50,
+      "word": 75,
+      "stack_instruction_id": 37
+    },
+    {
+      "read_index": 27,
+      "command_offset": 52,
+      "word": 141,
+      "stack_instruction_id": 70
+    },
+    {
+      "read_index": 28,
+      "command_offset": 54,
+      "word": 147,
+      "stack_instruction_id": 73
+    },
+    {
+      "read_index": 29,
+      "command_offset": 56,
+      "word": 153,
+      "stack_instruction_id": 76
+    },
+    {
+      "read_index": 30,
+      "command_offset": 58,
+      "word": 159,
+      "stack_instruction_id": 79
+    },
+    {
+      "read_index": 31,
+      "command_offset": 60,
+      "word": 165,
+      "stack_instruction_id": 82
+    },
+    {
+      "read_index": 32,
+      "command_offset": 62,
+      "word": 171,
+      "stack_instruction_id": 85
+    },
+    {
+      "read_index": 33,
+      "command_offset": 64,
+      "word": 177,
+      "stack_instruction_id": 88
+    },
+    {
+      "read_index": 34,
+      "command_offset": 66,
+      "word": 183,
+      "stack_instruction_id": 91
+    },
+    {
+      "read_index": 35,
+      "command_offset": 68,
+      "word": 189,
+      "stack_instruction_id": 94
+    },
+    {
+      "read_index": 36,
+      "command_offset": 70,
+      "word": 195,
+      "stack_instruction_id": 97
+    },
+    {
+      "read_index": 37,
+      "command_offset": 72,
+      "word": 201,
+      "stack_instruction_id": 100
+    },
+    {
+      "read_index": 38,
+      "command_offset": 74,
+      "word": 207,
+      "stack_instruction_id": 103
+    },
+    {
+      "read_index": 39,
+      "command_offset": 76,
+      "word": 213,
+      "stack_instruction_id": 106
+    },
+    {
+      "read_index": 40,
+      "command_offset": 78,
+      "word": 219,
+      "stack_instruction_id": 109
+    },
+    {
+      "read_index": 41,
+      "command_offset": 80,
+      "word": 225,
+      "stack_instruction_id": 112
+    },
+    {
+      "read_index": 42,
+      "command_offset": 82,
+      "word": 231,
+      "stack_instruction_id": 115
+    },
+    {
+      "read_index": 43,
+      "command_offset": 84,
+      "word": 237,
+      "stack_instruction_id": 118
+    },
+    {
+      "read_index": 44,
+      "command_offset": 86,
+      "word": 243,
+      "stack_instruction_id": 121
+    },
+    {
+      "read_index": 45,
+      "command_offset": 88,
+      "word": 249,
+      "stack_instruction_id": 124
+    },
+    {
+      "read_index": 46,
+      "command_offset": 90,
+      "word": 255,
+      "stack_instruction_id": 127
+    },
+    {
+      "read_index": 47,
+      "command_offset": 92,
+      "word": 261,
+      "stack_instruction_id": 130
+    },
+    {
+      "read_index": 48,
+      "command_offset": 94,
+      "word": 267,
+      "stack_instruction_id": 133
+    },
+    {
+      "read_index": 49,
+      "command_offset": 96,
+      "word": 273,
+      "stack_instruction_id": 136
+    },
+    {
+      "read_index": 50,
+      "command_offset": 98,
+      "word": 277,
+      "stack_instruction_id": 138
+    },
+    {
+      "read_index": 51,
+      "command_offset": 100,
+      "word": 281,
+      "stack_instruction_id": 140
+    },
+    {
+      "read_index": 52,
+      "command_offset": 102,
+      "word": 285,
+      "stack_instruction_id": 142
+    },
+    {
+      "read_index": 53,
+      "command_offset": 104,
+      "word": 289,
+      "stack_instruction_id": 144
+    },
+    {
+      "read_index": 54,
+      "command_offset": 106,
+      "word": 293,
+      "stack_instruction_id": 146
+    },
+    {
+      "read_index": 55,
+      "command_offset": 108,
+      "word": 297,
+      "stack_instruction_id": 148
+    },
+    {
+      "read_index": 56,
+      "command_offset": 110,
+      "word": 301,
+      "stack_instruction_id": 150
+    },
+    {
+      "read_index": 57,
+      "command_offset": 112,
+      "word": 305,
+      "stack_instruction_id": 152
+    },
+    {
+      "read_index": 58,
+      "command_offset": 114,
+      "word": 309,
+      "stack_instruction_id": 154
+    },
+    {
+      "read_index": 59,
+      "command_offset": 116,
+      "word": 313,
+      "stack_instruction_id": 156
+    }
+  ],
+  "symbols": {
+    "xQ1": [
+      {
+        "read_index": 27,
+        "stack_instruction_id": 70,
+        "word": 141,
+        "role": "fb_output",
+        "confidence": "high"
+      },
+      {
+        "read_index": 50,
+        "stack_instruction_id": 138,
+        "word": 277,
+        "role": "physical_output_duplicate",
+        "confidence": "high"
+      }
+    ],
+    "xQ2": [
+      {
+        "read_index": 28,
+        "stack_instruction_id": 73,
+        "word": 147,
+        "role": "fb_output",
+        "confidence": "high"
+      },
+      {
+        "read_index": 51,
+        "stack_instruction_id": 140,
+        "word": 281,
+        "role": "physical_output_duplicate",
+        "confidence": "high"
+      }
+    ],
+    "xQ3": [
+      {
+        "read_index": 29,
+        "stack_instruction_id": 76,
+        "word": 153,
+        "role": "fb_output",
+        "confidence": "high"
+      },
+      {
+        "read_index": 52,
+        "stack_instruction_id": 142,
+        "word": 285,
+        "role": "physical_output_duplicate",
+        "confidence": "high"
+      }
+    ],
+    "xQ4": [
+      {
+        "read_index": 30,
+        "stack_instruction_id": 79,
+        "word": 159,
+        "role": "fb_output",
+        "confidence": "high"
+      },
+      {
+        "read_index": 53,
+        "stack_instruction_id": 144,
+        "word": 289,
+        "role": "physical_output_duplicate",
+        "confidence": "high"
+      }
+    ],
+    "xQ5": [
+      {
+        "read_index": 31,
+        "stack_instruction_id": 82,
+        "word": 165,
+        "role": "fb_output",
+        "confidence": "high"
+      },
+      {
+        "read_index": 54,
+        "stack_instruction_id": 146,
+        "word": 293,
+        "role": "physical_output_duplicate",
+        "confidence": "high"
+      }
+    ],
+    "xQ6": [
+      {
+        "read_index": 32,
+        "stack_instruction_id": 85,
+        "word": 171,
+        "role": "fb_output",
+        "confidence": "high"
+      },
+      {
+        "read_index": 55,
+        "stack_instruction_id": 148,
+        "word": 297,
+        "role": "physical_output_duplicate",
+        "confidence": "high"
+      }
+    ],
+    "udiActive": [
+      {
+        "read_index": 33,
+        "stack_instruction_id": 88,
+        "word": 177,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "udiRawTarget": [
+      {
+        "read_index": 34,
+        "stack_instruction_id": 91,
+        "word": 183,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "udiTarget": [
+      {
+        "read_index": 35,
+        "stack_instruction_id": 94,
+        "word": 189,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "udiPendingTarget": [
+      {
+        "read_index": 36,
+        "stack_instruction_id": 97,
+        "word": 195,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "udiDelayCounterSec": [
+      {
+        "read_index": 37,
+        "stack_instruction_id": 100,
+        "word": 201,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "udiState": [
+      {
+        "read_index": 38,
+        "stack_instruction_id": 103,
+        "word": 207,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "xTargetDelayActive": [
+      {
+        "read_index": 39,
+        "stack_instruction_id": 106,
+        "word": 213,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "xAutoMode": [
+      {
+        "read_index": 40,
+        "stack_instruction_id": 109,
+        "word": 219,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "xManualMode": [
+      {
+        "read_index": 41,
+        "stack_instruction_id": 112,
+        "word": 225,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "xAlarm": [
+      {
+        "read_index": 42,
+        "stack_instruction_id": 115,
+        "word": 231,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "xAlarmFault": [
+      {
+        "read_index": 43,
+        "stack_instruction_id": 118,
+        "word": 237,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "xAlarmParallel": [
+      {
+        "read_index": 44,
+        "stack_instruction_id": 121,
+        "word": 243,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "xAlarmUndefined": [
+      {
+        "read_index": 45,
+        "stack_instruction_id": 124,
+        "word": 249,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "xQF1Undefined": [
+      {
+        "read_index": 46,
+        "stack_instruction_id": 127,
+        "word": 255,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "xQF2Undefined": [
+      {
+        "read_index": 47,
+        "stack_instruction_id": 130,
+        "word": 261,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "xQF3Undefined": [
+      {
+        "read_index": 48,
+        "stack_instruction_id": 133,
+        "word": 267,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "xNoSource": [
+      {
+        "read_index": 49,
+        "stack_instruction_id": 136,
+        "word": 273,
+        "role": "fb_output",
+        "confidence": "high"
+      }
+    ],
+    "xManualSelector": [
+      {
+        "read_index": 3,
+        "stack_instruction_id": 5,
+        "word": 11,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "xAutoReturn": [
+      {
+        "read_index": 4,
+        "stack_instruction_id": 6,
+        "word": 13,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "udiInputDelaySec": [
+      {
+        "read_index": 5,
+        "stack_instruction_id": 7,
+        "word": 15,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "xU1Ok": [
+      {
+        "read_index": 7,
+        "stack_instruction_id": 10,
+        "word": 21,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "xU2Ok": [
+      {
+        "read_index": 9,
+        "stack_instruction_id": 13,
+        "word": 27,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "xU3Ok": [
+      {
+        "read_index": 11,
+        "stack_instruction_id": 16,
+        "word": 33,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "xQF1On": [
+      {
+        "read_index": 14,
+        "stack_instruction_id": 21,
+        "word": 43,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "xQF1Off": [
+      {
+        "read_index": 15,
+        "stack_instruction_id": 22,
+        "word": 45,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "xQF1Fault": [
+      {
+        "read_index": 16,
+        "stack_instruction_id": 23,
+        "word": 47,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "xQF2On": [
+      {
+        "read_index": 19,
+        "stack_instruction_id": 28,
+        "word": 57,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "xQF2Off": [
+      {
+        "read_index": 20,
+        "stack_instruction_id": 29,
+        "word": 59,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "xQF2Fault": [
+      {
+        "read_index": 21,
+        "stack_instruction_id": 30,
+        "word": 61,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "xQF3On": [
+      {
+        "read_index": 24,
+        "stack_instruction_id": 35,
+        "word": 71,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "xQF3Off": [
+      {
+        "read_index": 25,
+        "stack_instruction_id": 36,
+        "word": 73,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ],
+    "xQF3Fault": [
+      {
+        "read_index": 26,
+        "stack_instruction_id": 37,
+        "word": 75,
+        "role": "fb_input_terminal",
+        "confidence": "high"
+      }
+    ]
+  },
+  "notes": [
+    "Program binary contains stack instructions but no human-readable signal names.",
+    "stack_instruction_id values are extracted from the real OWEN Logic online-debug command block.",
+    "Function-block output symbols are inferred from the contiguous stride-3 output run in the command block.",
+    "Input terminal symbols are high-confidence only for the current AVR_3IN1 project shape."
+  ]
+}

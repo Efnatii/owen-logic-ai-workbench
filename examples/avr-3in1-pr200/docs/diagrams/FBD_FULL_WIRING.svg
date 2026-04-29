@@ -1,0 +1,286 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2300" height="1500" viewBox="0 0 2300 1500">
+  <defs>
+    <style>
+      .title { font: 700 30px Arial, sans-serif; fill: #17324d; }
+      .note { font: 18px Arial, sans-serif; fill: #38485a; }
+      .block { fill: #f8fbff; stroke: #1f4e79; stroke-width: 3; rx: 8; }
+      .block-title { font: 700 21px Arial, sans-serif; fill: #163a5f; }
+      .pin { font: 16px Consolas, monospace; fill: #1d2a35; }
+      .pin-small { font: 14px Consolas, monospace; fill: #1d2a35; }
+      .desc { font: 15px Arial, sans-serif; fill: #4b5d70; }
+      .logic { fill: #eef8ed; stroke: #3f7f3f; stroke-width: 2.5; rx: 6; }
+      .logic-title { font: 700 17px Arial, sans-serif; fill: #2f642f; }
+      .terminal { fill: #fff7d6; stroke: #8a6d1f; stroke-width: 2; rx: 6; }
+      .out { fill: #f7e9eb; stroke: #9c2f45; stroke-width: 2.5; rx: 6; }
+      .wire { fill: none; stroke: #305f9f; stroke-width: 2.5; }
+      .wire2 { fill: none; stroke: #5d6d7e; stroke-width: 2.2; stroke-dasharray: 7 5; }
+      .wire-red { fill: none; stroke: #b83b3b; stroke-width: 2.5; }
+      .wire-green { fill: none; stroke: #2f7d4a; stroke-width: 2.5; }
+      .wire-label { font: 14px Arial, sans-serif; fill: #17324d; paint-order: stroke; stroke: #ffffff; stroke-width: 5px; stroke-linejoin: round; }
+      .section { fill: #eef3f8; stroke: #8aa4bd; stroke-width: 1.5; rx: 10; }
+    </style>
+  </defs>
+
+  <text x="40" y="45" class="title">FBD-схема АВР 3-в-1 ПР200: все соединения малых блоков</text>
+  <text x="40" y="75" class="note">Пины с одинаковыми именами соединяются напрямую. Пунктир от State3 к диагностике разрешает промежуточное положение допконтактов только во время команды.</text>
+
+  <!-- External signal list -->
+  <rect x="30" y="105" width="250" height="1240" class="section"/>
+  <text x="55" y="140" class="block-title">Внешние сигналы</text>
+  <text x="55" y="172" class="desc">от входов ПР200</text>
+
+  <rect x="55" y="205" width="190" height="34" class="terminal"/><text x="70" y="227" class="pin">xManualSelector</text>
+  <rect x="55" y="248" width="190" height="34" class="terminal"/><text x="70" y="270" class="pin">xAutoReturn</text>
+  <rect x="55" y="305" width="190" height="34" class="terminal"/><text x="70" y="327" class="pin">xU1Ok</text>
+  <rect x="55" y="348" width="190" height="34" class="terminal"/><text x="70" y="370" class="pin">xU2Ok</text>
+  <rect x="55" y="391" width="190" height="34" class="terminal"/><text x="70" y="413" class="pin">xU3Ok</text>
+
+  <rect x="55" y="465" width="190" height="34" class="terminal"/><text x="70" y="487" class="pin">xQF1On</text>
+  <rect x="55" y="508" width="190" height="34" class="terminal"/><text x="70" y="530" class="pin">xQF1Off</text>
+  <rect x="55" y="551" width="190" height="34" class="terminal"/><text x="70" y="573" class="pin">xQF1Fault</text>
+
+  <rect x="55" y="625" width="190" height="34" class="terminal"/><text x="70" y="647" class="pin">xQF2On</text>
+  <rect x="55" y="668" width="190" height="34" class="terminal"/><text x="70" y="690" class="pin">xQF2Off</text>
+  <rect x="55" y="711" width="190" height="34" class="terminal"/><text x="70" y="733" class="pin">xQF2Fault</text>
+
+  <rect x="55" y="785" width="190" height="34" class="terminal"/><text x="70" y="807" class="pin">xQF3On</text>
+  <rect x="55" y="828" width="190" height="34" class="terminal"/><text x="70" y="850" class="pin">xQF3Off</text>
+  <rect x="55" y="871" width="190" height="34" class="terminal"/><text x="70" y="893" class="pin">xQF3Fault</text>
+
+  <text x="55" y="955" class="desc">Проводами дальше показаны</text>
+  <text x="55" y="977" class="desc">основные связи между FB.</text>
+  <text x="55" y="1010" class="desc">К каждому входному пину блока</text>
+  <text x="55" y="1032" class="desc">подключить одноименный сигнал.</text>
+
+  <!-- Diagnostic blocks -->
+  <rect x="340" y="110" width="285" height="165" class="block"/>
+  <text x="365" y="142" class="block-title">QF40FDiag</text>
+  <text x="365" y="166" class="desc">FB_AVR_QF_DIAG</text>
+  <text x="360" y="203" class="pin">xOn       xUndefined</text>
+  <text x="360" y="232" class="pin">xOff      xInvalid</text>
+  <text x="360" y="261" class="pin">xCommanded xNoPosition</text>
+
+  <rect x="340" y="315" width="285" height="165" class="block"/>
+  <text x="365" y="347" class="block-title">QF50FDiag</text>
+  <text x="365" y="371" class="desc">FB_AVR_QF_DIAG</text>
+  <text x="360" y="408" class="pin">xOn       xUndefined</text>
+  <text x="360" y="437" class="pin">xOff      xInvalid</text>
+  <text x="360" y="466" class="pin">xCommanded xNoPosition</text>
+
+  <rect x="340" y="520" width="285" height="165" class="block"/>
+  <text x="365" y="552" class="block-title">QF60FDiag</text>
+  <text x="365" y="576" class="desc">FB_AVR_QF_DIAG</text>
+  <text x="360" y="613" class="pin">xOn       xUndefined</text>
+  <text x="360" y="642" class="pin">xOff      xInvalid</text>
+  <text x="360" y="671" class="pin">xCommanded xNoPosition</text>
+
+  <!-- Commanded logic -->
+  <rect x="710" y="145" width="210" height="75" class="logic"/>
+  <text x="730" y="174" class="logic-title">OR / EQ</text>
+  <text x="730" y="199" class="pin-small">state=11 OR 31</text>
+
+  <rect x="710" y="350" width="210" height="75" class="logic"/>
+  <text x="730" y="379" class="logic-title">OR / EQ</text>
+  <text x="730" y="404" class="pin-small">state=12 OR 32</text>
+
+  <rect x="710" y="555" width="210" height="75" class="logic"/>
+  <text x="730" y="584" class="logic-title">OR / EQ</text>
+  <text x="730" y="609" class="pin-small">state=13 OR 33</text>
+
+  <!-- Undefined OR -->
+  <rect x="735" y="720" width="210" height="85" class="logic"/>
+  <text x="760" y="752" class="logic-title">OR3</text>
+  <text x="760" y="780" class="pin-small">xAlarmUndefined</text>
+
+  <!-- Fault OR -->
+  <rect x="735" y="840" width="210" height="85" class="logic"/>
+  <text x="760" y="872" class="logic-title">OR3</text>
+  <text x="760" y="900" class="pin-small">xAlarmFault</text>
+
+  <!-- All off AND -->
+  <rect x="735" y="965" width="230" height="100" class="logic"/>
+  <text x="760" y="997" class="logic-title">AND4 + NOT</text>
+  <text x="760" y="1025" class="pin-small">xAllOffConfirmed</text>
+  <text x="760" y="1048" class="pin-small">Off1 Off2 Off3 !Undefined</text>
+
+  <!-- Priority block -->
+  <rect x="340" y="760" width="315" height="460" class="block"/>
+  <text x="365" y="792" class="block-title">Priority3</text>
+  <text x="365" y="816" class="desc">FB_AVR_PRIORITY_3</text>
+  <text x="360" y="850" class="pin">xAutoReturn      xS1Ready</text>
+  <text x="360" y="878" class="pin">xU1Ok            xS2Ready</text>
+  <text x="360" y="906" class="pin">xU2Ok            xS3Ready</text>
+  <text x="360" y="934" class="pin">xU3Ok            udiActive</text>
+  <text x="360" y="962" class="pin">xQF1On           udiTarget</text>
+  <text x="360" y="990" class="pin">xQF2On           xAlarmParallel</text>
+  <text x="360" y="1018" class="pin">xQF3On           xNoSource</text>
+  <text x="360" y="1046" class="pin">xQF1Fault</text>
+  <text x="360" y="1074" class="pin">xQF2Fault</text>
+  <text x="360" y="1102" class="pin">xQF3Fault</text>
+
+  <!-- Mode block -->
+  <rect x="1040" y="690" width="310" height="230" class="block"/>
+  <text x="1065" y="722" class="block-title">Mode3</text>
+  <text x="1065" y="746" class="desc">FB_AVR_MODE_3</text>
+  <text x="1060" y="785" class="pin">xManualSelector  xAlarm</text>
+  <text x="1060" y="815" class="pin">xAlarmFault      xEmergencyMode</text>
+  <text x="1060" y="845" class="pin">xAlarmParallel   xAutoMode</text>
+  <text x="1060" y="875" class="pin">xAlarmUndefined  xManualMode</text>
+
+  <!-- State block -->
+  <rect x="1030" y="1030" width="345" height="350" class="block"/>
+  <text x="1055" y="1062" class="block-title">State3</text>
+  <text x="1055" y="1086" class="desc">FB_AVR_STATE_3</text>
+  <text x="1050" y="1120" class="pin">xAutoMode          udiState</text>
+  <text x="1050" y="1148" class="pin">udiTarget</text>
+  <text x="1050" y="1176" class="pin">udiActive</text>
+  <text x="1050" y="1204" class="pin">xAllOffConfirmed</text>
+  <text x="1050" y="1232" class="pin">xQF1On / xQF1Off</text>
+  <text x="1050" y="1260" class="pin">xQF2On / xQF2Off</text>
+  <text x="1050" y="1288" class="pin">xQF3On / xQF3Off</text>
+  <text x="1050" y="1316" class="pin">xS1Ready</text>
+  <text x="1050" y="1344" class="pin">xS2Ready</text>
+  <text x="1050" y="1372" class="pin">xS3Ready</text>
+
+  <!-- Commands block -->
+  <rect x="1560" y="840" width="360" height="500" class="block"/>
+  <text x="1585" y="872" class="block-title">Commands3</text>
+  <text x="1585" y="896" class="desc">FB_AVR_COMMANDS_3</text>
+  <text x="1580" y="930" class="pin">xAutoMode       xQ1</text>
+  <text x="1580" y="958" class="pin">xAlarm          xQ2</text>
+  <text x="1580" y="986" class="pin">xAlarmParallel  xQ3</text>
+  <text x="1580" y="1014" class="pin">udiState        xQ4</text>
+  <text x="1580" y="1042" class="pin">xS1Ready        xQ5</text>
+  <text x="1580" y="1070" class="pin">xS2Ready        xQ6</text>
+  <text x="1580" y="1098" class="pin">xS3Ready</text>
+  <text x="1580" y="1126" class="pin">xQF1On / xQF1Off</text>
+  <text x="1580" y="1154" class="pin">xQF2On / xQF2Off</text>
+  <text x="1580" y="1182" class="pin">xQF3On / xQF3Off</text>
+
+  <!-- Outputs -->
+  <rect x="2030" y="900" width="220" height="42" class="out"/><text x="2050" y="927" class="pin">Q1: включить 40F</text>
+  <rect x="2030" y="955" width="220" height="42" class="out"/><text x="2050" y="982" class="pin">Q2: выключить 40F</text>
+  <rect x="2030" y="1010" width="220" height="42" class="out"/><text x="2050" y="1037" class="pin">Q3: включить 50F</text>
+  <rect x="2030" y="1065" width="220" height="42" class="out"/><text x="2050" y="1092" class="pin">Q4: выключить 50F</text>
+  <rect x="2030" y="1120" width="220" height="42" class="out"/><text x="2050" y="1147" class="pin">Q5: включить 60F</text>
+  <rect x="2030" y="1175" width="220" height="42" class="out"/><text x="2050" y="1202" class="pin">Q6: выключить 60F</text>
+
+  <!-- Wires: state to commanded boxes and boxes to diag -->
+  <path class="wire2" d="M1375 1120 H1450 V80 H680 V182 H710"/>
+  <text x="1395" y="1105" class="wire-label">udiState</text>
+  <path class="wire-green" d="M920 182 H960 V245 H625"/>
+  <text x="925" y="172" class="wire-label">xQF1Commanded</text>
+  <path class="wire-green" d="M920 387 H970 V450 H625"/>
+  <text x="925" y="377" class="wire-label">xQF2Commanded</text>
+  <path class="wire-green" d="M920 592 H980 V655 H625"/>
+  <text x="925" y="582" class="wire-label">xQF3Commanded</text>
+
+  <!-- Undefined to OR and Mode -->
+  <path class="wire-red" d="M625 185 H680 V745 H735"/>
+  <path class="wire-red" d="M625 390 H690 V762 H735"/>
+  <path class="wire-red" d="M625 595 H700 V780 H735"/>
+  <path class="wire-red" d="M945 762 H1005 V875 H1040"/>
+  <text x="955" y="748" class="wire-label">xAlarmUndefined</text>
+
+  <!-- Fault OR to Mode -->
+  <path class="wire-red" d="M245 568 H690 V865 H735"/>
+  <path class="wire-red" d="M245 728 H700 V882 H735"/>
+  <path class="wire-red" d="M245 888 H710 V900 H735"/>
+  <path class="wire-red" d="M945 882 H1040"/>
+  <text x="955" y="870" class="wire-label">xAlarmFault</text>
+
+  <!-- External contacts to diag (direct shown) -->
+  <path class="wire" d="M245 482 H300 V198 H340"/>
+  <path class="wire" d="M245 525 H310 V226 H340"/>
+  <path class="wire" d="M245 642 H300 V403 H340"/>
+  <path class="wire" d="M245 685 H310 V431 H340"/>
+  <path class="wire" d="M245 802 H300 V608 H340"/>
+  <path class="wire" d="M245 845 H310 V636 H340"/>
+
+  <!-- External inputs to priority -->
+  <path class="wire" d="M245 265 H305 V850 H340"/>
+  <path class="wire" d="M245 322 H295 V878 H340"/>
+  <path class="wire" d="M245 365 H285 V906 H340"/>
+  <path class="wire" d="M245 408 H275 V934 H340"/>
+  <path class="wire" d="M245 482 H265 V962 H340"/>
+  <path class="wire" d="M245 642 H255 V990 H340"/>
+  <path class="wire" d="M245 802 H250 V1018 H340"/>
+  <path class="wire" d="M245 568 H260 V1046 H340"/>
+  <path class="wire" d="M245 728 H270 V1074 H340"/>
+  <path class="wire" d="M245 888 H280 V1102 H340"/>
+
+  <!-- Priority to State and Commands -->
+  <path class="wire" d="M655 934 H1010 V1176 H1030"/>
+  <text x="675" y="924" class="wire-label">udiActive</text>
+  <path class="wire" d="M655 962 H1018 V1148 H1030"/>
+  <text x="675" y="952" class="wire-label">udiTarget</text>
+  <path class="wire" d="M655 850 H965 V1316 H1030"/>
+  <path class="wire" d="M655 878 H975 V1344 H1030"/>
+  <path class="wire" d="M655 906 H985 V1372 H1030"/>
+  <text x="675" y="836" class="wire-label">xS1/2/3Ready -> State3</text>
+
+  <path class="wire" d="M655 850 H1480 V1042 H1560"/>
+  <path class="wire" d="M655 878 H1490 V1070 H1560"/>
+  <path class="wire" d="M655 906 H1500 V1098 H1560"/>
+  <text x="1260" y="838" class="wire-label">xS1/2/3Ready -> Commands3</text>
+
+  <path class="wire-red" d="M655 990 H1010 V845 H1040"/>
+  <path class="wire-red" d="M655 990 H1505 V986 H1560"/>
+  <text x="675" y="980" class="wire-label">xAlarmParallel</text>
+
+  <!-- Manual selector to mode -->
+  <path class="wire" d="M245 222 H1020 V785 H1040"/>
+  <text x="255" y="215" class="wire-label">xManualSelector</text>
+
+  <!-- Mode to State and Commands -->
+  <path class="wire-green" d="M1350 845 H1430 V1120 H1375"/>
+  <path class="wire-green" d="M1350 845 H1520 V930 H1560"/>
+  <text x="1365" y="835" class="wire-label">xAutoMode</text>
+  <path class="wire-red" d="M1350 785 H1510 V958 H1560"/>
+  <text x="1365" y="775" class="wire-label">xAlarm</text>
+
+  <!-- All off -->
+  <path class="wire" d="M245 525 H715 V990 H735"/>
+  <path class="wire" d="M245 685 H725 V1015 H735"/>
+  <path class="wire" d="M245 845 H725 V1040 H735"/>
+  <path class="wire-red" d="M945 762 H985 V1048 H965"/>
+  <path class="wire-green" d="M965 1015 H1020 V1204 H1030"/>
+  <text x="972" y="1003" class="wire-label">xAllOffConfirmed</text>
+
+  <!-- Contacts to state/commands as bundles -->
+  <path class="wire2" d="M245 482 H995 V1232 H1030"/>
+  <path class="wire2" d="M245 525 H1005 V1232 H1030"/>
+  <path class="wire2" d="M245 642 H1000 V1260 H1030"/>
+  <path class="wire2" d="M245 685 H1010 V1260 H1030"/>
+  <path class="wire2" d="M245 802 H1005 V1288 H1030"/>
+  <path class="wire2" d="M245 845 H1015 V1288 H1030"/>
+  <text x="790" y="1220" class="wire-label">допконтакты -> State3</text>
+
+  <path class="wire2" d="M245 482 H1460 V1126 H1560"/>
+  <path class="wire2" d="M245 525 H1470 V1126 H1560"/>
+  <path class="wire2" d="M245 642 H1465 V1154 H1560"/>
+  <path class="wire2" d="M245 685 H1475 V1154 H1560"/>
+  <path class="wire2" d="M245 802 H1470 V1182 H1560"/>
+  <path class="wire2" d="M245 845 H1480 V1182 H1560"/>
+  <text x="1270" y="1114" class="wire-label">допконтакты -> Commands3</text>
+
+  <!-- State to Commands -->
+  <path class="wire" d="M1375 1120 H1500 V1014 H1560"/>
+  <text x="1400" y="1110" class="wire-label">udiState</text>
+
+  <!-- Commands to physical outputs -->
+  <path class="wire-green" d="M1920 930 H2030"/>
+  <path class="wire-green" d="M1920 958 H1995 V976 H2030"/>
+  <path class="wire-green" d="M1920 986 H1985 V1031 H2030"/>
+  <path class="wire-green" d="M1920 1014 H1975 V1086 H2030"/>
+  <path class="wire-green" d="M1920 1042 H1965 V1141 H2030"/>
+  <path class="wire-green" d="M1920 1070 H1955 V1196 H2030"/>
+
+  <!-- Output status terminals -->
+  <rect x="2030" y="1248" width="220" height="42" class="terminal"/><text x="2050" y="1275" class="pin">xAutoMode</text>
+  <rect x="2030" y="1302" width="220" height="42" class="terminal"/><text x="2050" y="1329" class="pin">xManualMode</text>
+  <rect x="2030" y="1356" width="220" height="42" class="terminal"/><text x="2050" y="1383" class="pin">xAlarm / диагностика</text>
+  <path class="wire-red" d="M1350 785 H2015 V1377 H2030"/>
+  <path class="wire-green" d="M1350 845 H2005 V1269 H2030"/>
+  <path class="wire" d="M1350 875 H1995 V1323 H2030"/>
+</svg>

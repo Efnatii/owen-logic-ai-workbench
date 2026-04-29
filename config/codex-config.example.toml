@@ -1,0 +1,6 @@
+# Copy this block into C:\Users\Alexandra\.codex\config.toml
+# Adjust the path if the repository is placed elsewhere.
+
+[mcp_servers.owen_logic]
+command = "python"
+args = ["C:\\__SELF_PC__\\owen-logic-ai-workbench\\mcp\\owen_logic_server.py"]
