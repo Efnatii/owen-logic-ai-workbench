@@ -27,6 +27,7 @@ DEFAULT_CONVERTER_EXE = Path(
     r"C:\Program Files\Owen\OWEN Logic\ProjectJsonConverter\ProgramRelayFBD.exe"
 )
 SCREENSHOT_DIR = Path.home() / ".codex" / "tmp" / "owen_logic_screenshots"
+FRAMING_MODE = "jsonl"
 
 
 class RECT(ctypes.Structure):
@@ -213,14 +214,22 @@ def read_exact(length: int) -> bytes | None:
 
 
 def read_message() -> dict[str, Any] | None:
-    header = bytearray()
-    while True:
-        char = sys.stdin.buffer.read(1)
-        if not char:
+    global FRAMING_MODE
+    first_line = sys.stdin.buffer.readline()
+    if not first_line:
+        return None
+
+    if not first_line.lower().startswith(b"content-length:"):
+        FRAMING_MODE = "jsonl"
+        return json.loads(first_line.decode("utf-8"))
+
+    FRAMING_MODE = "headers"
+    header = bytearray(first_line)
+    while not (header.endswith(b"\r\n\r\n") or header.endswith(b"\n\n")):
+        line = sys.stdin.buffer.readline()
+        if not line:
             return None
-        header.extend(char)
-        if header.endswith(b"\r\n\r\n") or header.endswith(b"\n\n"):
-            break
+        header.extend(line)
         if len(header) > 65536:
             raise ValueError("MCP header is too large")
 
@@ -241,8 +250,11 @@ def read_message() -> dict[str, Any] | None:
 
 def send_message(message: dict[str, Any]) -> None:
     payload = json.dumps(message, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
-    sys.stdout.buffer.write(f"Content-Length: {len(payload)}\r\n\r\n".encode("ascii"))
-    sys.stdout.buffer.write(payload)
+    if FRAMING_MODE == "headers":
+        sys.stdout.buffer.write(f"Content-Length: {len(payload)}\r\n\r\n".encode("ascii"))
+        sys.stdout.buffer.write(payload)
+    else:
+        sys.stdout.buffer.write(payload + b"\n")
     sys.stdout.buffer.flush()
 
 
