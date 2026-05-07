@@ -27,7 +27,7 @@ DEFAULT_CONVERTER_EXE = Path(
     r"C:\Program Files\Owen\OWEN Logic\ProjectJsonConverter\ProgramRelayFBD.exe"
 )
 SCREENSHOT_DIR = Path.home() / ".codex" / "tmp" / "owen_logic_screenshots"
-FRAMING_MODE = "jsonl"
+TRANSPORT_MODE = "content-length"
 
 
 class RECT(ctypes.Structure):
@@ -214,22 +214,35 @@ def read_exact(length: int) -> bytes | None:
 
 
 def read_message() -> dict[str, Any] | None:
-    global FRAMING_MODE
-    first_line = sys.stdin.buffer.readline()
-    if not first_line:
+    global TRANSPORT_MODE
+
+    first = sys.stdin.buffer.read(1)
+    while first in {b" ", b"\t", b"\r", b"\n"}:
+        first = sys.stdin.buffer.read(1)
+    if not first:
         return None
 
-    if not first_line.lower().startswith(b"content-length:"):
-        FRAMING_MODE = "jsonl"
-        return json.loads(first_line.decode("utf-8"))
+    if first == b"{":
+        TRANSPORT_MODE = "ndjson"
+        line = bytearray(first)
+        while not line.endswith(b"\n"):
+            char = sys.stdin.buffer.read(1)
+            if not char:
+                break
+            line.extend(char)
+            if len(line) > 16 * 1024 * 1024:
+                raise ValueError("MCP JSON line is too large")
+        return json.loads(line.decode("utf-8").strip())
 
-    FRAMING_MODE = "headers"
-    header = bytearray(first_line)
-    while not (header.endswith(b"\r\n\r\n") or header.endswith(b"\n\n")):
-        line = sys.stdin.buffer.readline()
-        if not line:
+    TRANSPORT_MODE = "content-length"
+    header = bytearray(first)
+    while True:
+        char = sys.stdin.buffer.read(1)
+        if not char:
             return None
-        header.extend(line)
+        header.extend(char)
+        if header.endswith(b"\r\n\r\n") or header.endswith(b"\n\n"):
+            break
         if len(header) > 65536:
             raise ValueError("MCP header is too large")
 
@@ -250,11 +263,12 @@ def read_message() -> dict[str, Any] | None:
 
 def send_message(message: dict[str, Any]) -> None:
     payload = json.dumps(message, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
-    if FRAMING_MODE == "headers":
+    if TRANSPORT_MODE == "ndjson":
+        sys.stdout.buffer.write(payload)
+        sys.stdout.buffer.write(b"\n")
+    else:
         sys.stdout.buffer.write(f"Content-Length: {len(payload)}\r\n\r\n".encode("ascii"))
         sys.stdout.buffer.write(payload)
-    else:
-        sys.stdout.buffer.write(payload + b"\n")
     sys.stdout.buffer.flush()
 
 

@@ -50,20 +50,21 @@ Use this as a single project folder for AI-assisted OWEN Logic work:
 
 ## Suggested Codex Installation
 
-Copy or symlink the skill folder into the Codex skills directory:
+Copy or symlink the skill folder into the Codex skills directory when using this repository outside the workbench:
 
 ```powershell
+$repo = "C:\path\to\owen-logic-ai-workbench"
 Copy-Item -Recurse -Force `
-  C:\__SELF_PC__\owen-logic-ai-workbench\skills\owen-logic-testing `
-  C:\Users\Alexandra\.codex\skills\owen-logic-testing
+  "$repo\skills\owen-logic-testing" `
+  "$env:USERPROFILE\.codex\skills\owen-logic-testing"
 ```
 
-Register the MCP server in `C:\Users\Alexandra\.codex\config.toml`. Use `config/codex-config.example.toml` as the template.
+Register the MCP server in `%USERPROFILE%\.codex\config.toml`. Use `config/codex-config.example.toml` as the template. Inside the current workbench, prefer `07_TOOLS\ai_capabilities\launchers\mcp-runner.cmd owen_logic`.
 
 ## Python Setup
 
 ```powershell
-cd C:\__SELF_PC__\owen-logic-ai-workbench
+cd C:\path\to\owen-logic-ai-workbench
 python -m pip install -r requirements.txt
 ```
 
@@ -82,10 +83,11 @@ Run the OWEN Logic MCP server self-check by listing tools from Codex after regis
 Run AVR 3-in-1 example tests by setting `PYTHONPATH` to include both the generic PR200 tools and the example source:
 
 ```powershell
-$env:PYTHONPATH = "C:\__SELF_PC__\owen-logic-ai-workbench\tools\pr200;C:\__SELF_PC__\owen-logic-ai-workbench\examples\avr-3in1-pr200\src"
+$repo = (Get-Location).Path
+$env:PYTHONPATH = "$repo\tools\pr200;$repo\examples\avr-3in1-pr200\src"
 python -m unittest `
-  C:\__SELF_PC__\owen-logic-ai-workbench\examples\avr-3in1-pr200\tests\test_avr_3in1.py `
-  C:\__SELF_PC__\owen-logic-ai-workbench\examples\avr-3in1-pr200\tests\test_avr_3in1_invariants.py `
+  "$repo\examples\avr-3in1-pr200\tests\test_avr_3in1.py" `
+  "$repo\examples\avr-3in1-pr200\tests\test_avr_3in1_invariants.py" `
   -v
 ```
 
@@ -94,8 +96,9 @@ Full discovery in `examples/avr-3in1-pr200/tests` also includes COM/GUI/artifact
 Run AVR 2-in-1 with sectioning tests:
 
 ```powershell
-$env:PYTHONPATH = "C:\__SELF_PC__\owen-logic-ai-workbench\examples\avr-2in1-section-pr200\src"
-python -m unittest discover C:\__SELF_PC__\owen-logic-ai-workbench\examples\avr-2in1-section-pr200\tests -v
+$repo = (Get-Location).Path
+$env:PYTHONPATH = "$repo\examples\avr-2in1-section-pr200\src"
+python -m unittest discover "$repo\examples\avr-2in1-section-pr200\tests" -v
 ```
 
 ## Notes

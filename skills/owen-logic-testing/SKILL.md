@@ -7,7 +7,7 @@ description: Test and inspect OWEN Logic projects and the local OWEN Logic Windo
 
 ## Overview
 
-Use the local `owen_logic` MCP server to perform non-destructive OWEN Logic checks: find the installation, launch the GUI, list windows/processes, capture screenshots, and run a smoke test. Use normal repository tests and static review alongside the GUI check when a project also includes Python simulations or `.st` sources.
+Use the local OWEN Logic MCP tools to perform non-destructive OWEN Logic checks: find the installation, launch the GUI, list windows/processes, capture screenshots, and run a smoke test. In Codex Desktop these tools may be exposed through `mcp__artifact_tools__` as `owen_logic_*` because the desktop session has a practical MCP-server startup limit; the standalone workspace server is available at `07_TOOLS\ai_capabilities\repositories\owen_logic_ai_workbench\mcp\owen_logic_server.py`.
 
 ## Workflow
 
@@ -21,7 +21,7 @@ Use the local `owen_logic` MCP server to perform non-destructive OWEN Logic chec
 
 ## MCP Tools
 
-The configured MCP server name is `owen_logic`. If the tools are not visible in the current session, tell the user Codex may need to restart or reload MCP servers after editing `C:\Users\Alexandra\.codex\config.toml`.
+The preferred callable tools are `owen_logic_*`. In this workspace they are normally reachable via `mcp__artifact_tools__` to avoid exceeding the Codex Desktop MCP startup set. If neither `mcp__artifact_tools__owen_logic_*` nor a standalone `mcp__owen_logic__` namespace is visible in the current session, tell the user Codex may need to restart or reload MCP servers after editing `%USERPROFILE%\.codex\config.toml`.
 
 - `owen_logic_find_installation`: locate `ProgramRelayFBD.exe`, report version, and locate the ProjectJsonConverter executable.
 - `owen_logic_list_processes`: list running `ProgramRelayFBD.exe` processes and matching windows.
@@ -39,7 +39,7 @@ Default installation paths on this machine:
 - `C:\Program Files\Owen\OWEN Logic\ProgramRelayFBD.exe`
 - `C:\Program Files\Owen\OWEN Logic\ProjectJsonConverter\ProgramRelayFBD.exe`
 
-In the `owen-logic-ai-workbench` repository the MCP server script lives at `mcp/owen_logic_server.py`. If installed directly into Codex, it may also live at `C:\Users\Alexandra\.codex\mcp\owen_logic_server.py`.
+In the `owen-logic-ai-workbench` repository the MCP server script lives at `mcp/owen_logic_server.py`. In this workspace it is launched through `07_TOOLS\ai_capabilities\launchers\mcp-runner.cmd owen_logic`.
 
 Reusable PR200/COM helpers live in `tools/pr200/`:
 
