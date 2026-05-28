@@ -1,6 +1,14 @@
-# Copy this block into C:\Users\Alexandra\.codex\config.toml
-# Adjust the path if the repository is placed elsewhere.
+# Copy this block into the active $CODEX_HOME\config.toml.
+# Inside the portable workbench, prefer the mcp-runner.cmd wrapper.
+# Adjust the paths if the repository is placed elsewhere.
 
 [mcp_servers.owen_logic]
-command = "python"
-args = ["C:\\__SELF_PC__\\owen-logic-ai-workbench\\mcp\\owen_logic_server.py"]
+command = "powershell.exe"
+args = [
+  "-NoProfile",
+  "-ExecutionPolicy",
+  "Bypass",
+  "-Command",
+  "if($env:WORKBENCH_ROOT){$d=$env:WORKBENCH_ROOT}else{$d=(Get-Location).Path; while($d -and -not(Test-Path (Join-Path $d '00_ROUTING\\AI_ROUTING.md'))){$p=Split-Path $d -Parent; if($p -eq $d){throw 'Workbench root not found'}; $d=$p}}; & (Join-Path $d '07_TOOLS\\ai_capabilities\\launchers\\mcp-runner.cmd') $env:WORKBENCH_MCP_SERVER"
+]
+env = { WORKBENCH_MCP_SERVER = "owen_logic" }

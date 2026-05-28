@@ -17,10 +17,12 @@ Useful paths:
 For tests that import shared PR200 tools:
 
 ```powershell
-$env:PYTHONPATH = "C:\__SELF_PC__\owen-logic-ai-workbench\tools\pr200;C:\__SELF_PC__\owen-logic-ai-workbench\examples\avr-3in1-pr200\src"
+$repo = Resolve-Path "C:\path\to\owen-logic-ai-workbench"
+$example = Join-Path $repo "examples\avr-3in1-pr200"
+$env:PYTHONPATH = "$(Join-Path $repo 'tools\pr200');$(Join-Path $example 'src')"
 python -m unittest `
-  C:\__SELF_PC__\owen-logic-ai-workbench\examples\avr-3in1-pr200\tests\test_avr_3in1.py `
-  C:\__SELF_PC__\owen-logic-ai-workbench\examples\avr-3in1-pr200\tests\test_avr_3in1_invariants.py `
+  (Join-Path $example "tests\test_avr_3in1.py") `
+  (Join-Path $example "tests\test_avr_3in1_invariants.py") `
   -v
 ```
 

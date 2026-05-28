@@ -59,7 +59,11 @@ Copy-Item -Recurse -Force `
   "$env:USERPROFILE\.codex\skills\owen-logic-testing"
 ```
 
-Register the MCP server in `%USERPROFILE%\.codex\config.toml`. Use `config/codex-config.example.toml` as the template. Inside the current workbench, prefer `07_TOOLS\ai_capabilities\launchers\mcp-runner.cmd owen_logic`.
+Register the MCP server in the active `$CODEX_HOME\config.toml`. Use
+`config/codex-config.example.toml` as the template. Inside the current
+workbench, prefer `07_TOOLS\ai_capabilities\launchers\mcp-runner.cmd
+owen_logic`, then refresh any default user-home Codex mirror through the
+workbench launcher.
 
 ## Python Setup
 

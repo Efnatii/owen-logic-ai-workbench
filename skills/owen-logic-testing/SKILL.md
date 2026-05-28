@@ -21,7 +21,7 @@ Use the local OWEN Logic MCP tools to perform non-destructive OWEN Logic checks:
 
 ## MCP Tools
 
-The preferred callable tools are `owen_logic_*`. In this workspace they are normally reachable via `mcp__artifact_tools__` to avoid exceeding the Codex Desktop MCP startup set. If neither `mcp__artifact_tools__owen_logic_*` nor a standalone `mcp__owen_logic__` namespace is visible in the current session, tell the user Codex may need to restart or reload MCP servers after editing `%USERPROFILE%\.codex\config.toml`.
+The preferred callable tools are `owen_logic_*`. In this workspace they are normally reachable via `mcp__artifact_tools__` to avoid exceeding the Codex Desktop MCP startup set. If neither `mcp__artifact_tools__owen_logic_*` nor a standalone `mcp__owen_logic__` namespace is visible in the current session, tell the user Codex may need to restart or reload MCP servers after editing the active `$CODEX_HOME\config.toml` and refreshing any default user-home compatibility mirror.
 
 - `owen_logic_find_installation`: locate `ProgramRelayFBD.exe`, report version, and locate the ProjectJsonConverter executable.
 - `owen_logic_list_processes`: list running `ProgramRelayFBD.exe` processes and matching windows.
