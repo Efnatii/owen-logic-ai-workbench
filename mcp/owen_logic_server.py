@@ -526,15 +526,11 @@ def focus_window(args: dict[str, Any]) -> dict[str, Any]:
 
 
 def screenshot_window(args: dict[str, Any]) -> dict[str, Any]:
-    try:
-        from PIL import ImageGrab
-    except Exception as exc:
-        raise RuntimeError("Pillow ImageGrab is required for screenshots") from exc
-
     window = select_window(args)
     rect = window["rect"]
     bbox = (rect["left"], rect["top"], rect["right"], rect["bottom"])
-    image = ImageGrab.grab(bbox=bbox)
+    width = int(rect["width"])
+    height = int(rect["height"])
 
     output_path = args.get("output_path")
     if output_path:
@@ -544,8 +540,47 @@ def screenshot_window(args: dict[str, Any]) -> dict[str, Any]:
         stamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         output = SCREENSHOT_DIR / f"owen_logic_{stamp}.png"
     output.parent.mkdir(parents=True, exist_ok=True)
-    image.save(output)
-    return {"output_path": str(output), "window": window, "size": image.size}
+
+    try:
+        from PIL import ImageGrab
+
+        image = ImageGrab.grab(bbox=bbox)
+        image.save(output)
+        return {"output_path": str(output), "window": window, "size": image.size, "backend": "Pillow.ImageGrab"}
+    except Exception as pil_exc:
+        script = (
+            "Add-Type -AssemblyName System.Windows.Forms;"
+            "Add-Type -AssemblyName System.Drawing;"
+            f"$left={int(rect['left'])};$top={int(rect['top'])};"
+            f"$width={width};$height={height};"
+            f"$out={json.dumps(str(output))};"
+            "$bmp=New-Object System.Drawing.Bitmap $width,$height;"
+            "$gfx=[System.Drawing.Graphics]::FromImage($bmp);"
+            "$gfx.CopyFromScreen($left,$top,0,0,$bmp.Size);"
+            "$bmp.Save($out,[System.Drawing.Imaging.ImageFormat]::Png);"
+            "$gfx.Dispose();$bmp.Dispose();"
+        )
+        completed = subprocess.run(
+            ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", script],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=30,
+            creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
+        )
+        if completed.returncode != 0 or not output.exists():
+            raise RuntimeError(
+                "Pillow ImageGrab failed and System.Drawing fallback did not create a screenshot: "
+                f"{pil_exc}; {completed.stderr.strip() or completed.stdout.strip()}"
+            ) from pil_exc
+        return {
+            "output_path": str(output),
+            "window": window,
+            "size": [width, height],
+            "backend": "System.Drawing.CopyFromScreen",
+        }
 
 
 VK_CODES: dict[str, int] = {
