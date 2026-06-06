@@ -7,7 +7,7 @@ description: Test and inspect OWEN Logic projects and the local OWEN Logic Windo
 
 ## Overview
 
-Use the local OWEN Logic MCP tools to perform non-destructive OWEN Logic checks: find the installation, launch the GUI, list windows/processes, capture screenshots, and run a smoke test. In Codex Desktop these tools may be exposed through `mcp__artifact_tools__` as `owen_logic_*` because the desktop session has a practical MCP-server startup limit; the standalone workspace server is available at `07_TOOLS\ai_capabilities\repositories\owen_logic_ai_workbench\mcp\owen_logic_server.py`.
+Use the local OWEN Logic MCP tools to perform non-destructive OWEN Logic checks: find the installation, launch the GUI, list windows/processes, capture screenshots, and run a smoke test. In Codex Desktop these tools may be exposed through `mcp__artifact_tools__` as `owen_logic_*` because the desktop session has a practical MCP-server startup limit; the standalone workspace server is available at `07_TOOLS\r\owen\mcp\owen_logic_server.py`.
 
 ## Workflow
 
