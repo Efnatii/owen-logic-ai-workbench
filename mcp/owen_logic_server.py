@@ -20716,6 +20716,98 @@ def project_device_menu_dialog_probe(args: dict[str, Any]) -> dict[str, Any]:
                     command_result["focus_after_project_window_refresh_error"] = str(exc)
             command_result["pid"] = pid
             main_hwnd = int(main_window["hwnd"])
+
+            def refresh_main_window_handle(reason: str) -> dict[str, Any]:
+                nonlocal pid, main_window, main_hwnd
+                refresh: dict[str, Any] = {
+                    "reason": reason,
+                    "previous": compact_window(main_window),
+                    "previous_hwnd": main_hwnd,
+                }
+                try:
+                    live_window = window_info_from_hwnd(main_hwnd)
+                    rect_value = live_window.get("rect") or {}
+                    area = int(rect_value.get("width") or 0) * int(rect_value.get("height") or 0)
+                    if bool(live_window.get("visible")) and area > 0:
+                        main_window = live_window
+                        pid = int(live_window.get("pid") or pid)
+                        main_hwnd = int(live_window["hwnd"])
+                        refresh["source"] = "existing_hwnd"
+                except Exception as exc:
+                    refresh["existing_hwnd_error"] = str(exc)
+
+                if not refresh.get("source"):
+                    try:
+                        candidates = opened_project_window_candidates(active_pids, scratch_project)
+                        refresh["opened_project_window_candidates"] = [
+                            {
+                                "pid": candidate.get("pid"),
+                                "hwnd": candidate.get("hwnd"),
+                                "score": candidate.get("score"),
+                                "title_matches_scratch_path": candidate.get("title_matches_scratch_path"),
+                                "title_matches_scratch_name": candidate.get("title_matches_scratch_name"),
+                                "area": candidate.get("area"),
+                                "window": compact_window(candidate.get("window")),
+                            }
+                            for candidate in candidates[:10]
+                        ]
+                        candidate = candidates[0] if candidates else None
+                        if candidate and int(candidate.get("score") or 0) > 0:
+                            main_window = candidate["window"]
+                            pid = int(candidate["pid"])
+                            main_hwnd = int(main_window["hwnd"])
+                            refresh["source"] = "project_window_candidate"
+                    except Exception as exc:
+                        refresh["opened_project_window_candidates_error"] = str(exc)
+
+                if not refresh.get("source"):
+                    fallback_windows: list[dict[str, Any]] = []
+                    for candidate_pid in dict.fromkeys([pid, *active_pids]):
+                        try:
+                            fallback_windows.extend(enum_windows(pid=int(candidate_pid), owen_only=False))
+                        except Exception:
+                            continue
+                    fallback_windows = [
+                        window
+                        for window in fallback_windows
+                        if bool(window.get("visible"))
+                        and int((window.get("rect") or {}).get("width") or 0) > 0
+                        and int((window.get("rect") or {}).get("height") or 0) > 0
+                    ]
+                    fallback_windows.sort(
+                        key=lambda window: -(
+                            int((window.get("rect") or {}).get("width") or 0)
+                            * int((window.get("rect") or {}).get("height") or 0)
+                        )
+                    )
+                    refresh["fallback_windows"] = [compact_window(window) for window in fallback_windows[:10]]
+                    if fallback_windows:
+                        main_window = fallback_windows[0]
+                        pid = int(main_window.get("pid") or pid)
+                        main_hwnd = int(main_window["hwnd"])
+                        refresh["source"] = "largest_visible_window"
+
+                if refresh.get("source"):
+                    try:
+                        focus_after_refresh = focus_window({"pid": pid, "hwnd": main_hwnd, "owen_only": False})
+                        main_window = focus_after_refresh.get("window") or main_window
+                        refresh["focus"] = {
+                            "foreground_matches_target": focus_after_refresh.get("foreground_matches_target"),
+                            "window": compact_window(main_window),
+                        }
+                    except Exception as exc:
+                        refresh["focus_error"] = str(exc)
+                    refresh["selected"] = compact_window(main_window)
+                    refresh["selected_hwnd"] = main_hwnd
+                    refresh["selected_pid"] = pid
+                else:
+                    refresh["error"] = "No visible OWEN project window could be selected."
+                return refresh
+
+            command_result.setdefault("main_window_handle_refreshes", []).append(
+                refresh_main_window_handle("before_device_menu_capture")
+            )
+            command_result["pid"] = pid
             command_result["focus_before_device_menu"] = {
                 "foreground_matches_target": focus.get("foreground_matches_target"),
                 "window": compact_window(main_window),
@@ -39820,6 +39912,16 @@ def call_tool_data(name: str, args: dict[str, Any]) -> dict[str, Any]:
 
 
 def compatibility_tool_alias(name: str, args: dict[str, Any]) -> dict[str, Any]:
+    raw_args = dict(args)
+    nested_args = raw_args.get("args")
+    if isinstance(nested_args, dict):
+        args = dict(nested_args)
+        for key, value in raw_args.items():
+            if key != "args":
+                args[key] = value
+    else:
+        args = raw_args
+
     meta = COMPATIBILITY_TOOL_ALIASES[name]
     mode = str(meta.get("mode") or "")
     target = str(meta.get("target") or "")
