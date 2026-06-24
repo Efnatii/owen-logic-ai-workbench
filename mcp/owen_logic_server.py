@@ -29900,7 +29900,7 @@ def normalize_project_uuid(value: Any) -> str | None:
 def fbd_element_model_with_path(element: dict[str, Any]) -> tuple[dict[str, Any] | None, str | None]:
     if isinstance(element.get("ElementModel"), dict):
         return element["ElementModel"], "ElementModel"
-    for block_key in ("ElementBlockStoreModel", "ElementBlockModel"):
+    for block_key in ("ElementBlockStoreModel", "ElementBlockModel", "ElementInputModel", "ElementOutputModel"):
         block_model = element.get(block_key)
         if isinstance(block_model, dict) and isinstance(block_model.get("ElementModel"), dict):
             return block_model["ElementModel"], f"{block_key}/ElementModel"
