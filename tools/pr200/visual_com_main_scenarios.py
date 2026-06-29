@@ -14,10 +14,11 @@ from typing import Any
 
 from PIL import ImageGrab
 
+from owen_artifact_paths import resolve_pr200_reverse_file
 
 PROJECT_DIR = Path(__file__).resolve().parent
-INPUTS_PATH = PROJECT_DIR / "pr200_reverse" / "avr3in1_live_inputs.json"
-SYMBOL_MAP_PATH = PROJECT_DIR / "pr200_reverse" / "avr3in1_debug_symbol_map.json"
+INPUTS_PATH = resolve_pr200_reverse_file(__file__, "avr3in1_live_inputs.json")
+SYMBOL_MAP_PATH = resolve_pr200_reverse_file(__file__, "avr3in1_debug_symbol_map.json")
 COM_LOG_PATH = PROJECT_DIR / "owen_logic_com_emulator_COM22_runtime.stdout.log"
 FBD_TAB_RELATIVE_X = 595
 FBD_TAB_RELATIVE_Y = 58

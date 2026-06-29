@@ -822,7 +822,12 @@ def main() -> int:
     )
     debug_runtime = None
     if args.avr3in1_runtime:
-        symbol_map_path = args.debug_symbol_map or Path(__file__).with_name("pr200_reverse") / "avr3in1_debug_symbol_map.json"
+        if args.debug_symbol_map:
+            symbol_map_path = args.debug_symbol_map
+        else:
+            from owen_artifact_paths import resolve_pr200_reverse_file
+
+            symbol_map_path = resolve_pr200_reverse_file(__file__, "avr3in1_debug_symbol_map.json")
         from pr200_avr_runtime import AVR3In1DebugRuntime
 
         debug_runtime = AVR3In1DebugRuntime(symbol_map_path, args.avr3in1_inputs_file)

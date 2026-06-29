@@ -7341,8 +7341,6 @@ COMPATIBILITY_TOOL_ALIASES: dict[str, dict[str, Any]] = {
         "target": "owen_logic_manual_evidence_search",
         "note": "Manual capability checks are handled through local PDF/page-text evidence search.",
     },
-    "owen_logic_modbus_master_config": {"mode": "modbus_config", "target": "master"},
-    "owen_logic_modbus_slave_config": {"mode": "modbus_config", "target": "slave"},
     "owen_logic_online_debug": {"mode": "live_preflight", "action": "online_debug"},
     "owen_logic_owencloud_export": {
         "mode": "network_guardrail",
@@ -29556,13 +29554,21 @@ def selected_macro_elements(
 
 
 def macro_element_port_uids(element: dict[str, Any]) -> set[str]:
-    model = element.get("ElementModel") if isinstance(element.get("ElementModel"), dict) else {}
-    ports = model.get("Ports") or []
     result: set[str] = set()
-    if isinstance(ports, list):
-        for port in ports:
-            if isinstance(port, dict) and port.get("UniqueId"):
-                result.add(str(port.get("UniqueId")))
+    models: list[dict[str, Any]] = []
+    model = element.get("ElementModel") if isinstance(element.get("ElementModel"), dict) else None
+    if isinstance(model, dict):
+        models.append(model)
+    for block_key in ("ElementBlockModel", "ElementBlockStoreModel", "ElementInputModel", "ElementOutputModel"):
+        block = element.get(block_key)
+        if isinstance(block, dict) and isinstance(block.get("ElementModel"), dict):
+            models.append(block["ElementModel"])
+    for model in models:
+        ports = model.get("Ports") or []
+        if isinstance(ports, list):
+            for port in ports:
+                if isinstance(port, dict) and port.get("UniqueId"):
+                    result.add(str(port.get("UniqueId")))
     return result
 
 
@@ -37318,6 +37324,96 @@ def modbus_reference(args: dict[str, Any]) -> dict[str, Any]:
     return result
 
 
+def modbus_master_config(args: dict[str, Any]) -> dict[str, Any]:
+    include_examples = bool(args.get("include_examples", True))
+    max_matches = clamp_int(args.get("max_matches"), 80, 1, 1000)
+    project_path = str(args.get("project_path") or "").strip()
+    project_inspection = None
+    if project_path:
+        project_inspection = project_modbus_inspect(
+            {"project_path": project_path, "max_matches": max_matches}
+        )
+    return {
+        "operation": "offline_modbus_master_configuration_plan",
+        "role": "master",
+        "read_only": True,
+        "risk_class": "safe_read",
+        "opens_com_port": False,
+        "opens_network_socket": False,
+        "live_device_action_executed": False,
+        "guardrail": (
+            "Offline planning only; no GUI, COM, TCP, download/upload, "
+            "firmware, calibration, or live controller action is executed."
+        ),
+        "reference": modbus_reference({"include_examples": include_examples}),
+        "recommended_fields": [
+            "unit_id/address",
+            "function_code",
+            "start_address",
+            "quantity or values",
+            "polling",
+            "timeout",
+            "attempts",
+            "register byte/word order",
+            "status variable",
+            "enable polling variable",
+        ],
+        "planning_steps": [
+            "Identify each slave device address and required register ranges.",
+            "Choose read/write function codes from the offline Modbus reference.",
+            "Group contiguous register reads only when device limits allow it.",
+            "Set timeout/attempts conservatively before any future live test.",
+            "Validate frames offline with CRC tools before connecting hardware.",
+            "Require explicit live-device confirmation before COM/TCP actions.",
+        ],
+        "project_inspection": project_inspection,
+    }
+
+
+def modbus_slave_config(args: dict[str, Any]) -> dict[str, Any]:
+    include_examples = bool(args.get("include_examples", True))
+    max_matches = clamp_int(args.get("max_matches"), 80, 1, 1000)
+    project_path = str(args.get("project_path") or "").strip()
+    project_inspection = None
+    if project_path:
+        project_inspection = project_modbus_inspect(
+            {"project_path": project_path, "max_matches": max_matches}
+        )
+    return {
+        "operation": "offline_modbus_slave_configuration_plan",
+        "role": "slave",
+        "read_only": True,
+        "risk_class": "safe_read",
+        "opens_com_port": False,
+        "opens_network_socket": False,
+        "live_device_action_executed": False,
+        "guardrail": (
+            "Offline planning only; no GUI, COM, TCP, download/upload, "
+            "firmware, calibration, or live controller action is executed."
+        ),
+        "reference": modbus_reference({"include_examples": include_examples}),
+        "recommended_fields": [
+            "slave/unit address",
+            "network variable name",
+            "data type",
+            "register address",
+            "register count",
+            "bit number",
+            "read/write direction",
+            "retain/status behavior",
+        ],
+        "planning_steps": [
+            "Map exported variables to stable register addresses.",
+            "Reserve contiguous register spans for multi-register data types.",
+            "Keep read-only and writable register groups explicit.",
+            "Validate generated request/response examples offline first.",
+            "Use scratch project copies for any future GUI parity proof.",
+            "Require explicit live-device confirmation before COM/TCP actions.",
+        ],
+        "project_inspection": project_inspection,
+    }
+
+
 def parse_hex_bytes(value: Any, field_name: str) -> bytes:
     text = str(value or "").strip()
     if not text:
@@ -40293,6 +40389,10 @@ def call_tool(name: str, arguments: dict[str, Any] | None) -> dict[str, Any]:
         return tool_result(modbus_response_build(args))
     if name == "owen_logic_modbus_transaction_validate":
         return tool_result(modbus_transaction_validate(args))
+    if name == "owen_logic_modbus_master_config":
+        return tool_result(modbus_master_config(args))
+    if name == "owen_logic_modbus_slave_config":
+        return tool_result(modbus_slave_config(args))
     if name == "owen_logic_modbus_tcp_loopback_smoke":
         return tool_result(modbus_tcp_loopback_smoke(args))
     if name == "owen_logic_project_model_query":

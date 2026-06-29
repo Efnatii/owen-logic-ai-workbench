@@ -74,6 +74,17 @@ python -m pip install -r requirements.txt
 
 The MCP server itself is intentionally lightweight. The PR200 emulator and visual tools use extra packages listed in `requirements.txt`.
 
+Inside this workbench, the active `mcp-runner.cmd owen_logic` route uses a
+dedicated runtime venv so the shared managed Python installation is not
+modified:
+
+```powershell
+uv venv --python "$env:WORKBENCH_ROOT\30_LOCAL_HEAVY\runtime\python\cpython-3.12-windows-x86_64-none\python.exe" `
+  "$env:WORKBENCH_ROOT\30_LOCAL_HEAVY\runtime\owen-logic-python312\.venv"
+uv pip install --python "$env:WORKBENCH_ROOT\30_LOCAL_HEAVY\runtime\owen-logic-python312\.venv\Scripts\python.exe" `
+  -r "$env:WORKBENCH_ROOT\07_TOOLS\r\owen\requirements.txt"
+```
+
 ## Quick Checks
 
 Compile all Python files:

@@ -17,11 +17,12 @@ from pathlib import Path
 from typing import Any
 
 from owen_logic_com_emulator import DeviceState, Emulator, add_crc, has_valid_crc
+from owen_artifact_paths import resolve_pr200_reverse_file
 from pr200_avr_runtime import AVR3In1DebugRuntime, INPUT_SYMBOL_TO_FIELD
 
 
 PROJECT_DIR = Path(__file__).resolve().parent
-SYMBOL_MAP_PATH = PROJECT_DIR / "pr200_reverse" / "avr3in1_debug_symbol_map.json"
+SYMBOL_MAP_PATH = resolve_pr200_reverse_file(__file__, "avr3in1_debug_symbol_map.json")
 AUDIT_ROOT = PROJECT_DIR / "debug_emulator_audit"
 
 
