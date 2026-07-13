@@ -1,0 +1,3303 @@
+{
+  "owen_logic_find_installation": {
+    "title": "FIND INSTALLATION",
+    "purpose": "Find the local OWEN Logic installation and report executable paths and versions.",
+    "family": "catalog_or_inventory",
+    "layout": "catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_installation_audit": {
+    "title": "INSTALLATION AUDIT",
+    "purpose": "Read-only audit for OWEN Logic manual sections 1-2: installed app/version/assets, local OS snapshot, manual/RAG evidence, and installer guardrails without running installers or changing the system.",
+    "family": "coverage_audit",
+    "layout": "runtime_dashboard",
+    "required_inputs": [],
+    "next": "Resolve the listed gaps against the named sources; do not convert partial coverage into a complete claim.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_guardrail_policy": {
+    "title": "GUARDRAIL POLICY",
+    "purpose": "Return the OWEN Logic automation guardrail policy for read, project-write, network, system and live-device actions.",
+    "family": "decision_gate",
+    "layout": "decision_gate",
+    "required_inputs": [],
+    "next": "Proceed only when the explicit gate verdict passes; use the listed blocker and required confirmation verbatim otherwise.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_guarded_action_preflight": {
+    "title": "GUARDED ACTION PREFLIGHT",
+    "purpose": "Build a non-executing preflight for sensitive, network, OwenCloud, OPC export and extension/replication actions with manual evidence and guardrails. It never reads secrets, opens network sockets, launches GUI, or contacts a device.",
+    "family": "decision_gate",
+    "layout": "decision_gate",
+    "required_inputs": [
+      "action"
+    ],
+    "next": "Proceed only when the explicit gate verdict passes; use the listed blocker and required confirmation verbatim otherwise.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_capability_status": {
+    "title": "CAPABILITY STATUS",
+    "purpose": "Return the current OWEN MCP capability status and the intentionally unimplemented guarded scopes.",
+    "family": "decision_gate",
+    "layout": "runtime_dashboard",
+    "required_inputs": [],
+    "next": "Proceed only when the explicit gate verdict passes; use the listed blocker and required confirmation verbatim otherwise.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_compiler_surface_probe": {
+    "title": "COMPILER SURFACE PROBE",
+    "purpose": "Inspect installed OWEN Logic compiler/converter assemblies and optionally probe ProjectJsonConverter on a scratch project copy without claiming full compiler diagnostics.",
+    "family": "decision_gate",
+    "layout": "compiler_audit",
+    "required_inputs": [],
+    "next": "Proceed only when the explicit gate verdict passes; use the listed blocker and required confirmation verbatim otherwise.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_compiler_diagnostics_audit": {
+    "title": "COMPILER DIAGNOSTICS AUDIT",
+    "purpose": "Audit the real OWEN compiler/build diagnostics surface: installed assemblies, selected compile/build reflection targets, decompiled-source evidence, and optional scratch-only GUI diagnostic probe without claiming full compiler diagnostics.",
+    "family": "coverage_audit",
+    "layout": "compiler_audit",
+    "required_inputs": [],
+    "next": "Resolve the listed gaps against the named sources; do not convert partial coverage into a complete claim.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_compiler_diagnostics_case_probe": {
+    "title": "COMPILER DIAGNOSTICS CASE PROBE",
+    "purpose": "Run paired scratch-only valid and intentionally broken OWEN Logic GUI diagnostics cases to test the safe auto-update/status compiler path without using BuildProjectCommand, COM/IP or live-device actions.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime",
+      "allow_broken_project"
+    ],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_live_device_preflight": {
+    "title": "LIVE DEVICE PREFLIGHT",
+    "purpose": "Build a non-executing live-device preflight checklist with target confirmation, backup, readback and abort gates.",
+    "family": "runtime_probe",
+    "layout": "device_transaction",
+    "required_inputs": [
+      "action"
+    ],
+    "next": "Treat only explicit runtime/readback proof as success; a preflight or launch attempt alone is not device or simulator proof.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_list_windows": {
+    "title": "LIST WINDOWS",
+    "purpose": "List top-level Windows windows, optionally filtered to OWEN Logic.",
+    "family": "catalog_or_inventory",
+    "layout": "catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_list_processes": {
+    "title": "LIST PROCESSES",
+    "purpose": "List running ProgramRelayFBD.exe processes and matching visible windows.",
+    "family": "catalog_or_inventory",
+    "layout": "catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_installation_catalog": {
+    "title": "INSTALLATION CATALOG",
+    "purpose": "Read OWEN Logic installation support assets: help index, device/module XML files and relevant DLL groups.",
+    "family": "catalog_or_inventory",
+    "layout": "component_catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_program_file_analysis": {
+    "title": "PROGRAM FILE ANALYSIS",
+    "purpose": "Perform a read-only analysis of the installed OWEN Logic program files, target catalogs, module XML, display resources, firmware assets and compiler/converter surface without launching GUI or devices.",
+    "family": "catalog_or_inventory",
+    "layout": "catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_help_index": {
+    "title": "HELP INDEX",
+    "purpose": "Parse the installed HelpPages.xml and return OWEN Logic help/component ids mapped to help files.",
+    "family": "catalog_or_inventory",
+    "layout": "catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_library_catalog": {
+    "title": "LIBRARY CATALOG",
+    "purpose": "Build a read-only catalog of installed OWEN Logic library/function/function-block/display assets from help and installation files.",
+    "family": "catalog_or_inventory",
+    "layout": "component_catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_component_catalog": {
+    "title": "COMPONENT CATALOG",
+    "purpose": "Parse installed OWEN Logic component/module XML catalogs and return read-only parameter/type/component metadata for installed targets and extension modules.",
+    "family": "catalog_or_inventory",
+    "layout": "component_catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_component_insert": {
+    "title": "PROJECT COMPONENT INSERT",
+    "purpose": "Insert a project-local OWEN hardware/module component archetype on a scratch .owle copy after installed InputOutputModules catalog and free-channel guardrails.",
+    "family": "project_create",
+    "layout": "change_receipt",
+    "required_inputs": [
+      "project_path",
+      "allow_installed_component_insert",
+      "installed_module_key",
+      "channel_index"
+    ],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_component_manager_gui_probe": {
+    "title": "PROJECT COMPONENT MANAGER GUI PROBE",
+    "purpose": "Open OWEN Logic Component Manager from a scratch-opened project via Ctrl+Shift+C and capture window/UIA evidence. With explicit opt-ins it may click only the project-library download action on the scratch project; it never writes the local library or contacts live devices.",
+    "family": "gui_observation",
+    "layout": "ui_observation",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_display_catalog": {
+    "title": "DISPLAY CATALOG",
+    "purpose": "Read installed OWEN Logic Visualization/display widget catalog resources and optional project-local display element archetypes without modifying projects or opening the GUI.",
+    "family": "catalog_or_inventory",
+    "layout": "display_readback",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_display_coverage_audit": {
+    "title": "DISPLAY COVERAGE AUDIT",
+    "purpose": "Return a read-only machine-readable coverage and guardrail map for OWEN Logic display/Visualization operations, separating proven scratch-safe paths from GUI/live gaps.",
+    "family": "coverage_audit",
+    "layout": "display_readback",
+    "required_inputs": [],
+    "next": "Resolve the listed gaps against the named sources; do not convert partial coverage into a complete claim.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_display_archetype_coverage_audit": {
+    "title": "DISPLAY ARCHETYPE COVERAGE AUDIT",
+    "purpose": "Read-only audit of installed display widget factories against project-local Visualization element archetypes used by guarded display insertion.",
+    "family": "coverage_audit",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Resolve the listed gaps against the named sources; do not convert partial coverage into a complete claim.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_manual_evidence_search": {
+    "title": "MANUAL EVIDENCE SEARCH",
+    "purpose": "Search extracted OWEN Logic manual/page-text evidence saved in the workspace; no OCR or network calls are performed.",
+    "family": "guided_procedure",
+    "layout": "procedure",
+    "required_inputs": [
+      "query"
+    ],
+    "next": "Follow only the returned source-backed steps and keep manual, read-only, guarded, and live-device boundaries distinct.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_manual_procedure_execute": {
+    "title": "MANUAL PROCEDURE EXECUTE",
+    "purpose": "Build and safely dry-run a manual/RAG-backed OWEN Logic procedure. Only read-only evidence/catalog steps execute automatically; GUI, project-write, network and live-device steps are returned as guarded planned actions.",
+    "family": "guided_procedure",
+    "layout": "procedure",
+    "required_inputs": [
+      "query"
+    ],
+    "next": "Follow only the returned source-backed steps and keep manual, read-only, guarded, and live-device boundaries distinct.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_shortcuts_catalog": {
+    "title": "SHORTCUTS CATALOG",
+    "purpose": "Return the manual-derived OWEN Logic keyboard shortcut catalog with risk labels and send-hotkey compatibility.",
+    "family": "catalog_or_inventory",
+    "layout": "component_catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_examples_catalog": {
+    "title": "EXAMPLES CATALOG",
+    "purpose": "Return documented example scenarios from the manual and scan explicit/default roots for local OWEN example project files.",
+    "family": "catalog_or_inventory",
+    "layout": "catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_extensions_catalog": {
+    "title": "EXTENSIONS CATALOG",
+    "purpose": "Return a read-only catalog of extension/cloud/OPC/replication-related manual items and installed assets; no network or device action is performed.",
+    "family": "catalog_or_inventory",
+    "layout": "catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_list": {
+    "title": "PROJECT LIST",
+    "purpose": "Recursively list OWEN Logic project files under a root path without opening or modifying them.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [
+      "root_path"
+    ],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_create_from_scratch": {
+    "title": "PROJECT CREATE FROM SCRATCH",
+    "purpose": "Create a new ZIP-based OWEN Logic .owle from generated JSON without copying an existing project. The generated FBD project is target-parameterized for any installed OWEN PR DevValue and can include two macro documents.",
+    "family": "project_create",
+    "layout": "change_receipt",
+    "required_inputs": [
+      "target_dev_value"
+    ],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_scratch_copy": {
+    "title": "PROJECT SCRATCH COPY",
+    "purpose": "Create a verified copy of an OWEN Logic project under a scratch/sandbox directory before any project-write experiment.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_open_scratch": {
+    "title": "PROJECT OPEN SCRATCH",
+    "purpose": "Create a verified scratch copy of a project and launch OWEN Logic with that copy, optionally capturing a screenshot.",
+    "family": "project_lifecycle",
+    "layout": "lifecycle",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Use the reported PID/window/artifact and final lifecycle state; a process start is not proof that the intended project opened or saved.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_gui_open_probe": {
+    "title": "PROJECT GUI OPEN PROBE",
+    "purpose": "Probe OWEN Logic File > Open project through the real Windows file dialog against a scratch .owle copy, with screenshots, process/new-PID tracking, source-hash preservation and cleanup.",
+    "family": "gui_observation",
+    "layout": "ui_observation",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_gui_new_project_probe": {
+    "title": "PROJECT GUI NEW PROJECT PROBE",
+    "purpose": "Probe OWEN Logic New Project through Ctrl+N, File > New Project, or toolbar New on a blank GUI session, with screenshots, process/window tracking, Windows Application event-log crash evidence, and cleanup.",
+    "family": "gui_observation",
+    "layout": "ui_observation",
+    "required_inputs": [
+      "allow_safe_runtime"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_lifecycle_smoke": {
+    "title": "PROJECT LIFECYCLE SMOKE",
+    "purpose": "Run a bounded GUI project lifecycle shortcut smoke on a scratch .owle copy: open, save, save-as hotkey, create-new hotkey, screenshots, and cleanup.",
+    "family": "project_lifecycle",
+    "layout": "lifecycle",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_write_project"
+    ],
+    "next": "Use the reported PID/window/artifact and final lifecycle state; a process start is not proof that the intended project opened or saved.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_gui_validation_smoke": {
+    "title": "PROJECT GUI VALIDATION SMOKE",
+    "purpose": "Run a bounded OWEN Logic GUI simulator/validation smoke on a scratch .owle copy: open, enter simulator mode, step/start/stop, screenshots, source-hash preservation, and cleanup.",
+    "family": "gui_observation",
+    "layout": "ui_observation",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_gui_diagnostics_smoke": {
+    "title": "PROJECT GUI DIAGNOSTICS SMOKE",
+    "purpose": "Capture bounded OWEN Logic GUI diagnostic/status/error-list UIA evidence on a scratch .owle copy without live-device actions.",
+    "family": "gui_observation",
+    "layout": "ui_observation",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_modbus_gui_probe": {
+    "title": "PROJECT MODBUS GUI PROBE",
+    "purpose": "Capture bounded OWEN Logic GUI Modbus-related surface evidence on a scratch .owle copy: window, menu/UIA controls, screenshots, Modbus model summary, source-hash preservation, and cleanup. It does not edit Modbus dialogs or open COM/TCP.",
+    "family": "gui_observation",
+    "layout": "ui_observation",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_device_menu_dialog_probe": {
+    "title": "PROJECT DEVICE MENU DIALOG PROBE",
+    "purpose": "Open selected safe OWEN Logic Device menu dialogs on a scratch .owle copy, currently variable table and connection/port settings, then capture screenshots/UIA evidence without applying settings or contacting a device.",
+    "family": "domain_operation",
+    "layout": "device_transaction",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime"
+    ],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_variable_table_coverage_audit": {
+    "title": "VARIABLE TABLE COVERAGE AUDIT",
+    "purpose": "Return a read-only machine-readable coverage and guardrail map for OWEN Logic variable-table operations, separating proven scratch-safe paths from partial/unproven parity and live-device blocked paths.",
+    "family": "coverage_audit",
+    "layout": "variable_readback",
+    "required_inputs": [],
+    "next": "Resolve the listed gaps against the named sources; do not convert partial coverage into a complete claim.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_variable_table_gui_model_parity_audit": {
+    "title": "VARIABLE TABLE GUI MODEL PARITY AUDIT",
+    "purpose": "Read-only audit mapping OWEN Logic variable-table GUI/manual concepts to the current safe MCP variable/ST/model surfaces without launching GUI or writing projects.",
+    "family": "gui_observation",
+    "layout": "variable_readback",
+    "required_inputs": [],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_variable_table_gui_probe": {
+    "title": "PROJECT VARIABLE TABLE GUI PROBE",
+    "purpose": "Open the OWEN Logic variable table dialog/surface on a scratch .owle copy through the real Device menu path and capture screenshot/UIA evidence without editing variables.",
+    "family": "gui_observation",
+    "layout": "variable_readback",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_variable_table_toolbar_probe": {
+    "title": "PROJECT VARIABLE TABLE TOOLBAR PROBE",
+    "purpose": "Click bounded OWEN Logic variable-table toolbar actions such as add/create variable or CSV import/export dialog buttons on a scratch .owle copy and capture evidence. CSV import commit/save and CSV export require explicit scratch-only opt-ins.",
+    "family": "domain_operation",
+    "layout": "variable_readback",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime"
+    ],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_variable_table_gui_edit_probe": {
+    "title": "PROJECT VARIABLE TABLE GUI EDIT PROBE",
+    "purpose": "Create one marker variable through the real OWEN Logic variable-table GUI on a scratch .owle copy, optionally delete the same marker through the GUI, save only the scratch project, and verify scratch-model readback.",
+    "family": "gui_observation",
+    "layout": "variable_readback",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime",
+      "allow_gui_variable_edit"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_variable_table_gui_delete_probe": {
+    "title": "PROJECT VARIABLE TABLE GUI DELETE PROBE",
+    "purpose": "Pre-seed one unused marker variable on a scratch .owle copy, delete that marker through the real OWEN Logic variable-table GUI, save only the scratch project, and verify the marker is absent.",
+    "family": "gui_observation",
+    "layout": "variable_readback",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime",
+      "allow_gui_variable_delete"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_property_panel_probe": {
+    "title": "PROJECT PROPERTY PANEL PROBE",
+    "purpose": "Capture bounded OWEN Logic GUI property-panel surface UIA/menu/screenshot evidence on a scratch .owle copy without editing.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime"
+    ],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_property_panel_selection_probe": {
+    "title": "PROJECT PROPERTY PANEL SELECTION PROBE",
+    "purpose": "Open a scratch .owle through the real OWEN Logic GUI, select a visible FBD element, and capture property-panel switch evidence without editing.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime"
+    ],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_property_panel_edit_probe": {
+    "title": "PROJECT PROPERTY PANEL EDIT PROBE",
+    "purpose": "Open a scratch .owle through the real OWEN Logic GUI, select a visible FBD element, edit its Comment property through the property-panel dropdown editor, save, and verify the marker only in the scratch project.",
+    "family": "project_change",
+    "layout": "change_receipt",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime",
+      "allow_gui_property_edit"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_property_panel_document_inline_edit_probe": {
+    "title": "PROJECT PROPERTY PANEL DOCUMENT INLINE EDIT PROBE",
+    "purpose": "Open a scratch .owle through the real OWEN Logic GUI, switch to the document/canvas property panel, edit one inline text property, save, and verify the marker only in the scratch project.",
+    "family": "project_change",
+    "layout": "change_receipt",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime",
+      "allow_gui_property_edit"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_gui_probe": {
+    "title": "PROJECT DISPLAY GUI PROBE",
+    "purpose": "Capture bounded OWEN Logic GUI Visualization/display editor surface evidence on a scratch .owle copy, with screenshots/UIA/menu evidence, offline display model readback and no GUI edits.",
+    "family": "gui_observation",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_screen_gui_edit_probe": {
+    "title": "PROJECT DISPLAY SCREEN GUI EDIT PROBE",
+    "purpose": "Perform one bounded scratch-only OWEN Logic GUI edit of an existing display screen Description field, save the scratch project, and verify Visualization readback.",
+    "family": "gui_observation",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime",
+      "allow_gui_display_edit"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_screen_gui_copy_paste_delete_probe": {
+    "title": "PROJECT DISPLAY SCREEN GUI COPY PASTE DELETE PROBE",
+    "purpose": "Perform a bounded scratch-only OWEN Logic GUI copy/paste/delete cycle for an existing display screen via Screen Manager context menu, save the scratch project after paste/delete, and verify Visualization screen-count readback.",
+    "family": "gui_observation",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime",
+      "allow_gui_display_edit",
+      "confirm_display_copy_paste_delete_scratch_only"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_screen_gui_add_delete_probe": {
+    "title": "PROJECT DISPLAY SCREEN GUI ADD DELETE PROBE",
+    "purpose": "Perform a bounded scratch-only OWEN Logic GUI Add Screen/Delete Screen cycle via Screen Manager context menu, save the scratch project after add/delete, and verify Visualization screen-count readback.",
+    "family": "gui_observation",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime",
+      "allow_gui_display_edit",
+      "confirm_display_add_delete_scratch_only"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_simulator_live_readback_probe": {
+    "title": "SIMULATOR LIVE READBACK PROBE",
+    "purpose": "Probe OWEN Logic simulator GUI runtime surfaces on a scratch .owle copy and evaluate only UI-visible runtime assertions.",
+    "family": "runtime_probe",
+    "layout": "runtime_probe",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime"
+    ],
+    "next": "Treat only explicit runtime/readback proof as success; a preflight or launch attempt alone is not device or simulator proof.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_metadata_set": {
+    "title": "PROJECT METADATA SET",
+    "purpose": "Patch safe OWEN Logic project metadata only on a scratch .owle copy or explicitly confirmed scratch path.",
+    "family": "project_change",
+    "layout": "change_receipt",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_target_inspect": {
+    "title": "PROJECT TARGET INSPECT",
+    "purpose": "Read OWEN Logic project target/platform metadata and installed target catalog; no project or GUI changes are performed.",
+    "family": "project_inspection",
+    "layout": "project_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Use the reported project identity, selected objects, counts, and limitations as the basis for the next exact edit or validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_target_coverage_audit": {
+    "title": "TARGET COVERAGE AUDIT",
+    "purpose": "Return a read-only machine-readable coverage and guardrail map for OWEN Logic target/platform operations, separating catalog/metadata coverage from full GUI migration and live-device gaps.",
+    "family": "coverage_audit",
+    "layout": "audit_matrix",
+    "required_inputs": [],
+    "next": "Resolve the listed gaps against the named sources; do not convert partial coverage into a complete claim.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_target_patch": {
+    "title": "PROJECT TARGET PATCH",
+    "purpose": "Patch DocumentModel.DevValue target metadata only on a scratch .owle copy with catalog and family guardrails; not a full GUI target migration.",
+    "family": "project_change",
+    "layout": "change_receipt",
+    "required_inputs": [
+      "project_path",
+      "new_dev_value",
+      "allow_target_metadata_patch"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_target_gui_probe": {
+    "title": "PROJECT TARGET GUI PROBE",
+    "purpose": "Capture bounded OWEN Logic GUI target-platform command/wizard evidence on a scratch .owle copy, with explicit opt-ins for scratch-only target migration Create/save/readback.",
+    "family": "gui_observation",
+    "layout": "ui_observation",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_runtime"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_variable_patch": {
+    "title": "PROJECT VARIABLE PATCH",
+    "purpose": "Patch safe fields of an existing OWEN Logic variable only on a scratch .owle copy or explicitly confirmed scratch path.",
+    "family": "project_change",
+    "layout": "variable_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_variable_create": {
+    "title": "PROJECT VARIABLE CREATE",
+    "purpose": "Create a simple user variable only on a scratch .owle copy or explicitly confirmed scratch path.",
+    "family": "project_create",
+    "layout": "variable_readback",
+    "required_inputs": [
+      "project_path",
+      "variable_name"
+    ],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_variable_array_model_audit": {
+    "title": "PROJECT VARIABLE ARRAY MODEL AUDIT",
+    "purpose": "Read-only audit for array-like schema fields in Project.DocumentModel.Variables and ST ArrayRanges.",
+    "family": "domain_operation",
+    "layout": "variable_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_variable_delete": {
+    "title": "PROJECT VARIABLE DELETE",
+    "purpose": "Delete a user variable only on a scratch .owle copy or explicitly confirmed scratch path, with reference/read-only guardrails.",
+    "family": "project_delete",
+    "layout": "variable_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the exact deleted identity, scratch/backup boundary, remaining references, and post-delete validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_variable_bind": {
+    "title": "PROJECT VARIABLE BIND",
+    "purpose": "Rebind an existing FBD variable block to an existing variable only on a scratch .owle copy or explicitly confirmed scratch path.",
+    "family": "project_change",
+    "layout": "variable_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_variables_export": {
+    "title": "PROJECT VARIABLES EXPORT",
+    "purpose": "Export OWEN Logic project variables to structured rows and optional CSV/JSON files under scratch/sandbox/local-heavy.",
+    "family": "artifact_export",
+    "layout": "variable_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify destination, item count, size/hash, and source project before handing off the exported artifact.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_variables_import": {
+    "title": "PROJECT VARIABLES IMPORT",
+    "purpose": "Create variables from a Codex OWEN variable CSV/JSON export only on a scratch .owle copy or explicitly confirmed scratch path.",
+    "family": "artifact_import",
+    "layout": "variable_readback",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_import"
+    ],
+    "next": "Verify source package, destination project, imported identities, conflicts, and post-import validation before accepting the change.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_fbd_element_patch": {
+    "title": "PROJECT FBD ELEMENT PATCH",
+    "purpose": "Patch safe properties of an existing FBD element only on a scratch .owle copy or explicitly confirmed scratch path.",
+    "family": "project_change",
+    "layout": "change_receipt",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_fbd_element_property_patch": {
+    "title": "PROJECT FBD ELEMENT PROPERTY PATCH",
+    "purpose": "Patch one existing scalar JSON property path of an FBD element on a scratch .owle copy, with type preservation, identity/connectivity denylist and validation.",
+    "family": "project_change",
+    "layout": "change_receipt",
+    "required_inputs": [
+      "project_path",
+      "property_path",
+      "new_value"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_fbd_wire_edit": {
+    "title": "PROJECT FBD WIRE EDIT",
+    "purpose": "Create or delete an FBD wire between existing ports only on a scratch .owle copy or explicitly confirmed scratch path.",
+    "family": "project_change",
+    "layout": "change_receipt",
+    "required_inputs": [
+      "project_path",
+      "action"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_fbd_element_clone": {
+    "title": "PROJECT FBD ELEMENT CLONE",
+    "purpose": "Clone an existing FBD element as a disconnected new element only on a scratch .owle copy or explicitly confirmed scratch path.",
+    "family": "project_create",
+    "layout": "change_receipt",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_fbd_element_insert": {
+    "title": "PROJECT FBD ELEMENT INSERT",
+    "purpose": "Insert a disconnected FBD element from a project-local catalog/template selector only on a scratch .owle copy or explicitly confirmed scratch path.",
+    "family": "project_create",
+    "layout": "change_receipt",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_vendor_macro_format_audit": {
+    "title": "VENDOR MACRO FORMAT AUDIT",
+    "purpose": "Read-only audit of OWEN Logic proprietary macro/component file surfaces (.tple/.tpl/.fst/.fbst/.dvtp), internal import/export method evidence, online component URLs, and local sample-file availability. It never imports/exports vendor files, launches GUI, opens network sockets, or mutates projects.",
+    "family": "coverage_audit",
+    "layout": "audit_matrix",
+    "required_inputs": [],
+    "next": "Resolve the listed gaps against the named sources; do not convert partial coverage into a complete claim.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_vendor_macro_coverage_audit": {
+    "title": "VENDOR MACRO COVERAGE AUDIT",
+    "purpose": "Return a read-only machine-readable coverage and guardrail map for OWEN proprietary macro/component operations, separating local/online audit, Codex package conversion/import/export, GUI Component Manager surface, and unproven vendor GUI install/import/export actions.",
+    "family": "coverage_audit",
+    "layout": "audit_matrix",
+    "required_inputs": [],
+    "next": "Resolve the listed gaps against the named sources; do not convert partial coverage into a complete claim.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_vendor_macro_online_catalog_audit": {
+    "title": "VENDOR MACRO ONLINE CATALOG AUDIT",
+    "purpose": "Opt-in read-only HTTPS audit of OWEN online macro/component catalog indexes and bounded sample-file downloads to scratch. It never imports/exports vendor files in OWEN Logic, installs components, launches GUI, opens COM/TCP to a controller, or mutates projects.",
+    "family": "catalog_or_inventory",
+    "layout": "audit_matrix",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_vendor_macro_sample_inspect": {
+    "title": "VENDOR MACRO SAMPLE INSPECT",
+    "purpose": "Read-only inspection of local OWEN proprietary macro/component sample files (.tple/.tpl/.fst/.fbst/.dvtp). It parses ZIP entries such as Template and MetaData into safe summaries without launching OWEN Logic or importing/installing anything.",
+    "family": "project_inspection",
+    "layout": "project_readback",
+    "required_inputs": [],
+    "next": "Use the reported project identity, selected objects, counts, and limitations as the basis for the next exact edit or validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_vendor_macro_to_codex_package": {
+    "title": "VENDOR MACRO TO CODEX PACKAGE",
+    "purpose": "Convert a local OWEN proprietary macro/component sample file Template payload into a Codex OWEN macro package v1 JSON under scratch. It does not launch OWEN Logic, import/install vendor files, mutate projects, or claim vendor GUI macro-manager parity.",
+    "family": "artifact_export",
+    "layout": "artifact_receipt",
+    "required_inputs": [
+      "path"
+    ],
+    "next": "Verify destination, item count, size/hash, and source project before handing off the exported artifact.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_vendor_macro_from_codex_package": {
+    "title": "VENDOR MACRO FROM CODEX PACKAGE",
+    "purpose": "Write a scratch-only OWEN vendor-like ZIP archive (.tple/.tpl/.fst/.fbst/.dvtp) from a Codex OWEN macro package and roundtrip-validate it through the local Template/MetaData parser. It does not launch OWEN Logic, execute GUI import/export, install components, mutate projects, or claim proprietary GUI parity.",
+    "family": "artifact_import",
+    "layout": "artifact_receipt",
+    "required_inputs": [
+      "package_path"
+    ],
+    "next": "Verify source package, destination project, imported identities, conflicts, and post-import validation before accepting the change.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_macro_export": {
+    "title": "PROJECT MACRO EXPORT",
+    "purpose": "Export project-local FBD element(s), optionally with fully internal connectors, as a Codex OWEN macro package v1 JSON artifact; this is not the proprietary OWEN Logic macro file format.",
+    "family": "artifact_export",
+    "layout": "artifact_receipt",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify destination, item count, size/hash, and source project before handing off the exported artifact.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_macro_import": {
+    "title": "PROJECT MACRO IMPORT",
+    "purpose": "Import a Codex OWEN macro package v1 JSON artifact as FBD element(s) plus fully internal connectors on a scratch .owle copy; this is not vendor macro-manager import.",
+    "family": "artifact_import",
+    "layout": "artifact_receipt",
+    "required_inputs": [
+      "project_path",
+      "package_path"
+    ],
+    "next": "Verify source package, destination project, imported identities, conflicts, and post-import validation before accepting the change.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_validate": {
+    "title": "PROJECT VALIDATE",
+    "purpose": "Read-only structural validation for an OWEN Logic .owle project: ZIP/JSON sections, documents, UUIDs, variables, FBD ports/connectors and optional ST lint.",
+    "family": "decision_gate",
+    "layout": "decision_gate",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Proceed only when the explicit gate verdict passes; use the listed blocker and required confirmation verbatim otherwise.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_shortcut_execute_guarded": {
+    "title": "SHORTCUT EXECUTE GUARDED",
+    "purpose": "Execute a documented OWEN Logic shortcut only when its risk class is allowed by explicit guard arguments.",
+    "family": "guided_procedure",
+    "layout": "procedure",
+    "required_inputs": [
+      "shortcut"
+    ],
+    "next": "Follow only the returned source-backed steps and keep manual, read-only, guarded, and live-device boundaries distinct.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_simulator_control": {
+    "title": "SIMULATOR CONTROL",
+    "purpose": "Use documented simulator shortcuts on a scratch project copy or confirmed scratch window: enter/start/stop/pause/step/snapshot.",
+    "family": "runtime_probe",
+    "layout": "runtime_probe",
+    "required_inputs": [
+      "action"
+    ],
+    "next": "Treat only explicit runtime/readback proof as success; a preflight or launch attempt alone is not device or simulator proof.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_simulator_io_probe": {
+    "title": "SIMULATOR IO PROBE",
+    "purpose": "Read and optionally seed structured simulator I/O model values on a scratch .owle copy; this is not live runtime readback.",
+    "family": "runtime_probe",
+    "layout": "runtime_probe",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Treat only explicit runtime/readback proof as success; a preflight or launch attempt alone is not device or simulator proof.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_file_inspect": {
+    "title": "PROJECT FILE INSPECT",
+    "purpose": "Inspect an OWEN Logic .owle project container read-only and summarize Project, ST function block and Visualization sections.",
+    "family": "project_inspection",
+    "layout": "project_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Use the reported project identity, selected objects, counts, and limitations as the basis for the next exact edit or validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_summary": {
+    "title": "PROJECT DISPLAY SUMMARY",
+    "purpose": "Read OWEN Logic .owle Visualization groups, display screens, device geometry, transitions, screen elements and background metadata without modifying the project.",
+    "family": "project_inspection",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Use the reported project identity, selected objects, counts, and limitations as the basis for the next exact edit or validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_export": {
+    "title": "PROJECT DISPLAY EXPORT",
+    "purpose": "Export a sanitized read-only OWEN Logic Visualization summary JSON and optional screen background PNG files only under scratch/sandbox/local-heavy.",
+    "family": "artifact_export",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify destination, item count, size/hash, and source project before handing off the exported artifact.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_preview_export": {
+    "title": "PROJECT DISPLAY PREVIEW EXPORT",
+    "purpose": "Export a scratch-only offline PNG preview of one stored OWEN Logic Visualization screen; this is a Codex model preview, not OWEN GUI rendering.",
+    "family": "artifact_export",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify destination, item count, size/hash, and source project before handing off the exported artifact.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_group_property_patch": {
+    "title": "PROJECT DISPLAY GROUP PROPERTY PATCH",
+    "purpose": "Patch safe properties of one existing OWEN Logic Visualization group on a scratch .owle copy, with group guardrails.",
+    "family": "project_change",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_group_clone": {
+    "title": "PROJECT DISPLAY GROUP CLONE",
+    "purpose": "Clone one existing OWEN Logic Visualization group on a scratch .owle copy, remap project-local UUIDs and optionally patch safe group properties.",
+    "family": "project_create",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_group_delete": {
+    "title": "PROJECT DISPLAY GROUP DELETE",
+    "purpose": "Delete one existing OWEN Logic Visualization group on a scratch .owle copy, with group guardrails and last-group refusal.",
+    "family": "project_delete",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the exact deleted identity, scratch/backup boundary, remaining references, and post-delete validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_element_property_patch": {
+    "title": "PROJECT DISPLAY ELEMENT PROPERTY PATCH",
+    "purpose": "Patch one existing OWEN Logic Visualization screen element property on a scratch .owle copy, with screen/element/property guardrails.",
+    "family": "project_change",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path",
+      "property_name"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_element_clone": {
+    "title": "PROJECT DISPLAY ELEMENT CLONE",
+    "purpose": "Clone one existing OWEN Logic Visualization screen element on a scratch .owle copy, remap UUIDs and optionally patch safe existing element properties.",
+    "family": "project_create",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_element_insert": {
+    "title": "PROJECT DISPLAY ELEMENT INSERT",
+    "purpose": "Insert a display element into an OWEN Logic Visualization screen on a scratch .owle copy using installed display catalog metadata plus a compatible project-local archetype.",
+    "family": "project_create",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path",
+      "catalog_type_name_element"
+    ],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_element_delete": {
+    "title": "PROJECT DISPLAY ELEMENT DELETE",
+    "purpose": "Delete one existing OWEN Logic Visualization screen element on a scratch .owle copy, with screen/element/property guardrails.",
+    "family": "project_delete",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the exact deleted identity, scratch/backup boundary, remaining references, and post-delete validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_screen_clone": {
+    "title": "PROJECT DISPLAY SCREEN CLONE",
+    "purpose": "Clone one existing OWEN Logic Visualization screen on a scratch .owle copy, remap project-local screen/document/widget UUIDs and optionally patch safe screen properties.",
+    "family": "project_create",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_screen_property_patch": {
+    "title": "PROJECT DISPLAY SCREEN PROPERTY PATCH",
+    "purpose": "Patch safe properties of one existing OWEN Logic Visualization screen on a scratch .owle copy, with group/screen guardrails.",
+    "family": "project_change",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_display_screen_delete": {
+    "title": "PROJECT DISPLAY SCREEN DELETE",
+    "purpose": "Delete one existing OWEN Logic Visualization screen on a scratch .owle copy, with group/screen guardrails.",
+    "family": "project_delete",
+    "layout": "display_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the exact deleted identity, scratch/backup boundary, remaining references, and post-delete validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_variables_inspect": {
+    "title": "PROJECT VARIABLES INSPECT",
+    "purpose": "Read variables from an OWEN Logic .owle project, including DocumentModel variables and ST block variable lists.",
+    "family": "project_inspection",
+    "layout": "variable_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Use the reported project identity, selected objects, counts, and limitations as the basis for the next exact edit or validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_fbd_summary": {
+    "title": "PROJECT FBD SUMMARY",
+    "purpose": "Read FBD documents, elements, ports and connectors from an OWEN Logic .owle project without modifying it.",
+    "family": "project_inspection",
+    "layout": "project_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Use the reported project identity, selected objects, counts, and limitations as the basis for the next exact edit or validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_modbus_inspect": {
+    "title": "PROJECT MODBUS INSPECT",
+    "purpose": "Read Modbus/network-related settings and matching model paths from an OWEN Logic .owle project.",
+    "family": "project_inspection",
+    "layout": "project_readback",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Use the reported project identity, selected objects, counts, and limitations as the basis for the next exact edit or validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_modbus_export_map": {
+    "title": "PROJECT MODBUS EXPORT MAP",
+    "purpose": "Export a read-only offline Modbus device/register map from an OWEN Logic .owle project; optional CSV/JSON output is scratch-only.",
+    "family": "artifact_export",
+    "layout": "artifact_receipt",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify destination, item count, size/hash, and source project before handing off the exported artifact.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_modbus_import_map": {
+    "title": "PROJECT MODBUS IMPORT MAP",
+    "purpose": "Import safe Modbus setting/device scalar rows or guarded variable/register rows from an exported map row into a scratch .owle copy; no GUI wizard, COM, or TCP action.",
+    "family": "artifact_import",
+    "layout": "artifact_receipt",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_import"
+    ],
+    "next": "Verify source package, destination project, imported identities, conflicts, and post-import validation before accepting the change.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_modbus_variable_create": {
+    "title": "PROJECT MODBUS VARIABLE CREATE",
+    "purpose": "Create one guarded offline Modbus register/variable row under an existing DeviceModels entry on a scratch .owle copy; no GUI wizard, COM, or TCP action.",
+    "family": "project_create",
+    "layout": "change_receipt",
+    "required_inputs": [
+      "project_path",
+      "allow_safe_create",
+      "variable_name",
+      "register_address"
+    ],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_modbus_device_patch": {
+    "title": "PROJECT MODBUS DEVICE PATCH",
+    "purpose": "Patch safe existing Modbus/RS-485 setting or device scalar fields only on a scratch .owle copy, then validate and optionally export a read-only register map.",
+    "family": "project_change",
+    "layout": "device_transaction",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_modbus_reference": {
+    "title": "MODBUS REFERENCE",
+    "purpose": "Return the safe offline Modbus RTU function/CRC reference used by the OWEN Logic MCP protocol tools.",
+    "family": "catalog_or_inventory",
+    "layout": "protocol_frame",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_modbus_coverage_audit": {
+    "title": "MODBUS COVERAGE AUDIT",
+    "purpose": "Return a read-only machine-readable coverage and guardrail map for OWEN Logic Modbus operations, separating offline, localhost loopback, GUI surface, GUI parity gaps, and live-controller blocked scope.",
+    "family": "coverage_audit",
+    "layout": "audit_matrix",
+    "required_inputs": [],
+    "next": "Resolve the listed gaps against the named sources; do not convert partial coverage into a complete claim.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_modbus_gui_model_parity_audit": {
+    "title": "MODBUS GUI MODEL PARITY AUDIT",
+    "purpose": "Read-only audit that maps OWEN Logic Modbus GUI/manual concepts to current offline model tools, scratch GUI evidence, and remaining wizard/live gaps.",
+    "family": "gui_observation",
+    "layout": "audit_matrix",
+    "required_inputs": [],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_modbus_crc": {
+    "title": "MODBUS CRC",
+    "purpose": "Calculate Modbus RTU CRC16 for a hex payload offline; does not open COM ports or contact devices.",
+    "family": "protocol_transaction",
+    "layout": "protocol_frame",
+    "required_inputs": [
+      "hex_payload"
+    ],
+    "next": "Verify the complete frame fields, checksum, decoded values, and validation verdict before using the transaction.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_modbus_request_build": {
+    "title": "MODBUS REQUEST BUILD",
+    "purpose": "Build a safe offline Modbus RTU request frame for common read/write functions; no COM/network action is performed.",
+    "family": "protocol_transaction",
+    "layout": "protocol_frame",
+    "required_inputs": [
+      "unit_id",
+      "function_code"
+    ],
+    "next": "Verify the complete frame fields, checksum, decoded values, and validation verdict before using the transaction.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_modbus_frame_parse": {
+    "title": "MODBUS FRAME PARSE",
+    "purpose": "Parse and validate a Modbus RTU frame offline, including CRC, request/response shape and exception responses.",
+    "family": "protocol_transaction",
+    "layout": "protocol_frame",
+    "required_inputs": [
+      "frame_hex"
+    ],
+    "next": "Verify the complete frame fields, checksum, decoded values, and validation verdict before using the transaction.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_modbus_response_build": {
+    "title": "MODBUS RESPONSE BUILD",
+    "purpose": "Build a safe offline Modbus RTU response or exception response frame for a request; no COM/network action is performed.",
+    "family": "protocol_transaction",
+    "layout": "protocol_frame",
+    "required_inputs": [],
+    "next": "Verify the complete frame fields, checksum, decoded values, and validation verdict before using the transaction.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_modbus_transaction_validate": {
+    "title": "MODBUS TRANSACTION VALIDATE",
+    "purpose": "Validate a Modbus RTU request/response transaction offline: CRC, unit/function match, exception shape and response semantics. It never opens COM/TCP.",
+    "family": "protocol_transaction",
+    "layout": "protocol_frame",
+    "required_inputs": [
+      "request_frame_hex",
+      "response_frame_hex"
+    ],
+    "next": "Verify the complete frame fields, checksum, decoded values, and validation verdict before using the transaction.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_modbus_tcp_loopback_smoke": {
+    "title": "MODBUS TCP LOOPBACK SMOKE",
+    "purpose": "Run a bounded localhost-only Modbus TCP loopback smoke using the existing RTU request/response validators. This opens only 127.0.0.1 sockets and never contacts a controller.",
+    "family": "protocol_transaction",
+    "layout": "protocol_frame",
+    "required_inputs": [
+      "allow_localhost_loopback"
+    ],
+    "next": "Verify the complete frame fields, checksum, decoded values, and validation verdict before using the transaction.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_modbus_master_config": {
+    "title": "MODBUS MASTER CONFIG",
+    "purpose": "Build a read-only offline Modbus Master configuration plan from the protocol reference and optional .owle project inspection; no GUI, COM, TCP, or live-device action is executed.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_modbus_slave_config": {
+    "title": "MODBUS SLAVE CONFIG",
+    "purpose": "Build a read-only offline Modbus Slave/register-map configuration plan from the protocol reference and optional .owle project inspection; no GUI, COM, TCP, or live-device action is executed.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_model_query": {
+    "title": "PROJECT MODEL QUERY",
+    "purpose": "Search an OWEN Logic .owle project JSON model by keywords and return redacted matching paths.",
+    "family": "project_inspection",
+    "layout": "project_readback",
+    "required_inputs": [
+      "project_path",
+      "keywords"
+    ],
+    "next": "Use the reported project identity, selected objects, counts, and limitations as the basis for the next exact edit or validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_st_extract": {
+    "title": "PROJECT ST EXTRACT",
+    "purpose": "Extract ST function/function-block source summaries from an OWEN Logic .owle project read-only.",
+    "family": "project_inspection",
+    "layout": "code_report",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Use the reported project identity, selected objects, counts, and limitations as the basis for the next exact edit or validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_st_patch": {
+    "title": "PROJECT ST PATCH",
+    "purpose": "Patch an existing ST block's safe fields only on a scratch .owle copy or explicitly confirmed scratch path, with heuristic lint guardrails.",
+    "family": "project_change",
+    "layout": "code_report",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_st_create": {
+    "title": "PROJECT ST CREATE",
+    "purpose": "Create a simple FUNCTION_BLOCK ST source model only on a scratch .owle copy or explicitly confirmed scratch path.",
+    "family": "project_create",
+    "layout": "code_report",
+    "required_inputs": [
+      "project_path",
+      "name",
+      "source_code"
+    ],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_st_array_create": {
+    "title": "PROJECT ST ARRAY CREATE",
+    "purpose": "Create a FUNCTION_BLOCK with one documented ST ARRAY declaration only on a scratch .owle copy, then verify ArrayRanges readback.",
+    "family": "project_create",
+    "layout": "code_report",
+    "required_inputs": [
+      "project_path",
+      "name",
+      "array_name",
+      "lower_bound",
+      "upper_bound",
+      "allow_st_array_authoring"
+    ],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_st_delete": {
+    "title": "PROJECT ST DELETE",
+    "purpose": "Delete an unreferenced ST block only on a scratch .owle copy or explicitly confirmed scratch path, with password/reference guardrails.",
+    "family": "project_delete",
+    "layout": "code_report",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify the exact deleted identity, scratch/backup boundary, remaining references, and post-delete validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_st_export": {
+    "title": "PROJECT ST EXPORT",
+    "purpose": "Export ST block sources from an OWEN Logic .owle project read-only, optionally writing .st files under scratch/local-heavy.",
+    "family": "artifact_export",
+    "layout": "code_report",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify destination, item count, size/hash, and source project before handing off the exported artifact.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_st_import": {
+    "title": "PROJECT ST IMPORT",
+    "purpose": "Import ST source files/text as FUNCTION_BLOCK models only on a scratch .owle copy or explicitly confirmed scratch path.",
+    "family": "artifact_import",
+    "layout": "code_report",
+    "required_inputs": [
+      "project_path"
+    ],
+    "next": "Verify source package, destination project, imported identities, conflicts, and post-import validation before accepting the change.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_st_lint": {
+    "title": "ST LINT",
+    "purpose": "Run a read-only static heuristic lint over ST code from a project file or supplied source text.",
+    "family": "decision_gate",
+    "layout": "code_report",
+    "required_inputs": [],
+    "next": "Proceed only when the explicit gate verdict passes; use the listed blocker and required confirmation verbatim otherwise.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_launch": {
+    "title": "LAUNCH",
+    "purpose": "Launch OWEN Logic, optionally opening a project file, then report its windows.",
+    "family": "gui_observation",
+    "layout": "ui_observation",
+    "required_inputs": [],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_screenshot": {
+    "title": "SCREENSHOT",
+    "purpose": "Capture a screenshot of the first matching OWEN Logic window.",
+    "family": "gui_observation",
+    "layout": "display_readback",
+    "required_inputs": [],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_ui_snapshot": {
+    "title": "UI SNAPSHOT",
+    "purpose": "Read the UI Automation control tree for a matching OWEN Logic window without clicking or editing anything.",
+    "family": "gui_observation",
+    "layout": "ui_observation",
+    "required_inputs": [],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_menu_snapshot": {
+    "title": "MENU SNAPSHOT",
+    "purpose": "Read menu, toolbar, menu item and optional button controls from a matching OWEN Logic window.",
+    "family": "gui_observation",
+    "layout": "ui_observation",
+    "required_inputs": [],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_focus_window": {
+    "title": "FOCUS WINDOW",
+    "purpose": "Bring a matching OWEN Logic window to the foreground.",
+    "family": "gui_observation",
+    "layout": "ui_observation",
+    "required_inputs": [],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_send_hotkey": {
+    "title": "SEND HOTKEY",
+    "purpose": "Send a simple hotkey to a matching OWEN Logic window, for example CTRL+O.",
+    "family": "gui_observation",
+    "layout": "ui_observation",
+    "required_inputs": [
+      "keys"
+    ],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_smoke_test": {
+    "title": "SMOKE TEST",
+    "purpose": "Run a non-destructive smoke test: find installation, launch if needed, wait for a window, and optionally screenshot it.",
+    "family": "runtime_probe",
+    "layout": "runtime_probe",
+    "required_inputs": [],
+    "next": "Treat only explicit runtime/readback proof as success; a preflight or launch attempt alone is not device or simulator proof.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_canvas_insert": {
+    "title": "CANVAS INSERT",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. FBD canvas insertion is implemented through scratch-only project FBD element insertion.",
+    "family": "project_create",
+    "layout": "change_receipt",
+    "required_inputs": [],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_canvas_insert_function": {
+    "title": "CANVAS INSERT FUNCTION",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Function insertion is routed through scratch-only FBD element insertion.",
+    "family": "project_create",
+    "layout": "change_receipt",
+    "required_inputs": [],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_canvas_insert_function_block": {
+    "title": "CANVAS INSERT FUNCTION BLOCK",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Function-block insertion is routed through scratch-only FBD element insertion.",
+    "family": "project_create",
+    "layout": "change_receipt",
+    "required_inputs": [],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_cloud_connection_check": {
+    "title": "CLOUD CONNECTION CHECK",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Cloud checks are represented by read-only extension evidence; network connections are not opened.",
+    "family": "compatibility_alias",
+    "layout": "delegated_result",
+    "required_inputs": [],
+    "next": "Use the named target tool when real execution is required; this alias must state whether it delegated or only described policy.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_component_manager": {
+    "title": "COMPONENT MANAGER",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Component Manager coverage is bounded GUI surface probing, not online install/update/download.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_control_action": {
+    "title": "CONTROL ACTION",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Arbitrary controls are not executed; documented actions route through guarded shortcuts.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_device_connect": {
+    "title": "DEVICE CONNECT",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. ",
+    "family": "compatibility_alias",
+    "layout": "device_transaction",
+    "required_inputs": [],
+    "next": "Use the named target tool when real execution is required; this alias must state whether it delegated or only described policy.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_device_download": {
+    "title": "DEVICE DOWNLOAD",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. ",
+    "family": "compatibility_alias",
+    "layout": "device_transaction",
+    "required_inputs": [],
+    "next": "Use the named target tool when real execution is required; this alias must state whether it delegated or only described policy.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_device_ports": {
+    "title": "DEVICE PORTS",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. ",
+    "family": "compatibility_alias",
+    "layout": "device_transaction",
+    "required_inputs": [],
+    "next": "Use the named target tool when real execution is required; this alias must state whether it delegated or only described policy.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_device_read_info": {
+    "title": "DEVICE READ INFO",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. ",
+    "family": "compatibility_alias",
+    "layout": "device_transaction",
+    "required_inputs": [],
+    "next": "Use the named target tool when real execution is required; this alias must state whether it delegated or only described policy.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_device_settings_read": {
+    "title": "DEVICE SETTINGS READ",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. ",
+    "family": "project_change",
+    "layout": "device_transaction",
+    "required_inputs": [],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_device_settings_write": {
+    "title": "DEVICE SETTINGS WRITE",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. ",
+    "family": "project_change",
+    "layout": "device_transaction",
+    "required_inputs": [],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_device_status": {
+    "title": "DEVICE STATUS",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. ",
+    "family": "domain_operation",
+    "layout": "device_transaction",
+    "required_inputs": [],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_display_edit": {
+    "title": "DISPLAY EDIT",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Display editing is exposed through explicit scratch-only display tools, not one broad arbitrary editor.",
+    "family": "project_change",
+    "layout": "display_readback",
+    "required_inputs": [],
+    "next": "Verify the exact target, before/after values, changed artifact, guard confirmation, and post-change validation.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_example_open": {
+    "title": "EXAMPLE OPEN",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Examples are opened only as scratch copies.",
+    "family": "project_lifecycle",
+    "layout": "lifecycle",
+    "required_inputs": [],
+    "next": "Use the reported PID/window/artifact and final lifecycle state; a process start is not proof that the intended project opened or saved.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_example_smoke_test": {
+    "title": "EXAMPLE SMOKE TEST",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Example smoke testing uses the scratch-only lifecycle smoke.",
+    "family": "runtime_probe",
+    "layout": "runtime_probe",
+    "required_inputs": [],
+    "next": "Treat only explicit runtime/readback proof as success; a preflight or launch attempt alone is not device or simulator proof.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_extension_action": {
+    "title": "EXTENSION ACTION",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Extension/cloud/OPC actions are catalogued but not executed.",
+    "family": "compatibility_alias",
+    "layout": "delegated_result",
+    "required_inputs": [],
+    "next": "Use the named target tool when real execution is required; this alias must state whether it delegated or only described policy.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_extensions_snapshot": {
+    "title": "EXTENSIONS SNAPSHOT",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Extension snapshot is the installed extension/catalog inventory.",
+    "family": "catalog_or_inventory",
+    "layout": "catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_function_block_catalog": {
+    "title": "FUNCTION BLOCK CATALOG",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Function-block catalog is served from the installed help/library catalog.",
+    "family": "catalog_or_inventory",
+    "layout": "component_catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_function_catalog": {
+    "title": "FUNCTION CATALOG",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Function catalog is served from the installed help/library catalog.",
+    "family": "catalog_or_inventory",
+    "layout": "component_catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_guard_confirm_sensitive_action": {
+    "title": "GUARD CONFIRM SENSITIVE ACTION",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Sensitive actions require explicit guardrail/preflight confirmation; no executor is exposed.",
+    "family": "compatibility_alias",
+    "layout": "delegated_result",
+    "required_inputs": [],
+    "next": "Use the named target tool when real execution is required; this alias must state whether it delegated or only described policy.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_install_plan": {
+    "title": "INSTALL PLAN",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Installer execution is not automated; this returns installation discovery and policy guidance.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_macro_list": {
+    "title": "MACRO LIST",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Macro listing is available through project FBD summary.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_manual_capability_check": {
+    "title": "MANUAL CAPABILITY CHECK",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Manual capability checks are handled through local PDF/page-text evidence search.",
+    "family": "guided_procedure",
+    "layout": "procedure",
+    "required_inputs": [],
+    "next": "Follow only the returned source-backed steps and keep manual, read-only, guarded, and live-device boundaries distinct.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_online_debug": {
+    "title": "ONLINE DEBUG",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. ",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_owencloud_export": {
+    "title": "OWENCLOUD EXPORT",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. OwenCloud export is not executed; only read-only evidence and guardrail status are exposed.",
+    "family": "compatibility_alias",
+    "layout": "delegated_result",
+    "required_inputs": [],
+    "next": "Use the named target tool when real execution is required; this alias must state whether it delegated or only described policy.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_info": {
+    "title": "PROJECT INFO",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Project info is served by read-only .owle inspection.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_new": {
+    "title": "PROJECT NEW",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. New project creation is a generated scratch/sandbox .owle, not source mutation.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_open": {
+    "title": "PROJECT OPEN",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Project open always creates and opens a scratch copy.",
+    "family": "project_lifecycle",
+    "layout": "lifecycle",
+    "required_inputs": [],
+    "next": "Use the reported PID/window/artifact and final lifecycle state; a process start is not proof that the intended project opened or saved.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_project_save": {
+    "title": "PROJECT SAVE",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Project save is exercised only on a scratch copy through lifecycle smoke.",
+    "family": "domain_operation",
+    "layout": "domain_operation",
+    "required_inputs": [],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_send_hotkey_safe": {
+    "title": "SEND HOTKEY SAFE",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Safe hotkeys prefer guarded documented shortcuts; raw key sending remains a lower-level tool.",
+    "family": "gui_observation",
+    "layout": "ui_observation",
+    "required_inputs": [],
+    "next": "Confirm the reported window, screenshot, controls, and stop condition before trusting GUI state or sending another UI action.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_simulator_read": {
+    "title": "SIMULATOR READ",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Simulator reads are bounded UI-visible readback probes.",
+    "family": "runtime_probe",
+    "layout": "runtime_probe",
+    "required_inputs": [],
+    "next": "Treat only explicit runtime/readback proof as success; a preflight or launch attempt alone is not device or simulator proof.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_simulator_start": {
+    "title": "SIMULATOR START",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. ",
+    "family": "runtime_probe",
+    "layout": "runtime_probe",
+    "required_inputs": [],
+    "next": "Treat only explicit runtime/readback proof as success; a preflight or launch attempt alone is not device or simulator proof.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_simulator_stop": {
+    "title": "SIMULATOR STOP",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. ",
+    "family": "runtime_probe",
+    "layout": "runtime_probe",
+    "required_inputs": [],
+    "next": "Treat only explicit runtime/readback proof as success; a preflight or launch attempt alone is not device or simulator proof.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_st_element_create": {
+    "title": "ST ELEMENT CREATE",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. ST element creation is scratch-only ST block creation.",
+    "family": "project_create",
+    "layout": "change_receipt",
+    "required_inputs": [],
+    "next": "Verify the scratch boundary, created identities, destination artifact, and validation proof before opening or editing it further.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_st_export": {
+    "title": "ST EXPORT",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. ST export is project ST export.",
+    "family": "artifact_export",
+    "layout": "artifact_receipt",
+    "required_inputs": [],
+    "next": "Verify destination, item count, size/hash, and source project before handing off the exported artifact.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_st_validate": {
+    "title": "ST VALIDATE",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. ST validation is implemented as static lint/reference/interface checks, not a full compiler.",
+    "family": "decision_gate",
+    "layout": "decision_gate",
+    "required_inputs": [],
+    "next": "Proceed only when the explicit gate verdict passes; use the listed blocker and required confirmation verbatim otherwise.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_toolbar_snapshot": {
+    "title": "TOOLBAR SNAPSHOT",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Toolbar snapshot is covered by the bounded UI Automation snapshot.",
+    "family": "catalog_or_inventory",
+    "layout": "component_catalog",
+    "required_inputs": [],
+    "next": "Choose an exact returned item/path before calling a mutating or GUI tool; absence in a bounded catalog is not universal absence.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_vendor_macro_export": {
+    "title": "VENDOR MACRO EXPORT",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Vendor proprietary macro format is audited read-only; Codex macro package export and scratch-only vendor-like Template/MetaData archive generation are available separately.",
+    "family": "artifact_export",
+    "layout": "artifact_receipt",
+    "required_inputs": [],
+    "next": "Verify destination, item count, size/hash, and source project before handing off the exported artifact.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_vendor_macro_import": {
+    "title": "VENDOR MACRO IMPORT",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Vendor proprietary macro format is audited read-only but not executed; Codex macro package import is available separately.",
+    "family": "artifact_import",
+    "layout": "artifact_receipt",
+    "required_inputs": [],
+    "next": "Verify source package, destination project, imported identities, conflicts, and post-import validation before accepting the change.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  },
+  "owen_logic_version": {
+    "title": "VERSION",
+    "purpose": "Compatibility wrapper for the OWEN Logic coverage matrix. Version information is returned by installation discovery.",
+    "family": "domain_operation",
+    "layout": "runtime_dashboard",
+    "required_inputs": [],
+    "next": "Use the explicit verdict, affected OWEN object, artifact paths, safety boundary, and limitations shown below.",
+    "visible_contract": [
+      "tool-specific purpose and request",
+      "verdict and decision facts",
+      "affected OWEN identities and artifacts",
+      "guardrails and execution boundary",
+      "all decision-critical facts plus a bounded collection preview without JSON syntax",
+      "complete collections and diagnostic payloads preserved in raw_result or a hash-verified artifact",
+      "visible counts and omission boundaries tell the model when deeper evidence exists",
+      "tool-specific next decision"
+    ]
+  }
+}

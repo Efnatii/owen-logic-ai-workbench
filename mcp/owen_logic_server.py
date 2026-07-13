@@ -28,11 +28,19 @@ import uuid
 import urllib.parse
 import urllib.request
 import zipfile
+from concurrent.futures import Future, ThreadPoolExecutor
+from contextvars import ContextVar
 from ctypes import wintypes
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Iterator
 from xml.etree import ElementTree
+
+
+_SHARED_MCP_ROOT = Path(__file__).resolve().parents[3] / "ai_capabilities" / "mcp_servers"
+if str(_SHARED_MCP_ROOT) not in sys.path:
+    sys.path.insert(0, str(_SHARED_MCP_ROOT))
+from owen_logic_output import OWEN_OUTPUT_SPECS, format_owen_tool_result  # noqa: E402
 
 
 SERVER_NAME = "owen_logic"
@@ -43,6 +51,27 @@ DEFAULT_CONVERTER_EXE = Path(
 )
 SCREENSHOT_DIR = Path.home() / ".codex" / "tmp" / "owen_logic_screenshots"
 TRANSPORT_MODE = "content-length"
+_TOOL_CALL_CONTEXT: ContextVar[dict[str, Any] | None] = ContextVar(
+    "owen_logic_tool_call_context",
+    default=None,
+)
+_REQUEST_CANCEL_CONTEXT: ContextVar[threading.Event | None] = ContextVar(
+    "owen_logic_request_cancel_event",
+    default=None,
+)
+_SEND_LOCK = threading.Lock()
+_GUI_LOCK = threading.RLock()
+_DEVICE_LOCK = threading.RLock()
+_PROJECT_LOCKS_GUARD = threading.Lock()
+_PROJECT_LOCKS: dict[str, threading.RLock] = {}
+_ACTIVE_REQUESTS_LOCK = threading.Lock()
+_ACTIVE_REQUESTS: dict[Any, tuple[Future[dict[str, Any]], threading.Event]] = {}
+_GENERAL_EXECUTOR = ThreadPoolExecutor(
+    max_workers=max(4, min(16, int(os.environ.get("OWEN_MCP_MAX_WORKERS", "8")))),
+    thread_name_prefix="owen-mcp",
+)
+_GUI_EXECUTOR = ThreadPoolExecutor(max_workers=1, thread_name_prefix="owen-mcp-gui")
+_DEVICE_EXECUTOR = ThreadPoolExecutor(max_workers=1, thread_name_prefix="owen-mcp-device")
 
 
 class RECT(ctypes.Structure):
@@ -842,6 +871,11 @@ TOOLS: list[dict[str, Any]] = [
                     "type": "number",
                     "description": "Seconds to wait after selecting the visible Component Manager grid row.",
                     "default": 1,
+                },
+                "cleanup_launched_process": {
+                    "type": "boolean",
+                    "description": "For project_path snapshot mode, stop only the OWEN process launched by this call after capture.",
+                    "default": False,
                 },
                 "post_component_manager_action_wait_seconds": {
                     "type": "number",
@@ -7493,13 +7527,14 @@ def read_message() -> dict[str, Any] | None:
 
 def send_message(message: dict[str, Any]) -> None:
     payload = json.dumps(message, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
-    if TRANSPORT_MODE == "ndjson":
-        sys.stdout.buffer.write(payload)
-        sys.stdout.buffer.write(b"\n")
-    else:
-        sys.stdout.buffer.write(f"Content-Length: {len(payload)}\r\n\r\n".encode("ascii"))
-        sys.stdout.buffer.write(payload)
-    sys.stdout.buffer.flush()
+    with _SEND_LOCK:
+        if TRANSPORT_MODE == "ndjson":
+            sys.stdout.buffer.write(payload)
+            sys.stdout.buffer.write(b"\n")
+        else:
+            sys.stdout.buffer.write(f"Content-Length: {len(payload)}\r\n\r\n".encode("ascii"))
+            sys.stdout.buffer.write(payload)
+        sys.stdout.buffer.flush()
 
 
 def rpc_result(request_id: Any, result: dict[str, Any]) -> dict[str, Any]:
@@ -7511,6 +7546,8 @@ def rpc_error(request_id: Any, code: int, message: str) -> dict[str, Any]:
 
 
 def json_safe_value(value: Any) -> Any:
+    if isinstance(value, int) and not isinstance(value, bool):
+        return value if abs(value) <= 9_007_199_254_740_991 else str(value)
     if isinstance(value, float):
         return value if math.isfinite(value) else None
     if isinstance(value, dict):
@@ -7522,15 +7559,15 @@ def json_safe_value(value: Any) -> Any:
 
 def tool_result(data: Any, is_error: bool = False) -> dict[str, Any]:
     safe_data = json_safe_value(data)
-    return {
-        "content": [
-            {
-                "type": "text",
-                "text": json.dumps(safe_data, ensure_ascii=False, indent=2, allow_nan=False),
-            }
-        ],
-        "isError": is_error,
-    }
+    context = _TOOL_CALL_CONTEXT.get() or {}
+    tool_name = str(context.get("name") or (safe_data.get("tool") if isinstance(safe_data, dict) else None) or SERVER_NAME)
+    arguments = context.get("arguments") if isinstance(context.get("arguments"), dict) else {}
+    return format_owen_tool_result(
+        tool_name=tool_name,
+        arguments=arguments,
+        raw_result=safe_data,
+        is_error=is_error,
+    )
 
 
 def file_version(path: Path) -> dict[str, Any] | None:
@@ -12194,6 +12231,7 @@ def wait_for_owen_window(pid: int, timeout_seconds: float) -> list[dict[str, Any
     deadline = time.time() + max(1, min(timeout_seconds, 120))
     windows: list[dict[str, Any]] = []
     while time.time() < deadline:
+        check_request_cancelled()
         windows = enum_windows(pid=pid, owen_only=False)
         if any(str(window.get("title") or "").lower().find("owen logic") >= 0 for window in windows):
             return windows
@@ -12262,6 +12300,7 @@ def wait_for_save_as_dialog(pid: int, timeout_seconds: float) -> dict[str, Any] 
     deadline = time.time() + max(1, min(float(timeout_seconds), 30))
     last_windows: list[dict[str, Any]] = []
     while time.time() < deadline:
+        check_request_cancelled()
         last_windows = enum_windows(pid=pid, owen_only=False)
         dialog = select_save_as_dialog(last_windows)
         if dialog:
@@ -12286,6 +12325,7 @@ def wait_for_lifecycle_idle(pid: int, timeout_seconds: float) -> dict[str, Any]:
     deadline = time.time() + max(1, min(float(timeout_seconds), 60))
     last_windows: list[dict[str, Any]] = []
     while time.time() < deadline:
+        check_request_cancelled()
         last_windows = enum_windows(pid=pid, owen_only=False)
         blocking = [
             window
@@ -12959,6 +12999,7 @@ def wait_for_file_dialog(pid: int, timeout_seconds: float) -> tuple[dict[str, An
     deadline = time.time() + max(1, min(float(timeout_seconds), 30))
     last_windows: list[dict[str, Any]] = []
     while time.time() < deadline:
+        check_request_cancelled()
         last_windows = enum_windows(pid=pid, owen_only=False)
         dialogs = [
             window
@@ -30459,11 +30500,16 @@ def simulator_control(args: dict[str, Any]) -> dict[str, Any]:
                     "screenshot": bool(args.get("screenshot", True)),
                 }
             )
+            cleanup = None
+            launch = opened.get("launch") if isinstance(opened.get("launch"), dict) else {}
+            if bool(args.get("cleanup_launched_process", False)) and launch.get("pid") is not None:
+                cleanup = stop_process_best_effort(int(launch["pid"]))
             return {
                 "action": action,
                 "scratch_copy": opened.get("scratch_copy"),
                 "launch": opened.get("launch"),
                 "screenshot": opened.get("screenshot"),
+                "cleanup": cleanup,
                 "risk_class": "safe_runtime",
                 "note": "Snapshot opened a scratch copy but did not send a simulator shortcut.",
             }
@@ -39425,8 +39471,17 @@ def launch_owen_logic(args: dict[str, Any]) -> dict[str, Any]:
     runtime_env, runtime_env_fixes = windows_gui_runtime_env()
     proc = subprocess.Popen(command, cwd=str(exe.parent), env=runtime_env)
     wait_seconds = float(args.get("wait_seconds", 5))
+    cancel_event = _REQUEST_CANCEL_CONTEXT.get()
     if wait_seconds > 0:
-        time.sleep(min(wait_seconds, 60))
+        cancelled = cancel_event.wait(min(wait_seconds, 60)) if cancel_event is not None else False
+        if cancel_event is None:
+            time.sleep(min(wait_seconds, 60))
+        if cancelled:
+            stop_process_best_effort(proc.pid)
+            raise RequestCancelled("MCP request was cancelled while OWEN Logic was starting")
+    if cancel_event is not None and cancel_event.is_set():
+        stop_process_best_effort(proc.pid)
+        raise RequestCancelled("MCP request was cancelled after OWEN Logic launch")
 
     return {
         "pid": proc.pid,
@@ -39631,16 +39686,20 @@ def clamp_int(value: Any, default: int, minimum: int, maximum: int) -> int:
 
 
 def run_powershell_json(script: str, timeout_seconds: float = 20) -> Any:
-    completed = subprocess.run(
-        ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", script],
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-        timeout=max(1, min(float(timeout_seconds), 120)),
-        creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
-    )
+    timeout = max(1, min(float(timeout_seconds), 120))
+    try:
+        completed = subprocess.run(
+            ["powershell", "-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", script],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=timeout,
+            creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
+        )
+    except subprocess.TimeoutExpired as exc:
+        raise TimeoutError(f"PowerShell JSON helper timed out after {timeout:g} seconds") from None
     stdout = completed.stdout.strip()
     stderr = completed.stderr.strip()
     if completed.returncode != 0:
@@ -39996,14 +40055,23 @@ def smoke_test(args: dict[str, Any]) -> dict[str, Any]:
 
 
 def call_tool_data(name: str, args: dict[str, Any]) -> dict[str, Any]:
-    result = call_tool(name, args)
-    text = str(((result.get("content") or [{}])[0]).get("text") or "{}")
+    token = _TOOL_CALL_CONTEXT.set({"name": str(name), "arguments": args})
     try:
-        data = json.loads(text)
-    except json.JSONDecodeError:
-        data = {"raw_text": text}
+        result = call_tool(name, args)
+    finally:
+        _TOOL_CALL_CONTEXT.reset(token)
+    meta = result.get("_meta") if isinstance(result.get("_meta"), dict) else {}
+    if "raw_result" in meta:
+        data = meta["raw_result"]
+    else:
+        text = str(((result.get("content") or [{}])[0]).get("text") or "{}")
+        try:
+            data = json.loads(text)
+        except json.JSONDecodeError:
+            data = {"raw_text": text}
     if bool(result.get("isError", False)):
-        raise RuntimeError(str(data.get("error") or text))
+        error_text = data.get("error") if isinstance(data, dict) else None
+        raise RuntimeError(str(error_text or ((result.get("content") or [{}])[0]).get("text") or data))
     return data
 
 
@@ -40430,6 +40498,128 @@ def call_tool(name: str, arguments: dict[str, Any] | None) -> dict[str, Any]:
     raise KeyError(f"Unknown tool: {name}")
 
 
+class RequestCancelled(RuntimeError):
+    pass
+
+
+def check_request_cancelled() -> None:
+    event = _REQUEST_CANCEL_CONTEXT.get()
+    if event is not None and event.is_set():
+        raise RequestCancelled("MCP request was cancelled by the client")
+
+
+def _tool_uses_gui(name: str) -> bool:
+    return bool(re.search(
+        r"(?:_gui_|_ui_|_menu_snapshot|_window|_hotkey|_shortcut|_focus_|_lifecycle_|_simulator_|_open_scratch|_component_manager|_property_panel|_toolbar|_dialog|_control_action|_smoke_test)",
+        name,
+        re.I,
+    ))
+
+
+def _tool_uses_live_device(name: str) -> bool:
+    return bool(re.search(r"live_device|serial_port|modbus_(?:rtu|tcp_loopback)", name, re.I))
+
+
+def _tool_mutates_project(name: str) -> bool:
+    return bool(re.search(
+        r"(?:_create|_patch|_insert|_delete|_import|_bind|_clone|_metadata_set|_lifecycle)",
+        name,
+        re.I,
+    ))
+
+
+def _project_lock(arguments: dict[str, Any]) -> threading.RLock | None:
+    project_value = arguments.get("project_path")
+    if not project_value:
+        return None
+    key = os.path.normcase(os.path.abspath(os.path.expanduser(str(project_value))))
+    with _PROJECT_LOCKS_GUARD:
+        return _PROJECT_LOCKS.setdefault(key, threading.RLock())
+
+
+def _acquire_cancellable(lock: threading.RLock) -> None:
+    while not lock.acquire(timeout=0.1):
+        check_request_cancelled()
+    check_request_cancelled()
+
+
+def _execute_tool_call(name: str, arguments: dict[str, Any], cancel_event: threading.Event | None = None) -> dict[str, Any]:
+    event = cancel_event or threading.Event()
+    context_token = _TOOL_CALL_CONTEXT.set({"name": name, "arguments": arguments})
+    cancel_token = _REQUEST_CANCEL_CONTEXT.set(event)
+    acquired: list[threading.RLock] = []
+    try:
+        locks: list[threading.RLock] = []
+        if _tool_uses_gui(name):
+            locks.append(_GUI_LOCK)
+        if _tool_uses_live_device(name):
+            locks.append(_DEVICE_LOCK)
+        if _tool_mutates_project(name):
+            lock = _project_lock(arguments)
+            if lock is not None:
+                locks.append(lock)
+        for lock in locks:
+            _acquire_cancellable(lock)
+            acquired.append(lock)
+        check_request_cancelled()
+        return call_tool(name, arguments)
+    except RequestCancelled as exc:
+        return tool_result({"error": str(exc), "tool": name, "cancelled": True}, is_error=True)
+    except Exception as exc:
+        return tool_result({"error": str(exc), "tool": name}, is_error=True)
+    finally:
+        for lock in reversed(acquired):
+            lock.release()
+        _REQUEST_CANCEL_CONTEXT.reset(cancel_token)
+        _TOOL_CALL_CONTEXT.reset(context_token)
+
+
+def _executor_for_tool(name: str) -> ThreadPoolExecutor:
+    if _tool_uses_gui(name):
+        return _GUI_EXECUTOR
+    if _tool_uses_live_device(name):
+        return _DEVICE_EXECUTOR
+    return _GENERAL_EXECUTOR
+
+
+def _cancel_request(request_id: Any) -> None:
+    with _ACTIVE_REQUESTS_LOCK:
+        active = _ACTIVE_REQUESTS.get(request_id)
+    if active is None:
+        return
+    future, event = active
+    event.set()
+    future.cancel()
+
+
+def _dispatch_tool_request(message: dict[str, Any]) -> None:
+    request_id = message.get("id")
+    params = message.get("params") or {}
+    name = str(params.get("name"))
+    arguments = params.get("arguments") or {}
+    cancel_event = threading.Event()
+    future = _executor_for_tool(name).submit(_execute_tool_call, name, arguments, cancel_event)
+    with _ACTIVE_REQUESTS_LOCK:
+        _ACTIVE_REQUESTS[request_id] = (future, cancel_event)
+
+    def complete(done: Future[dict[str, Any]]) -> None:
+        with _ACTIVE_REQUESTS_LOCK:
+            _ACTIVE_REQUESTS.pop(request_id, None)
+        if cancel_event.is_set() or done.cancelled():
+            return
+        try:
+            result = done.result()
+        except Exception as exc:
+            token = _TOOL_CALL_CONTEXT.set({"name": name, "arguments": arguments})
+            try:
+                result = tool_result({"error": str(exc), "tool": name}, is_error=True)
+            finally:
+                _TOOL_CALL_CONTEXT.reset(token)
+        send_message(rpc_result(request_id, result))
+
+    future.add_done_callback(complete)
+
+
 def handle_request(message: dict[str, Any]) -> dict[str, Any] | None:
     request_id = message.get("id")
     method = message.get("method")
@@ -40446,17 +40636,18 @@ def handle_request(message: dict[str, Any]) -> dict[str, Any] | None:
         )
     if method == "notifications/initialized":
         return None
+    if method == "notifications/cancelled":
+        _cancel_request((message.get("params") or {}).get("requestId"))
+        return None
     if method == "ping":
         return rpc_result(request_id, {})
     if method == "tools/list":
         return rpc_result(request_id, {"tools": TOOLS})
     if method == "tools/call":
         params = message.get("params") or {}
-        name = params.get("name")
-        try:
-            result = call_tool(str(name), params.get("arguments") or {})
-        except Exception as exc:
-            result = tool_result({"error": str(exc), "tool": name}, is_error=True)
+        name = str(params.get("name"))
+        arguments = params.get("arguments") or {}
+        result = _execute_tool_call(name, arguments)
         return rpc_result(request_id, result)
 
     if request_id is None:
@@ -40470,6 +40661,9 @@ def main() -> int:
             message = read_message()
             if message is None:
                 return 0
+            if message.get("method") == "tools/call" and message.get("id") is not None:
+                _dispatch_tool_request(message)
+                continue
             response = handle_request(message)
             if response is not None:
                 send_message(response)
